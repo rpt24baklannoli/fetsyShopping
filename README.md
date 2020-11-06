@@ -1,2 +1,2 @@
-# fetsyPurchaseAndContact
-Purchase and contact modules for etsy product detail page
+# fetsyShoppingAndFulfillment
+Shopping and fulfillment services modules for etsy product detail page
