@@ -2,9 +2,9 @@ DROP DATABASE IF EXISTS fetsy;
 
 CREATE DATABASE fetsy;
 
-USE fetsy;
+\c fetsy;
 
-CREATE TABLE items (
+CREATE TABLE IF NOT EXISTS items (
   item_id INT PRIMARY KEY,
   item_name VARCHAR(150),
   best_seller BOOLEAN,
@@ -19,7 +19,7 @@ INSERT INTO items (item_id, item_name, best_seller, price, price_reduction, in_s
   VALUES (1, 'Wine RANDOM Face Mask with clear and red rhinestones', true, 10.99, null, true, true, 20),
   (2, 'washable Face Mask covering with glitter rose gold glitter Custom made, Designer FaceMask, with NO pocket for filter, mask holder lanyard', true, 4.10, null, true, true, 20),
   (3, 'Hanging with my Gnomies face mask made of clear, green and red rhinestones', false, 10.99, null, true, false, 0),
-  (4 'FaceMask mask holder lanyard, washable Face Mask covering with glitter rose gold glitter Custom made, Designer with NO pocket for filter', false, 4.10, null, true, true, 3),
+  (4, 'FaceMask mask holder lanyard, washable Face Mask covering with glitter rose gold glitter Custom made, Designer with NO pocket for filter', false, 4.10, null, true, true, 3),
   (5, 'Nose Wire Cotton Filter Pocket 4 Layers Face Mask | Reusable and Washable | Protective Dust Mask | Free Shipping Bewell Bewellgroup', false, 4.97, null, true, true, 20),
   (6, 'Face Shield with Flippable Face Shield - PPE - Comfortable Elastic Head Band - Full Cover Safety Cover', false, 4.99, null, true, true, 20),
   (7, 'Halloween Collection, Holiday, Covid PPE, Fall, Thanksgiving, Scrub cap, surgical cap, nurse, doctor, dentist, men, women, buttons', true, 20, 5, true, true, 6),

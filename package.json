@@ -6,7 +6,8 @@
   "scripts": {
     "react-dev": "webpack --watch",
     "server": "nodemon ./server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "psql postgres < database/schema.sql"
 ***REMOVED***
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "axios": "^0.21.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.6",
+    "pg": "^8.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
 ***REMOVED***
