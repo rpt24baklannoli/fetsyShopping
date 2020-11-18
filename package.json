@@ -7,7 +7,8 @@
     "react-dev": "webpack --watch",
     "server": "nodemon ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "psql postgres < database/schema.sql"
+    "schema": "psql -U root postgres < database/schema.sql",
+    "seed": "node database/dataSeed.js"
 ***REMOVED***
   "repository": {
     "type": "git",
