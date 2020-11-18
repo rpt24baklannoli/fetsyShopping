@@ -4,4 +4,5 @@ module.exports = {
     // Rules here will override the 'hackreactor' configuration
     // http://eslint.org/docs/rules/
 ***REMOVED***
+  ignorePatterns: ['jest.config.js', 'test.js'],
 ***REMOVED***;
