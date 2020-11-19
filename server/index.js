@@ -10,7 +10,7 @@ app.use(express.static('client/dist'));
 app.use(express.json());
 
 // Get all item data from db
-app.get('/shopping', (req, res) => {
+app.get('shopping/items', (req, res) => {
   console.log('this is the item id:', req.params);
   db
     .query('SELECT***REMOVED*** FROM items')
@@ -25,7 +25,7 @@ app.get('/shopping', (req, res) => {
 ***REMOVED***);
 
 // Get one item data from db
-app.get('/shopping/:item_id', (req, res) => {
+app.get('shopping/items/:item_id', (req, res) => {
   console.log('this is the item id:', req.params.item_id);
   db
     .query(`SELECT***REMOVED*** FROM items WHERE item_id = ${req.params.item_id***REMOVED***`)
