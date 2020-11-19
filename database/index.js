@@ -11,7 +11,7 @@
 const { Pool ***REMOVED*** = require('pg');
 
 const pool = new Pool({
-  // user: 'root',
+  user: 'root',
   host: 'localhost',
   database: 'fetsy',
 ***REMOVED***);
