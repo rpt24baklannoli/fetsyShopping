@@ -10,8 +10,8 @@ app.use(express.static('client/dist'));
 app.use(express.json());
 
 // Get all item data from db
-app.get('shopping/items', (req, res) => {
-  console.log('this is the item id:', req.params);
+app.get('/shopping/items', (req, res) => {
+  console.log('GET request for all items successful');
   db
     .query('SELECT * FROM items')
     .then((result) => {
@@ -25,7 +25,7 @@ app.get('shopping/items', (req, res) => {
 });
 
 // Get one item data from db
-app.get('shopping/items/:item_id', (req, res) => {
+app.get('/shopping/items/:item_id', (req, res) => {
   console.log('this is the item id:', req.params.item_id);
   db
     .query(`SELECT * FROM items WHERE item_id = ${req.params.item_id}`)
