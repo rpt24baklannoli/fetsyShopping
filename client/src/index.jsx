@@ -1,5 +1,7 @@
+/* eslint-disable import/extensions***REMOVED***/
 /* eslint-disable no-undef***REMOVED***/
 import React from 'react';
 import ReactDOM from 'react-dom';
+import CartCol from './components/cartCol.jsx';
 
-ReactDOM.render(<h1>test</h1>, document.getElementById('root'));
+ReactDOM.render(<CartCol />, document.getElementById('root'));
