@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS items (
   item_id SERIAL PRIMARY KEY,
   item_name VARCHAR(150),
   best_seller BOOLEAN,
-  price numeric(2),
-  price_reduction numeric(2),
+  price NUMERIC,
+  price_reduction NUMERIC,
   in_stock BOOLEAN,
   us_free_shipping BOOLEAN,
   carts_item_is_in INT
