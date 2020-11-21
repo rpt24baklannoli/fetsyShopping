@@ -5,5 +5,5 @@ module.exports = {
     // http://eslint.org/docs/rules/
     'react/require-default-props': [0],
   },
-  ignorePatterns: ['jest.config.js', 'test.js'],
+  ignorePatterns: ['jest.config.js', 'test.js', 'setupTests.js', 'babel.config.js'],
 };
