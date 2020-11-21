@@ -8,7 +8,7 @@ const wordBank = 'lorem ipsum dolor sit amet consectetur adipiscing elit sed do 
 
 const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-const randomFloat = (min, max, decimalPlaces) => (Math.random() * (max - min) + min).toFixed(decimalPlaces);
+const randomFloat = (min, max, decimalPlaces) => Number((Math.random() * (max - min) + min).toFixed(decimalPlaces));
 
 const itemName = () => {
   const words = wordBank.split(' ');
