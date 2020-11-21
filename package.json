@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack --watch",
-    "server": "nodemon ./server/index.js",
+    "start": "nodemon ./server/index.js",
     "test": "jest",
     "seed": "psql -U root postgres < database/schema.sql && node database/dataSeed.js"
 ***REMOVED***
@@ -26,8 +26,8 @@
     "nodemon": "^2.0.6",
     "pg": "^8.5.1",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
 ***REMOVED***
   "devDependencies": {
     "@babel/core": "^7.12.3",

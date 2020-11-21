@@ -9,6 +9,7 @@ const seedTable = (numberOfRows) => {
 
   while (row > 0) {
     const price = data.price();
+    console.log('type of price:', typeof price);
     const priceReduction = data.randomFloat(0, price, 2);
 
     db
