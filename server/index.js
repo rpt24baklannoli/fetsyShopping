@@ -6,8 +6,9 @@ const db = require('../database/index.js');
 const app = express();
 const port = 3004;
 
-app.use(express.static('client/dist'));
+app.use('/items/:itemId', express.static('client/dist'));
 app.use(express.json());
+app.use(express.urlencoded());
 
 // Get all item data from db
 app.get('/shopping/items', (req, res) => {
@@ -16,7 +17,7 @@ app.get('/shopping/items', (req, res) => {
     .query('SELECT***REMOVED*** FROM items')
     .then((result) => {
       console.log(result.rows);
-      res.send('Successfully got data from db');
+      res.send(result.rows);
   ***REMOVED***)
     .catch((error) => {
       console.error(error);
@@ -25,10 +26,11 @@ app.get('/shopping/items', (req, res) => {
 ***REMOVED***);
 
 // Get one item data from db
-app.get('/shopping/items/:item_id', (req, res) => {
-  console.log('this is the item id:', req.params.item_id);
+app.get('/shopping/items/:itemId', (req, res) => {
+  console.log('these are the request params:', req.params);
+  console.log('this is the item id:', req.params.itemId);
   db
-    .query(`SELECT***REMOVED*** FROM items WHERE item_id = ${req.params.item_id***REMOVED***`)
+    .query(`SELECT***REMOVED*** FROM items WHERE item_id = ${req.params.itemId***REMOVED***`)
     .then((result) => {
       console.log(result.rows[0]);
       res.send(result.rows[0]);
