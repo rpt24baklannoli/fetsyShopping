@@ -1,7 +1,17 @@
 const dataSeedUtils = require('./database/utils.js');
-const axios = require ('axios');
 
+const axios = require ('axios');
 jest.mock('axios');
+
+import React from 'react';
+import { shallow, mount, render } from 'enzyme';
+
+import CartCol from './client/src/components/cartCol.jsx';
+import BuyBox from './client/src/components/buyBox.jsx';
+import ShoppingRegion from './client/src/components/ShoppingRegion.jsx';
+
+
+//## UNIT TESTING DATABASE SEED UTILITY FUNCTIONS
 
 describe('testing database seed utility functions', () => {
 
@@ -25,6 +35,7 @@ describe('testing database seed utility functions', () => {
 })
 
 
+//## UNIT TESTING API CALLS (MOCK)
 
 describe('API testing', () => {
 
@@ -67,13 +78,40 @@ describe('API testing', () => {
 
 })
 
-// describe('React components render correctly testing', () => {
 
-//   test('passes when number returned by randomInt is within given bounds', () => {
-//     expect(dataSeedUtils.randomInt(1, 10)).toBeWithin(1, 11);
-//     expect(dataSeedUtils.randomInt(0, 5)).toBeWithin(0, 6);
-//   });
+//## UNIT TESTING REACT COMPONENTS (USING ENZYME)
 
-// })
+describe('React components render correctly - testing', () => {
 
+  test('CartCol renders without crashing', () => {
+    shallow(<CartCol />);
+  });
 
+  // This test will need to be modified once react componenets are
+  // correctly rendered
+  it("BuyBox renders component header", () => {
+    const wrapper = shallow(<BuyBox />);
+    const header = <h2>BuyBox Component</h2>;
+    expect(wrapper.contains(header)).toEqual(true);
+  });
+
+})
+
+describe('Props are being passed down correctly - testing', () => {
+
+  const data = {
+    best_seller: true,
+    carts_item_is_in: 3,
+    in_stock: true,
+    item_id: 99,
+    item_name: "fake item name",
+    price: "50.00",
+    price_reduction: "0.99",
+    us_free_shipping: true
+  }
+
+  it("accepts item data props", () => {
+    const wrapper = mount(<ShoppingRegion data={data} />);
+    expect(wrapper.props().data).toEqual(data);
+  });
+});

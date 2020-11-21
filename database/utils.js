@@ -1,8 +1,5 @@
 /* eslint-disable max-len */
 /* eslint-disable no-plusplus */
-// This file contain functions that create sample data
-// There should be a function that creates a row of sample data
-// A query should be run that adds the sample data to the database once it is created
 
 const wordBank = 'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor icididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur';
 
