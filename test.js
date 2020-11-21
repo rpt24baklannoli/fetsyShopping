@@ -1,7 +1,17 @@
 const dataSeedUtils = require('./database/utils.js');
-const axios = require ('axios');
 
+const axios = require ('axios');
 jest.mock('axios');
+
+import React from 'react';
+import { shallow, mount, render ***REMOVED*** from 'enzyme';
+
+import CartCol from './client/src/components/cartCol.jsx';
+import BuyBox from './client/src/components/buyBox.jsx';
+import ShoppingRegion from './client/src/components/ShoppingRegion.jsx';
+
+
+//## UNIT TESTING DATABASE SEED UTILITY FUNCTIONS
 
 describe('testing database seed utility functions', () => {
 
@@ -25,6 +35,7 @@ describe('testing database seed utility functions', () => {
 ***REMOVED***)
 
 
+//## UNIT TESTING API CALLS (MOCK)
 
 describe('API testing', () => {
 
@@ -67,13 +78,40 @@ describe('API testing', () => {
 
 ***REMOVED***)
 
-// describe('React components render correctly testing', () => {
 
-//   test('passes when number returned by randomInt is within given bounds', () => {
-//     expect(dataSeedUtils.randomInt(1, 10)).toBeWithin(1, 11);
-//     expect(dataSeedUtils.randomInt(0, 5)).toBeWithin(0, 6);
-// ***REMOVED***);
+//## UNIT TESTING REACT COMPONENTS (USING ENZYME)
 
-// ***REMOVED***)
+describe('React components render correctly - testing', () => {
 
+  test('CartCol renders without crashing', () => {
+    shallow(<CartCol />);
+***REMOVED***);
 
+  // This test will need to be modified once react componenets are
+  // correctly rendered
+  it("BuyBox renders component header", () => {
+    const wrapper = shallow(<BuyBox />);
+    const header = <h2>BuyBox Component</h2>;
+    expect(wrapper.contains(header)).toEqual(true);
+***REMOVED***);
+
+***REMOVED***)
+
+describe('Props are being passed down correctly - testing', () => {
+
+  const data = {
+    best_seller: true,
+    carts_item_is_in: 3,
+    in_stock: true,
+    item_id: 99,
+    item_name: "fake item name",
+    price: "50.00",
+    price_reduction: "0.99",
+    us_free_shipping: true
+***REMOVED***
+
+  it("accepts item data props", () => {
+    const wrapper = mount(<ShoppingRegion data={data***REMOVED*** />);
+    expect(wrapper.props().data).toEqual(data);
+***REMOVED***);
+***REMOVED***);
