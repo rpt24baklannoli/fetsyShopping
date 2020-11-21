@@ -6,6 +6,7 @@
 // psql postgres < database/schema.sql (run schema as superuser)
 // \l - list database
 // \c - connect to database
+// \d - list relations (tables) in database we're connected to
 // SELECT***REMOVED*** FROM items
 
 const { Pool ***REMOVED*** = require('pg');
