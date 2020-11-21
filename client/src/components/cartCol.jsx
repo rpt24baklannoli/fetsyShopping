@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable import/extensions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
@@ -13,28 +14,38 @@ class CartCol extends React.Component {
     super(props);
     this.state = {
       itemData: {},
+      itemId: 1,
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    this.getData();
+    const { itemData, itemId } = this.state;
+    this.getURL();
+    this.getData(itemId);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  // handleChange(event) {
+  //   this.setState({ value: event.target.value });
+  // }
+
+  // handleSubmit(event) {
+  //   const { value } = this.state;
+  //   console.log(`An essay was submitted: ${value}`);
+  //   event.preventDefault();
+  // }
+
+  getURL() {
+    const currentURL = window.location;
+    const itemId = currentURL.pathname.split('/')[2];
+    this.setState({ itemId },
+      () => this.getData(itemId));
   }
 
-  handleSubmit(event) {
-    const { value } = this.state;
-    console.log(`An essay was submitted: ${value}`);
-    event.preventDefault();
-  }
-
-  getData() {
-    axios.get('/shopping/items/2')
+  getData(itemId) {
+    axios.get(`/shopping/items/${itemId}`)
       .then((response) => {
         this.setState({ itemData: response.data });
         console.log('state:', this.state);
