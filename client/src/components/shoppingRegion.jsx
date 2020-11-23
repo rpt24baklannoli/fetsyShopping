@@ -5,7 +5,11 @@ function ShoppingRegion(props) {
   const { data } = props;
   return (
     <div>
-      <h3>Shopping Region Component</h3>
+      <h3>
+        Shopping Region Component
+        Item #
+        {data.item_id}
+      </h3>
       <p>
         Item Name:
         {data.item_name}
