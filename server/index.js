@@ -26,7 +26,7 @@ app.get('/shopping/items', (req, res) => {
   ***REMOVED***);
 ***REMOVED***);
 
-// Get one item's data
+// Get data based on one item Id
 app.get('/shopping/items/:itemId', (req, res) => {
   const { itemId ***REMOVED*** = req.params;
 
@@ -43,6 +43,9 @@ app.get('/shopping/items/:itemId', (req, res) => {
       const serviceData = { ...itemData, ...sellerData ***REMOVED***;
       console.log('service Data:', serviceData);
       res.send(serviceData);
+  ***REMOVED***)
+    .catch((error) => {
+      console.error(error);
   ***REMOVED***);
 ***REMOVED***);
 

@@ -3,7 +3,8 @@ import { shallow, mount, render ***REMOVED*** from 'enzyme';
 
 import CartCol from '../client/src/components/cartCol.jsx';
 import BuyBox from '../client/src/components/buyBox.jsx';
-import ShoppingRegion from '../client/src/components/ShoppingRegion.jsx';
+import ShoppingRegion from '../client/src/components/shoppingRegion.jsx';
+import Seller from '../client/src/components/seller.jsx';
 
 //## UNIT TESTING REACT COMPONENTS (USING ENZYME)
 
@@ -43,8 +44,13 @@ describe('Props are being passed down correctly - testing', () => {
     on_etsy_since: 2019
 ***REMOVED***
 
-  test("accepts item data props", () => {
+  test("shopping region accepts serviceData props", () => {
     const wrapper = mount(<ShoppingRegion data={data***REMOVED*** />);
+    expect(wrapper.props().data).toEqual(data);
+***REMOVED***);
+
+  test("seller component accepts serviceData props", async () => {
+    const wrapper = mount(<Seller data={data***REMOVED*** />);
     expect(wrapper.props().data).toEqual(data);
 ***REMOVED***);
 ***REMOVED***);
