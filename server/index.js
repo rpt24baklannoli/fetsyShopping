@@ -26,7 +26,7 @@ app.get('/shopping/items', (req, res) => {
     });
 });
 
-// Get one item's data
+// Get data based on one item Id
 app.get('/shopping/items/:itemId', (req, res) => {
   const { itemId } = req.params;
 
@@ -43,6 +43,9 @@ app.get('/shopping/items/:itemId', (req, res) => {
       const serviceData = { ...itemData, ...sellerData };
       console.log('service Data:', serviceData);
       res.send(serviceData);
+    })
+    .catch((error) => {
+      console.error(error);
     });
 });
 
