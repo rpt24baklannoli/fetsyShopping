@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const express = require('express');
+const axios = require('axios');
 const db = require('../database/index.js');
 
 const app = express();
@@ -27,8 +28,8 @@ app.get('/shopping/items', (req, res) => {
 
 // Get one item data from db
 app.get('/shopping/items/:itemId', (req, res) => {
-  console.log('these are the request params:', req.params);
   console.log('this is the item id:', req.params.itemId);
+
   db
     .query(`SELECT * FROM items WHERE item_id = ${req.params.itemId}`)
     .then((result) => {
@@ -40,6 +41,17 @@ app.get('/shopping/items/:itemId', (req, res) => {
       res.send('Error getting data from db');
     });
 });
+
+// Get seller info
+const getSellerInfo = (itemId) => {
+  axios.get(`http://localhost:3005/items/${itemId}/seller`)
+    .then((response) => {
+      console.log('response from Kendalls server:', response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 app.listen(port, () => {
   console.log(`Fetsy shopping listening at port ${port}`);

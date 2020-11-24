@@ -15,7 +15,7 @@ describe('React components render correctly - testing', () => {
 
   // This test will need to be modified once react componenets are
   // correctly rendered
-  it("BuyBox renders component header", () => {
+  test("BuyBox renders component header", () => {
     const wrapper = shallow(<BuyBox />);
     const header = <h2>BuyBox Component</h2>;
     expect(wrapper.contains(header)).toEqual(true);
@@ -36,7 +36,7 @@ describe('Props are being passed down correctly - testing', () => {
     us_free_shipping: true
   }
 
-  it("accepts item data props", () => {
+  test("accepts item data props", () => {
     const wrapper = mount(<ShoppingRegion data={data} />);
     expect(wrapper.props().data).toEqual(data);
   });
