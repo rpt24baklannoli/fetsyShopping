@@ -26,14 +26,21 @@ describe('React components render correctly - testing', () => {
 describe('Props are being passed down correctly - testing', () => {
 
   const data = {
+    item_id: 10,
+    item_name: 'consequat aute laboris eiusmod velit dolore pariatur ut commodo ',
     best_seller: true,
-    carts_item_is_in: 3,
-    in_stock: true,
-    item_id: 99,
-    item_name: "fake item name",
-    price: "50.00",
-    price_reduction: "0.99",
-    us_free_shipping: true
+    price: '85.01',
+    price_reduction: '69.97',
+    in_stock: false,
+    us_free_shipping: true,
+    carts_item_is_in: 4,
+    seller_id: 10,
+    seller_rating: 3,
+    total_sales: 1012,
+    seller_name: 'Kylie60',
+    seller_city: 'Lake Botown',
+    seller_state: 'Massachusetts',
+    on_etsy_since: 2019
   }
 
   test("accepts item data props", () => {

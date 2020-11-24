@@ -13,7 +13,7 @@ class CartCol extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemData: {},
+      serviceData: {},
       itemId: 1,
     };
 
@@ -47,7 +47,7 @@ class CartCol extends React.Component {
   getData(itemId) {
     axios.get(`/shopping/items/${itemId}`)
       .then((response) => {
-        this.setState({ itemData: response.data });
+        this.setState({ serviceData: response.data });
         console.log('state:', this.state);
       })
       .catch((error) => {
@@ -56,11 +56,11 @@ class CartCol extends React.Component {
   }
 
   render() {
-    const { itemData } = this.state;
+    const { serviceData } = this.state;
     return (
       <div className="cart-col">
-        <BuyBox data={itemData} />
-        <FreeShippingBundle data={itemData} />
+        <BuyBox data={serviceData} />
+        <FreeShippingBundle data={serviceData} />
       </div>
     );
   }
