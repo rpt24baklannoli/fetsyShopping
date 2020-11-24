@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const express = require('express');
+const axios = require('axios');
 const db = require('../database/index.js');
 
 const app = express();
@@ -25,19 +26,26 @@ app.get('/shopping/items', (req, res) => {
     });
 });
 
-// Get one item data from db
+// Get data based on one item Id
 app.get('/shopping/items/:itemId', (req, res) => {
-  console.log('these are the request params:', req.params);
-  console.log('this is the item id:', req.params.itemId);
-  db
-    .query(`SELECT * FROM items WHERE item_id = ${req.params.itemId}`)
+  const { itemId } = req.params;
+
+  const itemDataPromise = db
+    .query(`SELECT * FROM items WHERE item_id = ${itemId}`);
+
+  const sellerDataPromise = axios
+    .get(`http://localhost:3005/items/${itemId}/seller`);
+
+  Promise.all([itemDataPromise, sellerDataPromise])
     .then((result) => {
-      console.log(result.rows[0]);
-      res.send(result.rows[0]);
+      const itemData = result[0].rows[0];
+      const sellerData = result[1].data.rows[0];
+      const serviceData = { ...itemData, ...sellerData };
+      console.log('service Data:', serviceData);
+      res.send(serviceData);
     })
     .catch((error) => {
       console.error(error);
-      res.send('Error getting data from db');
     });
 });
 
