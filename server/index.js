@@ -26,32 +26,25 @@ app.get('/shopping/items', (req, res) => {
   ***REMOVED***);
 ***REMOVED***);
 
-// Get one item data from db
+// Get one item's data
 app.get('/shopping/items/:itemId', (req, res) => {
-  console.log('this is the item id:', req.params.itemId);
+  const { itemId ***REMOVED*** = req.params;
 
-  db
-    .query(`SELECT***REMOVED*** FROM items WHERE item_id = ${req.params.itemId***REMOVED***`)
+  const itemDataPromise = db
+    .query(`SELECT***REMOVED*** FROM items WHERE item_id = ${itemId***REMOVED***`);
+
+  const sellerDataPromise = axios
+    .get(`http://localhost:3005/items/${itemId***REMOVED***/seller`);
+
+  Promise.all([itemDataPromise, sellerDataPromise])
     .then((result) => {
-      console.log(result.rows[0]);
-      res.send(result.rows[0]);
-  ***REMOVED***)
-    .catch((error) => {
-      console.error(error);
-      res.send('Error getting data from db');
+      const itemData = result[0].rows[0];
+      const sellerData = result[1].data.rows[0];
+      const serviceData = { ...itemData, ...sellerData ***REMOVED***;
+      console.log('service Data:', serviceData);
+      res.send(serviceData);
   ***REMOVED***);
 ***REMOVED***);
-
-// Get seller info
-const getSellerInfo = (itemId) => {
-  axios.get(`http://localhost:3005/items/${itemId***REMOVED***/seller`)
-    .then((response) => {
-      console.log('response from Kendalls server:', response);
-  ***REMOVED***)
-    .catch((error) => {
-      console.log(error);
-  ***REMOVED***);
-***REMOVED***;
 
 app.listen(port, () => {
   console.log(`Fetsy shopping listening at port ${port***REMOVED***`);
