@@ -5,20 +5,40 @@ import PropTypes from 'prop-types';
 function Seller(props) {
   const { data } = props;
   return (
-    <div>
-      <h3>Seller Component</h3>
+    <div className="seller">
       <p>
-        Seller Name:
         {data.seller_name}
       </p>
-      <p>
-        Seller Total Sales:
-        {data.total_sales}
-      </p>
-      <p>
-        Seller Star Ratings:
-        {data.seller_rating}
-      </p>
+      <div>
+        <a href="TO DO">
+          <span>
+            {data.total_sales}
+            sales
+          </span>
+        </a>
+        <span>|</span>
+        <span>
+          <a href="TO DO">
+            <span>
+              star
+            </span>
+            <span>
+              star
+            </span>
+            <span>
+              star
+            </span>
+            <span>
+              star
+            </span>
+            <span>
+              star
+            </span>
+          </a>
+          Seller Star Ratings:
+          {data.seller_rating}
+        </span>
+      </div>
     </div>
   );
 }

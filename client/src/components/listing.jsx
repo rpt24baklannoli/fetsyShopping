@@ -4,10 +4,14 @@ import React from 'react';
 function Listing(props) {
   return (
     <div>
-      <h4>Listing Component</h4>
-      <p>Image Url: Unknown</p>
-      <p>Item name: Unknown</p>
-      <p>Item price: Unknown</p>
+      <div>
+        <span>This listing</span>
+        <span>*Image here img tag*</span>
+      </div>
+      <div>
+        <h3>Item name</h3>
+        <p>Item price</p>
+      </div>
     </div>
   );
 }

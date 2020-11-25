@@ -7,8 +7,7 @@ import ShoppingRegion from './shoppingRegion.jsx';
 function BuyBox(props) {
   const { data } = props;
   return (
-    <div>
-      <h2>BuyBox Component</h2>
+    <div className="buyBox">
       <Seller data={data} />
       <ShoppingRegion data={data} />
     </div>
