@@ -6,9 +6,7 @@ import Listing from './listing.jsx';
 function ItemList(props) {
   const { data ***REMOVED*** = props;
   return (
-    <div>
-      <h3>Item List Component</h3>
-      <p>Buy together, get free shipping</p>
+    <div className="itemList">
       <Listing data={data***REMOVED*** />
       <Listing data={data***REMOVED*** />
       <Listing data={data***REMOVED*** />
