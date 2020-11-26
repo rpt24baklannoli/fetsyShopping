@@ -1,4 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control***REMOVED***/
+/* eslint-disable import/extensions***REMOVED***/
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -6,44 +8,6 @@ function ShoppingRegion(props) {
   const { data ***REMOVED*** = props;
   return (
     <div className="shoppingRegion">
-      <div className="itemName-bestSeller">
-        <div>
-          <h1>
-            {data.item_name***REMOVED***
-          </h1>
-        </div>
-        <span>
-          <div>
-            <span>
-              Best Seller:
-              {`${data.best_seller***REMOVED***`***REMOVED***
-            </span>
-          </div>
-        </span>
-      </div>
-
-      <div className="price-inStock-reduction">
-        <div>
-          <div>
-            <p>
-              {data.price***REMOVED***
-            </p>
-          </div>
-          <div>
-            <span>*Check Icon*</span>
-            <p>
-              <b>
-                In Stock:
-                {`${data.in_stock***REMOVED***`***REMOVED***
-              </b>
-            </p>
-          </div>
-        </div>
-        <p>
-          Price Reduced By:
-          {data.price_reduction***REMOVED***
-        </p>
-      </div>
 
       <div className="color-quantity">
         <div>
