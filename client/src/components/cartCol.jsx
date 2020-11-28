@@ -39,7 +39,7 @@ class CartCol extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      serviceData: {},
+      serviceData: { recommendedItemImages: ['image1', 'image2'] },
       itemId: 1,
     };
 
@@ -50,7 +50,7 @@ class CartCol extends React.Component {
   componentDidMount() {
     const { itemData, itemId } = this.state;
     this.getURL();
-    this.getData(itemId);
+    //  this.getData(itemId);
   }
 
   // handleChange(event) {
