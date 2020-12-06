@@ -9,37 +9,6 @@ function ShoppingRegion(props) {
   return (
     <div className="shoppingRegion">
 
-      <div className="color-quantity">
-        <div>
-          <label htmlFor="color-select">Primary Color</label>
-          <select name="colors" id="color-select">
-            <option value="">Select a color</option>
-            <option value="red">Red</option>
-            <option value="orange">Orange</option>
-            <option value="yellow">Yellow</option>
-            <option value="green">Green</option>
-            <option value="blue">Blue</option>
-            <option value="Violet">Violet</option>
-            <option value="Indigo">Indigo</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="quantity-select">Quantity</label>
-          <select name="quantity" id="quantity-select">
-            <option value="1" selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-      </div>
-
       <div className="add-to-cart">
         <form action="" method="" className="add-to-cart-form">
           <button className="add-to-cart-button" type="submit">
@@ -98,3 +67,36 @@ ShoppingRegion.propTypes = {
     us_free_shipping: PropTypes.bool.isRequired,
 ***REMOVED***),
 ***REMOVED***;
+
+/*
+      <div className="color-quantity">
+        <div>
+          <label htmlFor="color-select">Primary Color</label>
+          <select name="colors" id="color-select">
+            <option value="">Select a color</option>
+            <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="Violet">Violet</option>
+            <option value="Indigo">Indigo</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="quantity-select">Quantity</label>
+          <select name="quantity" id="quantity-select">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      </div>
+*/

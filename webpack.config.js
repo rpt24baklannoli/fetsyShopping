@@ -18,7 +18,7 @@ module.exports = {
     ***REMOVED***
 ***REMOVED***
 ***REMOVED***
-  devtool: 'source-map'
+  devtool: 'source-map',
 ***REMOVED***;
 
 
