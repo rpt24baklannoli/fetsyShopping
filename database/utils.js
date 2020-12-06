@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-plusplus */
 
-const wordBank = 'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor icididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur';
+const wordBank = 'cat dollar vase lamp mask desk heating remote LED plant green glass pearl window shade curtain monitor shelf book alcohol lotion wiping board wood cloth sofa bed soft luxrious tea drink food panel weight painting duvet succulent fan indoor ball sport hydrate warming edison maker artisan blue flag leaf cover to';
 
 const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 

@@ -1,17 +1,38 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import ItemList from './itemList.jsx';
+
+const FreeShippingBundleDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  height: 374.121px;
+  margin-bottom: 0px;
+  margin-left:0px;
+  margin-right: 0px;
+  margin-top: 36px;
+  width: 268.223px;
+`;
 
 function FreeShippingBundle(props) {
   const { data } = props;
   return (
-    <div>
-      <h2>FreeShippingBundle Component</h2>
+    <FreeShippingBundleDiv>
+      <h1>Buy together, get free shipping</h1>
       <ItemList data={data} />
-      <p>Add 3 items to cart</p>
-      <p>***See more items button***</p>
-    </div>
+
+      <div>
+        <div>
+          <form action="filler" method="post">
+            <button type="submit">Add 3 items to cart</button>
+          </form>
+        </div>
+        <div>
+          <a href="filler">See more items</a>
+        </div>
+      </div>
+    </FreeShippingBundleDiv>
   );
 }
 

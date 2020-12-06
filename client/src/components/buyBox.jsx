@@ -1,17 +1,30 @@
 /* eslint-disable import/extensions */
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Seller from './seller.jsx';
+import NameBestSeller from './nameBestSeller.jsx';
+import PriceInStock from './priceInStock.jsx';
+import ColorQuantity from './colorQuantity.jsx';
 import ShoppingRegion from './shoppingRegion.jsx';
+
+const BuyBoxDiv = styled.div`
+  display: block;
+  height: 729.98px;
+  margin-bottom: 0px;
+  width: 270.703px;
+`;
 
 function BuyBox(props) {
   const { data } = props;
   return (
-    <div>
-      <h2>BuyBox Component</h2>
+    <BuyBoxDiv>
       <Seller data={data} />
+      <NameBestSeller data={data} />
+      <PriceInStock data={data} />
+      <ColorQuantity data={data} />
       <ShoppingRegion data={data} />
-    </div>
+    </BuyBoxDiv>
   );
 }
 
