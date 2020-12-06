@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Seller from './seller.jsx';
 import NameBestSeller from './nameBestSeller.jsx';
 import PriceInStock from './priceInStock.jsx';
+import ColorQuantity from './colorQuantity.jsx';
 import ShoppingRegion from './shoppingRegion.jsx';
 
 const BuyBoxDiv = styled.div`
@@ -21,6 +22,7 @@ function BuyBox(props) {
       <Seller data={data} />
       <NameBestSeller data={data} />
       <PriceInStock data={data} />
+      <ColorQuantity data={data} />
       <ShoppingRegion data={data} />
     </BuyBoxDiv>
   );

@@ -18,7 +18,7 @@ const CartColDiv = styled.div`
   flex-direction: column;
   flex-grow: 3;
   flex-shrink: 1;
-  float: right;
+
   font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 14px;
   height: 1142.09px;
@@ -34,6 +34,8 @@ const CartColDiv = styled.div`
   text-size-adjust: 100%;
   width: 300.703px;
 `;
+
+//   float: right;
 
 class CartCol extends React.Component {
   constructor(props) {

@@ -68,7 +68,7 @@ const BestSellerOuterSpan = styled.span`
   -webkit-font-smoothing: antialiased;
 `;
 
-const BestSellerDiv = styled.span`
+const BestSellerDiv = styled.div`
   align-items: center;
   box-sizing: border-box;
   color: rgb(34, 34, 34);
@@ -86,6 +86,43 @@ const BestSellerDiv = styled.span`
   -webkit-font-smoothing: antialiased;
 `;
 
+const BestSellerSpan = styled.span`
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgb(253, 235, 210);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat-x;
+  background-repeat-y;
+  background-size: auto;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-sizing: border-box;
+  color: rgb(34, 34, 34);
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 400;
+  height: 24.4922px;
+  line-height: 13px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 6px;
+  margin-top: 0px;
+  min-width: 25px;
+  padding-bottom: 6px;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 6px;
+  text-align: left;
+  text-size-adjust: 100%;
+  width: 78.4766px;
+  word-break: break-word;
+`;
+
 function NameBestSeller(props) {
   const { data } = props;
   return (
@@ -97,10 +134,10 @@ function NameBestSeller(props) {
       </NameDiv>
       <BestSellerOuterSpan>
         <BestSellerDiv>
-          <span>
+          <BestSellerSpan>
             Best Seller:
             {`${data.best_seller}`}
-          </span>
+          </BestSellerSpan>
         </BestSellerDiv>
       </BestSellerOuterSpan>
     </NameBestSellerDiv>

@@ -1,7 +1,9 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const express = require('express');
 const axios = require('axios');
+const data = require('../database/utils.js');
 const db = require('../database/index.js');
 
 const app = express();
@@ -36,12 +38,16 @@ app.get('/shopping/items/:itemId', (req, res) => {
   const sellerDataPromise = axios
     .get(`http://localhost:3005/items/${itemId}/seller`);
 
-  Promise.all([itemDataPromise, sellerDataPromise])
+  const itemImagesPromise = axios
+    .get('http://localhost:3006/item/images/distinct');
+
+  Promise.all([itemDataPromise, sellerDataPromise, itemImagesPromise])
     .then((result) => {
       const itemData = result[0].rows[0];
       const sellerData = result[1].data.rows[0];
-      const serviceData = { ...itemData, ...sellerData };
-      console.log('service Data:', serviceData);
+      const itemImages = result[2].data.rows;
+      const recommendedItemImages = { recommendedItemImages: [itemImages[data.randomInt(1, 10)], itemImages[data.randomInt(1, 10)], itemImages[data.randomInt(1, 10)]] };
+      const serviceData = { ...itemData, ...sellerData, ...recommendedItemImages };
       res.send(serviceData);
     })
     .catch((error) => {
