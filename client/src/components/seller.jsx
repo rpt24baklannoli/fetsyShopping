@@ -1,25 +1,53 @@
+/* eslint-disable import/extensions***REMOVED***/
 /* eslint-disable no-unused-vars***REMOVED***/
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import SellerName from './sellerName.jsx';
+import SellerSales from './sellerSales.jsx';
+import SellerRating from './sellerRating.jsx';
+
+const SellerDiv = styled.div`
+  margin: 0;
+  box-sizing: border-box;
+  display: block;
+  font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  --vh: 12.51px;
+  text-align: left;
+`;
+
+const SalesStarRatingDiv = styled.div`
+  box-sizing: border-box;
+  color: rgb(34, 34, 34);
+  display: block;
+  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  height: 31.3672px;
+  line-height: 19.6px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  text-align: left;
+  text-size-adjust: 100%;
+  width: 413.848px;
+  -webkit-font-smoothing: antialiased;
+`;
 
 function Seller(props) {
   const { data ***REMOVED*** = props;
   return (
-    <div>
-      <h3>Seller Component</h3>
-      <p>
-        Seller Name:
-        {data.seller_name***REMOVED***
-      </p>
-      <p>
-        Seller Total Sales:
-        {data.total_sales***REMOVED***
-      </p>
-      <p>
-        Seller Star Ratings:
-        {data.seller_rating***REMOVED***
-      </p>
-    </div>
+    <SellerDiv>
+      <SellerName data={data***REMOVED*** />
+      <SalesStarRatingDiv>
+        <SellerSales data={data***REMOVED*** />
+        <span>|</span>
+        <SellerRating data={data***REMOVED*** />
+      </SalesStarRatingDiv>
+    </SellerDiv>
   );
 ***REMOVED***
 
