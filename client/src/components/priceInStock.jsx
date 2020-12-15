@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import checkImg from '../icons/check.png';
 
 const PriceInStockDiv = styled.div`
   align-items: center;
@@ -9,12 +10,6 @@ const PriceInStockDiv = styled.div`
   justify-content: space-between;
   height: 35px;
   margin-bottom: 18px;
-  width: 268.223px;
-`;
-
-const PriceDiv = styled.div`
-  display: flex;
-  width: 106.367px;
 `;
 
 const PriceP = styled.p`
@@ -22,12 +17,6 @@ const PriceP = styled.p`
   font-size: 28px;
   font-weight: 500;
   line-height 36px;
-  margin-block-end: 0px;
-  margin-block-start: 0px;
-  margin-bottom: 0px;
-  margin-inline-end: 12px;
-  margin-inline-start: 0px;
-  margin-bottom: 18px;
   width: 94.375px;
 `;
 
@@ -38,7 +27,7 @@ const InStockDiv = styled.div`
   width: 73.0469px;
 `;
 
-const CheckSpan = styled.span`
+const CheckImg = styled.img`
   display: block;
   fill: rgb(34, 34, 34);
   height: 17.9883px;
@@ -68,23 +57,30 @@ const InStockP = styled.p`
 
 function PriceInStock(props) {
   const { data ***REMOVED*** = props;
-  return (
-    <PriceInStockDiv>
-      <PriceDiv>
-        <PriceP>
-          $
-          {data.price***REMOVED***
-        </PriceP>
-      </PriceDiv>
+
+  let inStock;
+  if (data.in_stock) {
+    inStock = (
       <InStockDiv>
-        <CheckSpan>✔</CheckSpan>
+        <CheckImg src={checkImg***REMOVED*** alt="check icon" />
         <InStockP>
           <b>
-            In Stock:
-            {`${data.in_stock***REMOVED***`***REMOVED***
+            In Stock
           </b>
         </InStockP>
       </InStockDiv>
+    );
+***REMOVED***
+
+  return (
+    <PriceInStockDiv>
+
+      <PriceP>
+        $
+        {data.price***REMOVED***
+      </PriceP>
+
+      {inStock***REMOVED***
     </PriceInStockDiv>
   );
 ***REMOVED***

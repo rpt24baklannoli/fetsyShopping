@@ -3,22 +3,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const TotalSalesSpan = styled.span`
-  font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+const TotalSalesA = styled.a`
   font-weight: 300;
   font-size: 13px;
-  line-height: 18px;
+  margin-right: 6px;
+  color: black;
+  text-decoration: none;
+  &: hover {
+    text-decoration: underline;
+***REMOVED***
 `;
+
+/*
+  line-height: 18px;
+*/
 
 function SellerSales(props) {
   const { data ***REMOVED*** = props;
   return (
-    <a href="TO DO">
-      <TotalSalesSpan>
-        {data.total_sales***REMOVED***
-        sales
-      </TotalSalesSpan>
-    </a>
+    <TotalSalesA href="TO DO">
+      {data.total_sales***REMOVED***
+      sales
+    </TotalSalesA>
   );
 ***REMOVED***
 

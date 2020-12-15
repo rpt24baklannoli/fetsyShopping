@@ -7,23 +7,13 @@ import styled from 'styled-components';
 import Color from './color.jsx';
 import Quantity from './quantity.jsx';
 
-const ColorQuantityDiv = styled.div`
-  display: block;
-  height: 154.961px;
-  margin-bottom: 18px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  width: 431.992px;
-`;
-
 function ColorQuantity(props) {
   const { data ***REMOVED*** = props;
   return (
-    <ColorQuantityDiv>
+    <div>
       <Color data={data***REMOVED*** />
       <Quantity data={data***REMOVED*** />
-    </ColorQuantityDiv>
+    </div>
   );
 ***REMOVED***
 
