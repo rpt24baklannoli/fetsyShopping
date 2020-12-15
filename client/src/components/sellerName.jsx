@@ -3,19 +3,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const SellerNameP = styled.p`
-  font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
-  font-weight: 300;
+const SellerNameA = styled.a`
+  color: black;
   font-size: 16px;
-  line-height: 28px;
+  text-decoration: none;
+  &: hover {
+    text-decoration: underline;
+  }
 `;
 
 function SellerName(props) {
   const { data } = props;
   return (
-    <SellerNameP>
+    <SellerNameA href="TODO">
       {data.seller_name}
-    </SellerNameP>
+    </SellerNameA>
   );
 }
 
