@@ -33,7 +33,6 @@ function NiceChoice(props) {
           Nice choice!&nbsp;
         </strong>
         Enjoy free shipping to the US when you spend $35+ at this shop.&nbsp;
-        {`${data.us_free_shipping}`}
       </NiceChoiceP>
     </TruckDiv>
   );
