@@ -1,32 +1,30 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Seller from './seller.jsx';
 import NameBestSeller from './nameBestSeller.jsx';
 import PriceInStock from './priceInStock.jsx';
 import ColorQuantity from './colorQuantity.jsx';
-import ShoppingRegion from './shoppingRegion.jsx';
-
-const BuyBoxDiv = styled.div`
-  display: block;
-  height: 729.98px;
-  margin-bottom: 0px;
-  width: 270.703px;
-`;
+import AddToCart from './addToCart.jsx';
+import DataNudger from './dataNudger.jsx';
 
 function BuyBox(props) {
   const { data } = props;
   return (
-    <BuyBoxDiv>
+    <div>
       <Seller data={data} />
       <NameBestSeller data={data} />
       <PriceInStock data={data} />
       <ColorQuantity data={data} />
-      <ShoppingRegion data={data} />
-    </BuyBoxDiv>
+      <AddToCart />
+      <DataNudger data={data} />
+    </div>
   );
 }
+
+/*
+      <ShoppingRegion data={data} />
+*/
 
 // Props typechecking
 BuyBox.propTypes = {

@@ -6,32 +6,19 @@ import styled from 'styled-components';
 
 const QuantityDiv = styled.div`
   display: block;
-  height: 71.4844px;
   margin-bottom: 12px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  width: 431.992px;
 `;
 
 const QuantityLabel = styled.label`
-  cursor: default;
   display: block;
   font-size: 13px;
   font-weight: 300;
-  height: 17.5px
   line-height: 18px;
   margin-bottom: 6px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  width: 431.992px;
 `;
 
 const QuantitySelect = styled.select`
-  background-color:red;
   align-items: center;
-  appearance: none;
   background-attachment: scroll;
   background-clip: border-box;
   background-color: rgb(255, 255, 255);
@@ -70,7 +57,8 @@ const QuantitySelect = styled.select`
   font-stretch: 100%;
   font-style: normal;
   font-weight: 400;
-  height: 47.9883px;
+  height: 40px;
+  width: 100%;
   letter-spacing: normal;
   line-height: normal;
   margin-bottom: 0px;
@@ -88,12 +76,15 @@ const QuantitySelect = styled.select`
   text-shadow: none;
   text-size-adjust: 100%;
   text-transform: none;
-  transition-delay: 0s, 0s;
-  transition-duration: 0.2s, 0.2s;
-  transition-property: border-color, box-shadow;
-  transition-timing-function: ease-out, ease-out;
+  &:hover {
+    transition-delay: 0s, 0s;
+    transition-duration: 0.2s, 0.2s;
+    transition-property: border-color, box-shadow;
+    border-color: rgba(34, 34, 34, 0.7);
+    box-shadow: rgba(34, 34, 34, 0.15) 0px 1px 6px 0px;
+    transition-timing-function: ease-out, ease-out;
+  }
   white-space: pre
-  width: 431.992px
   word-spacing: 0px
   writing-mode: horizontal-tb
 `;
