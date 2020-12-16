@@ -16,6 +16,14 @@ module.exports = {
         ***REMOVED***
       ***REMOVED***
     ***REMOVED***
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+   ***REMOVED*****REMOVED***
+    ***REMOVED***,
+    ***REMOVED***
 ***REMOVED***
 ***REMOVED***
   devtool: 'source-map',

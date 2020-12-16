@@ -2,60 +2,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import starImg from '../icons/star.png';
 
 const SellerRatingSpan = styled.span`
-  box-sizing: border-box;
-  color: rgb(34, 34, 34);
-  cursor: pointer;
   display: inline;
-  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  height: auto;
-  line-height: 19.6px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  text-align: left;
-  text-size-adjust: 100%;
-  width: auto;
-  -webkit-font-smoothing: antialiased;
+  margin-left: 6px;
 `;
 
-const StarSpan = styled.span`
+const StarImg = styled.img`
   bottom: 2px;
-  box-sizing: border-box;
-  color: rgb(34, 34, 34);
-  cursor: pointer;
   display: inline-block;
-  fill: rgb(34, 34, 34);
-  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  height: 11.9922px;
-  line-height: 19.6px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
+  height: 12px;
   position: relative;
-  text-align: left;
-  text-size-adjust: 100%;
   vertical-align: middle;
-  width: 11.9922px;
-  -webkit-font-smoothing: antialiased;
+  width: 12px;
 `;
 
 function SellerRating(props) {
   const { data ***REMOVED*** = props;
-  const stars = [...Array(data.seller_rating)].map((star) => <StarSpan>*</StarSpan>);
+  const stars = [...Array(data.seller_rating)].map((star) => <StarImg src={starImg***REMOVED*** alt="star icon" />);
 
   return (
     <SellerRatingSpan>
       <a href="TO DO">
         {stars***REMOVED***
       </a>
-      Stars:
-      {data.seller_rating***REMOVED***
     </SellerRatingSpan>
   );
 ***REMOVED***

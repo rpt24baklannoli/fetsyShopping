@@ -11,8 +11,8 @@ import BuyBox from './buyBox.jsx';
 import FreeShippingBundle from './freeShippingBundle.jsx';
 
 const CartColDiv = styled.div`
+  border: 1px solid red;
   box-sizing: border-box;
-  color: rgb(34, 34, 34);
   display: flex;
   flex-basis: auto;
   flex-direction: column;
@@ -21,21 +21,20 @@ const CartColDiv = styled.div`
 
   font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  height: 1142.09px;
   line-height: 19.6px;
+
   margin-bottom: 36px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  padding-left: 0px;
   padding-right: 30px;
-  order: 2;
-  text-align: left;
+
+  width: 460px;
+
   text-size-adjust: 100%;
-  width: 300.703px;
 `;
 
-//   float: right;
+/*
+  height: 1176px;
+
+*/
 
 class CartCol extends React.Component {
   constructor(props) {
@@ -44,9 +43,6 @@ class CartCol extends React.Component {
       serviceData: { recommendedItemImages: ['image1', 'image2'] ***REMOVED***,
       itemId: 1,
   ***REMOVED***;
-
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
 ***REMOVED***
 
   componentDidMount() {
@@ -54,16 +50,6 @@ class CartCol extends React.Component {
     this.getURL();
     //  this.getData(itemId);
 ***REMOVED***
-
-  // handleChange(event) {
-  //   this.setState({ value: event.target.value ***REMOVED***);
-  // ***REMOVED***
-
-  // handleSubmit(event) {
-  //   const { value ***REMOVED*** = this.state;
-  //   console.log(`An essay was submitted: ${value***REMOVED***`);
-  //   event.preventDefault();
-  // ***REMOVED***
 
   getURL() {
     const currentURL = window.location;
@@ -88,10 +74,13 @@ class CartCol extends React.Component {
     return (
       <CartColDiv>
         <BuyBox data={serviceData***REMOVED*** />
-        <FreeShippingBundle data={serviceData***REMOVED*** />
+
       </CartColDiv>
     );
 ***REMOVED***
 ***REMOVED***
 
+/*
+        <FreeShippingBundle data={serviceData***REMOVED*** />
+*/
 export default CartCol;
