@@ -11,7 +11,6 @@ import BuyBox from './buyBox.jsx';
 import FreeShippingBundle from './freeShippingBundle.jsx';
 
 const CartColDiv = styled.div`
-  border: 1px solid red;
   box-sizing: border-box;
   display: flex;
   flex-basis: auto;
@@ -31,16 +30,11 @@ const CartColDiv = styled.div`
   text-size-adjust: 100%;
 `;
 
-/*
-  height: 1176px;
-
-*/
-
 class CartCol extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      serviceData: { recommendedItemImages: ['image1', 'image2'] },
+      serviceData: { recommendedItemImages: ['image1', 'image2', 'image3'] },
       itemId: 1,
     };
   }
@@ -74,13 +68,10 @@ class CartCol extends React.Component {
     return (
       <CartColDiv>
         <BuyBox data={serviceData} />
-
+        <FreeShippingBundle data={serviceData} />
       </CartColDiv>
     );
   }
 }
 
-/*
-        <FreeShippingBundle data={serviceData} />
-*/
 export default CartCol;
