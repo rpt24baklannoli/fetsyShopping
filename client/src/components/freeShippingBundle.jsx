@@ -3,35 +3,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ItemList from './itemList.jsx';
+import AddSeeItemsButtons from './addSeeItemsButtons.jsx';
 
 const FreeShippingBundleDiv = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  height: 374.121px;
-  margin-bottom: 0px;
-  margin-left:0px;
-  margin-right: 0px;
   margin-top: 36px;
-  width: 268.223px;
+`;
+
+const TitleH1 = styled.h1`
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 12px;
 `;
 
 function FreeShippingBundle(props) {
   const { data ***REMOVED*** = props;
   return (
     <FreeShippingBundleDiv>
-      <h1>Buy together, get free shipping</h1>
+      <TitleH1>Buy together, get free shipping</TitleH1>
       <ItemList data={data***REMOVED*** />
-
-      <div>
-        <div>
-          <form action="filler" method="post">
-            <button type="submit">Add 3 items to cart</button>
-          </form>
-        </div>
-        <div>
-          <a href="filler">See more items</a>
-        </div>
-      </div>
+      <AddSeeItemsButtons />
     </FreeShippingBundleDiv>
   );
 ***REMOVED***

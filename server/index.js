@@ -3,7 +3,7 @@
 /* eslint-disable no-console***REMOVED***/
 const express = require('express');
 const axios = require('axios');
-const data = require('../database/utils.js');
+const utils = require('../database/utils.js');
 const db = require('../database/index.js');
 
 const app = express();
@@ -46,9 +46,40 @@ app.get('/shopping/items/:itemId', (req, res) => {
       const itemData = result[0].rows[0];
       const sellerData = result[1].data.rows[0];
       const itemImages = result[2].data.rows;
-      const recommendedItemImages = { recommendedItemImages: [itemImages[data.randomInt(1, 10)], itemImages[data.randomInt(1, 10)], itemImages[data.randomInt(1, 10)]] ***REMOVED***;
-      const serviceData = { ...itemData, ...sellerData, ...recommendedItemImages ***REMOVED***;
-      res.send(serviceData);
+
+      const imageOne = itemImages[utils.randomInt(1, 10)];
+      const imageTwo = itemImages[utils.randomInt(1, 10)];
+      const imageThree = itemImages[utils.randomInt(1, 10)];
+
+      console.log(imageOne, imageTwo, imageThree);
+
+      const imageOneItemNamePromise = db
+        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageOne.item_id***REMOVED***`);
+
+      const imageTwoItemNamePromise = db
+        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageTwo.item_id***REMOVED***`);
+
+      const imageThreeItemNamePromise = db
+        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageThree.item_id***REMOVED***`);
+
+      Promise.all([imageOneItemNamePromise, imageTwoItemNamePromise, imageThreeItemNamePromise])
+        .then((names) => {
+          const nameOne = { item_name: names[0].rows[0].item_name ***REMOVED***;
+          const priceOne = { price: names[0].rows[0].price ***REMOVED***;
+          const nameTwo = { item_name: names[1].rows[0].item_name ***REMOVED***;
+          const priceTwo = { price: names[1].rows[0].price ***REMOVED***;
+          const nameThree = { item_name: names[2].rows[0].item_name ***REMOVED***;
+          const priceThree = { price: names[2].rows[0].price ***REMOVED***;
+
+          const recommendedItemImages = { recommendedItemImages: [{ ...imageOne, ...nameOne, ...priceOne ***REMOVED***, { ...imageTwo, ...nameTwo, ...priceTwo ***REMOVED***, { ...imageThree, ...nameThree, ...priceThree ***REMOVED***] ***REMOVED***;
+
+          const serviceData = { ...itemData, ...sellerData, ...recommendedItemImages ***REMOVED***;
+
+          res.send(serviceData);
+      ***REMOVED***)
+        .catch((error) => {
+          console.error(error);
+      ***REMOVED***);
   ***REMOVED***)
     .catch((error) => {
       console.error(error);
