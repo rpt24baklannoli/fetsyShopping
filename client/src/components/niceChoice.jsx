@@ -4,7 +4,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import truckImg from '../icons/truck.png';
 
 const TruckDiv = styled.div`
   margin-top: 12px;
@@ -27,7 +26,7 @@ function NiceChoice(props) {
   const { data ***REMOVED*** = props;
   return (
     <TruckDiv>
-      <TruckImg src={truckImg***REMOVED*** alt="truck icon" />
+      <TruckImg src="https://festy-images.s3.us-west-1.amazonaws.com/truck.png" alt="truck icon" />
       <NiceChoiceP>
         <strong>
           Nice choice!&nbsp;

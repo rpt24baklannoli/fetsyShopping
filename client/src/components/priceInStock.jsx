@@ -2,7 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import checkImg from '../icons/check.png';
 
 const PriceInStockDiv = styled.div`
   align-items: center;
@@ -62,7 +61,7 @@ function PriceInStock(props) {
   if (data.in_stock) {
     inStock = (
       <InStockDiv>
-        <CheckImg src={checkImg***REMOVED*** alt="check icon" />
+        <CheckImg src="https://festy-images.s3.us-west-1.amazonaws.com/check.png" alt="check icon" />
         <InStockP>
           <b>
             In Stock

@@ -4,7 +4,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import cartImg from '../icons/cart.png';
 
 const CartDiv = styled.div`
   margin-top: 12px;
@@ -27,7 +26,7 @@ function OtherPeople(props) {
   const { data ***REMOVED*** = props;
   return (
     <CartDiv>
-      <CartImg src={cartImg***REMOVED*** alt="cart icon" />
+      <CartImg src="https://festy-images.s3.us-west-1.amazonaws.com/cart.png" alt="cart icon" />
       <OtherPeopleP>
         <strong>
           Other people want this.&nbsp;
