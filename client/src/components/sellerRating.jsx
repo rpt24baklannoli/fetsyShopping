@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import starImg from '../icons/star.png';
 
 const SellerRatingSpan = styled.span`
   display: inline;
@@ -21,7 +20,7 @@ const StarImg = styled.img`
 
 function SellerRating(props) {
   const { data } = props;
-  const stars = [...Array(data.seller_rating)].map((star) => <StarImg src={starImg} alt="star icon" />);
+  const stars = [...Array(data.seller_rating)].map((star) => <StarImg src="https://festy-images.s3.us-west-1.amazonaws.com/star.png" alt="star icon" />);
 
   return (
     <SellerRatingSpan>
