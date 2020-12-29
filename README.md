@@ -17,6 +17,9 @@ bash login.sh
 ## Switch to superuser account
 sudo su -
 
+## Install and setup postgresql on Amazon Linux (recommended method)
+https://aws.amazon.com/premiumsupport/knowledge-center/ec2-install-extras-library-software/
+
 ## Install and setup postgresql on Amazon Linux
 https://stackoverflow.com/questions/57970718/how-to-install-postgesql-11-on-aws-amazon-linux-ami-2
 sudo yum update -y
