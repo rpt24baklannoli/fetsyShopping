@@ -4,7 +4,7 @@
   "description": "Shopping service modules for etsy product detail page",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack --watch",
+    "react-dev": "sudo webpack --watch",
     "start": "nodemon ./server/index.js",
     "test": "jest",
     "seed": "sudo psql -U root postgres < database/schema.sql && node database/dataSeed.js"
