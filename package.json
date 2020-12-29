@@ -7,7 +7,7 @@
     "react-dev": "webpack --watch",
     "start": "nodemon ./server/index.js",
     "test": "jest",
-    "seed": "psql -U root postgres < database/schema.sql && node database/dataSeed.js"
+    "seed": "psql -U postgres postgres < database/schema.sql && node database/dataSeed.js"
   },
   "repository": {
     "type": "git",
