@@ -2,9 +2,12 @@
 Shopping service modules for etsy product detail page
 
 ## Connect EC2 Instance
-bash login.sh
+bash login.sh (using the connection script from the amazon page)
 
-## Install git in EC2 Instance
+## Install node (not sure if necessary)
+Google how to do this on amazon EC2 instance
+
+## Install git in EC2 Instance (not sure if necessary)
   # Perform a quick update on your instance:
   sudo yum update -y
 
@@ -14,13 +17,10 @@ bash login.sh
   # Check git version
   git version
 
-## Switch to superuser account
-sudo su -
-
 ## Install and setup postgresql on Amazon Linux (recommended method)
 https://aws.amazon.com/premiumsupport/knowledge-center/ec2-install-extras-library-software/
 
-## Install and setup postgresql on Amazon Linux
+## Install and setup postgresql on Amazon Linux (secondary method)
 https://stackoverflow.com/questions/57970718/how-to-install-postgesql-11-on-aws-amazon-linux-ami-2
 sudo yum update -y
 sudo amazon-linux-extras enable postgresql10
@@ -28,7 +28,17 @@ yum clean metadata
 yum install postgresql
 https://www.microfocus.com/documentation/idol/IDOL_12_0/MediaServer/Guides/html/English/Content/Getting_Started/Configure/_TRN_Set_up_PostgreSQL_Linux.htm
 
+## Initialize and start postgresSQL
 sudo service postgresql initdb
 sudo service postgresql start
 sudo -u postgres psql
 CREATE ROLE root WITH SUPERUSER CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS;
+
+## Modify psql config file and login with user root
+sudo vim /var/lib/pgsql/data/pg_hba.conf
+(change all the ident to "trust") i -insert, esc+:wq! -save and quit.
+sudo service postgresql restart
+sudo psql postgres -U root
+
+## Run seed file
+sudo psql -U root postgres < database/schema.sql && node database/dataSeed.js
