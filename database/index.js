@@ -12,7 +12,7 @@
 const { Pool ***REMOVED*** = require('pg');
 
 const pool = new Pool({
-  user: 'root',
+  user: 'postgres',
   host: 'localhost',
   database: 'fetsy',
 ***REMOVED***);
