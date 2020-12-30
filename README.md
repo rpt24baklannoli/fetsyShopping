@@ -42,3 +42,8 @@ sudo psql postgres -U root
 
 ## Run seed file
 sudo psql -U root postgres < database/schema.sql && node database/dataSeed.js
+
+## Run webpack
+(first switch to superuser) sudo su -
+(then go back a directory and go to home/ec2-user/fetsyShopping)
+npm run react-dev
