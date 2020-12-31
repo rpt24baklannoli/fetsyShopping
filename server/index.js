@@ -32,68 +32,58 @@ app.get('/shopping/items', (req, res) => {
 app.get('/shopping/items/:itemId', (req, res) => {
   const { itemId } = req.params;
 
-  db
-    .query(`SELECT * FROM items WHERE item_id = ${itemId}`)
+  const itemDataPromise = db
+    .query(`SELECT * FROM items WHERE item_id = ${itemId}`);
+
+  const sellerDataPromise = axios
+    .get(`http://localhost:3005/items/${itemId}/seller`);
+
+  const itemImagesPromise = axios
+    .get('http://localhost:3006/item/images/distinct');
+
+  Promise.all([itemDataPromise, sellerDataPromise, itemImagesPromise])
     .then((result) => {
       const itemData = result[0].rows[0];
-      res.send(itemData);
+      const sellerData = result[1].data.rows[0];
+      const itemImages = result[2].data.rows;
+
+      const imageOne = itemImages[utils.randomInt(1, 10)];
+      const imageTwo = itemImages[utils.randomInt(1, 10)];
+      const imageThree = itemImages[utils.randomInt(1, 10)];
+
+      console.log(imageOne, imageTwo, imageThree);
+
+      const imageOneItemNamePromise = db
+        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageOne.item_id}`);
+
+      const imageTwoItemNamePromise = db
+        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageTwo.item_id}`);
+
+      const imageThreeItemNamePromise = db
+        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageThree.item_id}`);
+
+      Promise.all([imageOneItemNamePromise, imageTwoItemNamePromise, imageThreeItemNamePromise])
+        .then((names) => {
+          const nameOne = { item_name: names[0].rows[0].item_name };
+          const priceOne = { price: names[0].rows[0].price };
+          const nameTwo = { item_name: names[1].rows[0].item_name };
+          const priceTwo = { price: names[1].rows[0].price };
+          const nameThree = { item_name: names[2].rows[0].item_name };
+          const priceThree = { price: names[2].rows[0].price };
+
+          const recommendedItemImages = { recommendedItemImages: [{ ...imageOne, ...nameOne, ...priceOne }, { ...imageTwo, ...nameTwo, ...priceTwo }, { ...imageThree, ...nameThree, ...priceThree }] };
+
+          const serviceData = { ...itemData, ...sellerData, ...recommendedItemImages };
+
+          res.send(serviceData);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     })
     .catch((error) => {
       console.error(error);
     });
-
-  // const itemDataPromise = db
-  //   .query(`SELECT * FROM items WHERE item_id = ${itemId}`);
-
-  // const sellerDataPromise = axios
-  //   .get(`http://localhost:3005/items/${itemId}/seller`);
-
-  // const itemImagesPromise = axios
-  //   .get('http://localhost:3006/item/images/distinct');
-
-  // Promise.all([itemDataPromise, sellerDataPromise, itemImagesPromise])
-  //   .then((result) => {
-  //     const itemData = result[0].rows[0];
-  //     const sellerData = result[1].data.rows[0];
-  //     const itemImages = result[2].data.rows;
-
-  //     const imageOne = itemImages[utils.randomInt(1, 10)];
-  //     const imageTwo = itemImages[utils.randomInt(1, 10)];
-  //     const imageThree = itemImages[utils.randomInt(1, 10)];
-
-  //     console.log(imageOne, imageTwo, imageThree);
-
-  //     const imageOneItemNamePromise = db
-  //       .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageOne.item_id}`);
-
-  //     const imageTwoItemNamePromise = db
-  //       .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageTwo.item_id}`);
-
-  //     const imageThreeItemNamePromise = db
-  //       .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageThree.item_id}`);
-
-  //     Promise.all([imageOneItemNamePromise, imageTwoItemNamePromise, imageThreeItemNamePromise])
-  //       .then((names) => {
-  //         const nameOne = { item_name: names[0].rows[0].item_name };
-  //         const priceOne = { price: names[0].rows[0].price };
-  //         const nameTwo = { item_name: names[1].rows[0].item_name };
-  //         const priceTwo = { price: names[1].rows[0].price };
-  //         const nameThree = { item_name: names[2].rows[0].item_name };
-  //         const priceThree = { price: names[2].rows[0].price };
-
-  //         const recommendedItemImages = { recommendedItemImages: [{ ...imageOne, ...nameOne, ...priceOne }, { ...imageTwo, ...nameTwo, ...priceTwo }, { ...imageThree, ...nameThree, ...priceThree }] };
-
-  //         const serviceData = { ...itemData, ...sellerData, ...recommendedItemImages };
-
-  //         res.send(serviceData);
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
 });
 
 app.listen(port, () => {
