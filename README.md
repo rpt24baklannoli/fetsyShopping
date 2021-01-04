@@ -12,8 +12,9 @@ This shopping service module specifically focuses on item details and selection 
 
 ## Table of Contents
 
-1. [Deploy to EC2 Instance](#Deploy to EC2 Instance)
+1. [Deploy to EC2 Instance](#deploy)
 
+<a name="deploy"></a>
 # Deploy to EC2 Instance
 ## Connect EC2 Instance
 bash login.sh (using the connection script from the amazon page)
