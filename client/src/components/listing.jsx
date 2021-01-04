@@ -10,23 +10,20 @@ const BoxShadowDiv = styled.div`
     transition-delay: 0s;
     transition-duration: 0.2s;
     transition-property: box-shadow;
-    transition-timing-function" ease-in-out;
+    transition-timing-function: ease-in-out;
     box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.73);
   }
 `;
 
 const ListingDiv = styled.div`
-
   margin-bottom: 12px;
   display: flex;
-
   position: relative;
   text-size-adjust: 100%;
 `;
 
 const ImageDiv = styled.div`
   display: flex;
-
 `;
 
 const ImageImg = styled.img`
@@ -46,7 +43,7 @@ const InfoDiv = styled.div`
 const NameP = styled.p`
   margin: 0px;
   display: block;
-  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid;
+  font-family: "Graphik Webfont", -apple-system, system-ui, Roboto, "Droid Sans";
   font-size: 20px;
   font-weight: 300;
   text-overflow: ellipsis;

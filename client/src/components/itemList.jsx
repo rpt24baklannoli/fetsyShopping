@@ -19,6 +19,6 @@ export default ItemList;
 // Props typechecking
 ItemList.propTypes = {
   data: PropTypes.shape({
-    recommendedItemImages: PropTypes.string.isRequired,
+    recommendedItemImages: PropTypes.arrayOf.isRequired,
   }),
 };
