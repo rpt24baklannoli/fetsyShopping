@@ -2,7 +2,8 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 
 import CartCol from '../client/src/components/cartCol.jsx';
-import NameBestSeller from '../client/src/components/nameBestSeller.jsx';
+import Listing from '../client/src/components/listing.jsx';
+import ItemList from '../client/src/components/itemList.jsx';
 import FreeShippingBundle from '../client/src/components/freeShippingBundle.jsx';
 import Seller from '../client/src/components/seller.jsx';
 
@@ -14,10 +15,9 @@ describe('React components render correctly - testing', () => {
     shallow(<CartCol />);
   });
 
-  // This test needs to be modified. BuyBox no longer has a header.
-  test("NameBestSeller renders component span", () => {
-    const wrapper = shallow(<NameBestSeller />);
-    const span = <BestSellerSpan>Bestseller</BestSellerSpan>;
+  xtest("ItemList renders component Listing", () => {
+    const wrapper = shallow(<ItemList />);
+    const span = <Listing />;
     expect(wrapper.contains(span)).toEqual(true);
   });
 

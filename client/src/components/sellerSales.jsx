@@ -14,10 +14,6 @@ const TotalSalesA = styled.a`
   }
 `;
 
-/*
-  line-height: 18px;
-*/
-
 function SellerSales(props) {
   const { data } = props;
   return (

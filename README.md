@@ -1,20 +1,35 @@
 # fetsyShopping
-Shopping service modules for etsy product detail page
+Fetsy (Etsy) is a full stack application that is a replica of product detail pages on the Etsy website. Information such as product details, images, seller information and recommended items is displayed.
 
+This shopping service module specifically focuses on item details and selection tools and purchasing related buttons.
+
+## Related Projects
+
+  - https://github.com/rpt24sourcandy/fetsyItemImages
+  - https://github.com/rpt24sourcandy/fetsySeller
+  - https://github.com/rpt24sourcandy/fetsyReviews
+  - https://github.com/rpt24sourcandy/fetsyShoppingProxy
+
+## Table of Contents
+
+1. [Deploy to EC2 Instance](#deploy)
+
+<a name="deploy"></a>
+# Deploy to EC2 Instance
 ## Connect EC2 Instance
 bash login.sh (using the connection script from the amazon page)
 
-## Install node (not sure if necessary)
+## Install node
 Google how to do this on amazon EC2 instance
 
-## Install git in EC2 Instance (not sure if necessary)
-  # Perform a quick update on your instance:
+## Install git in EC2 Instance
+  ### Perform a quick update on your instance:
   sudo yum update -y
 
-  # Install git in your EC2 instance
+  ### Install git in your EC2 instance
   sudo yum install git -y
 
-  # Check git version
+  ### Check git version
   git version
 
 ## Install and setup postgresql on Amazon Linux (recommended method)
