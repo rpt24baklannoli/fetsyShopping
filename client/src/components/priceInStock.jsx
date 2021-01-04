@@ -15,7 +15,7 @@ const PriceP = styled.p`
   display: block;
   font-size: 28px;
   font-weight: 500;
-  line-height 36px;
+  line-height: 36px;
   width: 94.375px;
 `;
 
@@ -40,7 +40,7 @@ const InStockP = styled.p`
   font-size: 13px;
   font-weight: 500;
   height: 17.9883px;
-  line-height 18px;
+  line-height: 18px;
   margin-block-end: 0px;
   margin-block-start: 0px;
   margin-bottom: 0px;

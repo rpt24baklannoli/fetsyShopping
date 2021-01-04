@@ -14,10 +14,6 @@ const TotalSalesA = styled.a`
 ***REMOVED***
 `;
 
-/*
-  line-height: 18px;
-*/
-
 function SellerSales(props) {
   const { data ***REMOVED*** = props;
   return (

@@ -22,10 +22,6 @@ function BuyBox(props) {
   );
 ***REMOVED***
 
-/*
-      <ShoppingRegion data={data***REMOVED*** />
-*/
-
 // Props typechecking
 BuyBox.propTypes = {
   data: PropTypes.shape({
