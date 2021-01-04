@@ -34,7 +34,34 @@ class CartCol extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      serviceData: { recommendedItemImages: ['image1', 'image2', 'image3'] ***REMOVED***,
+      serviceData: {
+        best_seller: true,
+        carts_item_is_in: 20,
+        in_stock: true,
+        item_id: 1,
+        item_name: 'Example Item Name',
+        on_etsy_since: 2021,
+        price: '99.99',
+        price_reduction: '00.00',
+        recommendedItemImages: [
+          {
+            item_id: 2, image_url: 'https://festy-images.s3.us-west-1.amazonaws.com/missing.jpg', item_name: 'Example Item Name', price: '99.99',
+   ***REMOVED*****REMOVED***
+          {
+            item_id: 3, image_url: 'https://festy-images.s3.us-west-1.amazonaws.com/missing.jpg', item_name: 'Example Item Name', price: '99.99',
+   ***REMOVED*****REMOVED***
+          {
+            item_id: 4, image_url: 'https://festy-images.s3.us-west-1.amazonaws.com/missing.jpg', item_name: 'Example Item Name', price: '99.99',
+   ***REMOVED*****REMOVED***
+    ***REMOVED***,
+        seller_city: 'Example City',
+        seller_id: 1,
+        seller_name: 'Example Name',
+        seller_rating: 5,
+        seller_state: 'Example State',
+        total_sales: 1000,
+        us_free_shipping: true,
+    ***REMOVED***
       itemId: 1,
   ***REMOVED***;
 ***REMOVED***

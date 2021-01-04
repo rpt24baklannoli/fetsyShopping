@@ -83,9 +83,9 @@ const ColorSelect = styled.select`
     box-shadow: rgba(34, 34, 34, 0.15) 0px 1px 6px 0px;
     transition-timing-function: ease-out, ease-out;
 ***REMOVED***
-  white-space: pre
-  word-spacing: 0px
-  writing-mode: horizontal-tb
+  white-space: pre;
+  word-spacing: 0px;
+  writing-mode: horizontal-tb;
 `;
 
 function Color(props) {

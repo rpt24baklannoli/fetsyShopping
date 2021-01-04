@@ -47,6 +47,7 @@ const BestSellerSpan = styled.span`
 
 function NameBestSeller(props) {
   const { data ***REMOVED*** = props;
+  console.log('this is the data:', data);
   let bestSeller;
   if (data.best_seller) {
     bestSeller = (
