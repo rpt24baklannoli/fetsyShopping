@@ -35,11 +35,15 @@ app.get('/shopping/items/:itemId', (req, res) => {
   const itemDataPromise = db
     .query(`SELECT * FROM items WHERE item_id = ${itemId}`);
 
+  // Seller Service Amazon EC2 Instance
+  // http://3.21.248.149:3005/items/2/
   const sellerDataPromise = axios
     .get(`http://localhost:3005/items/${itemId}/seller`);
 
+  // Item Images Service Amazon EC2 Instance
+  // http://13.52.213.118:3006/items/1/
   const itemImagesPromise = axios
-    .get('http://localhost:3006/item/images/distinct');
+    .get('http://13.52.213.118:3006/item/images/distinct');
 
   Promise.all([itemDataPromise, sellerDataPromise, itemImagesPromise])
     .then((result) => {
