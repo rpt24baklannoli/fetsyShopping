@@ -38,7 +38,7 @@ app.get('/shopping/items/:itemId', (req, res) => {
   // Seller Service Amazon EC2 Instance
   // http://3.21.248.149:3005/items/2/
   const sellerDataPromise = axios
-    .get(`http://localhost:3005/items/${itemId}/seller`);
+    .get(`http://3.21.248.149:3005/items/${itemId}/seller`);
 
   // Item Images Service Amazon EC2 Instance
   // http://13.52.213.118:3006/items/1/
