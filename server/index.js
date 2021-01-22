@@ -34,57 +34,64 @@ app.get('/shopping/items/:itemId', (req, res) => {
 
   const itemDataPromise = db
     .query(`SELECT * FROM items WHERE item_id = ${itemId}`);
+// console.log('item data promise:', itemDataPromise)
 
-  // Seller Service Amazon EC2 Instance
-  // http://3.21.248.149:3005/items/2/
-  const sellerDataPromise = axios
-    .get(`http://3.21.248.149:3005/items/${itemId}/seller`);
+  db.query(`SELECT * FROM items WHERE item_id = ${itemId}`)
+  .then((res) => {
+    console.log('GET REQUEST:', res.rows)
+  })
 
-  // Item Images Service Amazon EC2 Instance
-  // http://13.52.213.118:3006/items/1/
-  const itemImagesPromise = axios
-    .get('http://13.52.213.118:3006/item/images/distinct');
 
-  Promise.all([itemDataPromise, sellerDataPromise, itemImagesPromise])
-    .then((result) => {
-      const itemData = result[0].rows[0];
-      const sellerData = result[1].data.rows[0];
-      const itemImages = result[2].data.rows;
+  // // Seller Service Amazon EC2 Instance
+  // // http://3.21.248.149:3005/items/2/
+  // const sellerDataPromise = axios
+  //   .get(`http://localhost:3005/items/${itemId}/seller`);
 
-      const imageOne = itemImages[utils.randomInt(1, 10)];
-      const imageTwo = itemImages[utils.randomInt(1, 10)];
-      const imageThree = itemImages[utils.randomInt(1, 10)];
+  // // Item Images Service Amazon EC2 Instance
+  // // http://13.52.213.118:3006/items/1/
+  // const itemImagesPromise = axios
+  //   .get('http://13.52.213.118:3006/item/images/distinct');
 
-      console.log(imageOne, imageTwo, imageThree);
+  // Promise.all([itemDataPromise, sellerDataPromise, itemImagesPromise])
+  //   .then((result) => {
+  //     const itemData = result[0].rows[0];
+  //     const sellerData = result[1].data.rows[0];
+  //     const itemImages = result[2].data.rows;
 
-      const imageOneItemNamePromise = db
-        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageOne.item_id}`);
+  //     const imageOne = itemImages[utils.randomInt(1, 10)];
+  //     const imageTwo = itemImages[utils.randomInt(1, 10)];
+  //     const imageThree = itemImages[utils.randomInt(1, 10)];
 
-      const imageTwoItemNamePromise = db
-        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageTwo.item_id}`);
+  //     console.log(imageOne, imageTwo, imageThree);
 
-      const imageThreeItemNamePromise = db
-        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageThree.item_id}`);
+  //     const imageOneItemNamePromise = db
+  //       .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageOne.item_id}`);
 
-      Promise.all([imageOneItemNamePromise, imageTwoItemNamePromise, imageThreeItemNamePromise])
-        .then((names) => {
-          const nameOne = { item_name: names[0].rows[0].item_name };
-          const priceOne = { price: names[0].rows[0].price };
-          const nameTwo = { item_name: names[1].rows[0].item_name };
-          const priceTwo = { price: names[1].rows[0].price };
-          const nameThree = { item_name: names[2].rows[0].item_name };
-          const priceThree = { price: names[2].rows[0].price };
+  //     const imageTwoItemNamePromise = db
+  //       .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageTwo.item_id}`);
 
-          const recommendedItemImages = { recommendedItemImages: [{ ...imageOne, ...nameOne, ...priceOne }, { ...imageTwo, ...nameTwo, ...priceTwo }, { ...imageThree, ...nameThree, ...priceThree }] };
+  //     const imageThreeItemNamePromise = db
+  //       .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageThree.item_id}`);
 
-          const serviceData = { ...itemData, ...sellerData, ...recommendedItemImages };
+  //     Promise.all([imageOneItemNamePromise, imageTwoItemNamePromise, imageThreeItemNamePromise])
+  //       .then((names) => {
+  //         const nameOne = { item_name: names[0].rows[0].item_name };
+  //         const priceOne = { price: names[0].rows[0].price };
+  //         const nameTwo = { item_name: names[1].rows[0].item_name };
+  //         const priceTwo = { price: names[1].rows[0].price };
+  //         const nameThree = { item_name: names[2].rows[0].item_name };
+  //         const priceThree = { price: names[2].rows[0].price };
 
-          res.send(serviceData);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    })
+  //         const recommendedItemImages = { recommendedItemImages: [{ ...imageOne, ...nameOne, ...priceOne }, { ...imageTwo, ...nameTwo, ...priceTwo }, { ...imageThree, ...nameThree, ...priceThree }] };
+
+  //         const serviceData = { ...itemData, ...sellerData, ...recommendedItemImages };
+
+  //         res.send(serviceData);
+  //       })
+        // .catch((error) => {
+        //   console.error(error);
+        // });
+    // })
     .catch((error) => {
       console.error(error);
     });
