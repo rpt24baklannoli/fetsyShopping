@@ -34,57 +34,64 @@ app.get('/shopping/items/:itemId', (req, res) => {
 
   const itemDataPromise = db
     .query(`SELECT***REMOVED*** FROM items WHERE item_id = ${itemId***REMOVED***`);
+// console.log('item data promise:', itemDataPromise)
 
-  // Seller Service Amazon EC2 Instance
-  // http://3.21.248.149:3005/items/2/
-  const sellerDataPromise = axios
-    .get(`http://3.21.248.149:3005/items/${itemId***REMOVED***/seller`);
+  db.query(`SELECT***REMOVED*** FROM items WHERE item_id = ${itemId***REMOVED***`)
+  .then((res) => {
+    console.log('GET REQUEST:', res.rows)
+***REMOVED***)
 
-  // Item Images Service Amazon EC2 Instance
-  // http://13.52.213.118:3006/items/1/
-  const itemImagesPromise = axios
-    .get('http://13.52.213.118:3006/item/images/distinct');
 
-  Promise.all([itemDataPromise, sellerDataPromise, itemImagesPromise])
-    .then((result) => {
-      const itemData = result[0].rows[0];
-      const sellerData = result[1].data.rows[0];
-      const itemImages = result[2].data.rows;
+  // // Seller Service Amazon EC2 Instance
+  // // http://3.21.248.149:3005/items/2/
+  // const sellerDataPromise = axios
+  //   .get(`http://localhost:3005/items/${itemId***REMOVED***/seller`);
 
-      const imageOne = itemImages[utils.randomInt(1, 10)];
-      const imageTwo = itemImages[utils.randomInt(1, 10)];
-      const imageThree = itemImages[utils.randomInt(1, 10)];
+  // // Item Images Service Amazon EC2 Instance
+  // // http://13.52.213.118:3006/items/1/
+  // const itemImagesPromise = axios
+  //   .get('http://13.52.213.118:3006/item/images/distinct');
 
-      console.log(imageOne, imageTwo, imageThree);
+  // Promise.all([itemDataPromise, sellerDataPromise, itemImagesPromise])
+  //   .then((result) => {
+  //     const itemData = result[0].rows[0];
+  //     const sellerData = result[1].data.rows[0];
+  //     const itemImages = result[2].data.rows;
 
-      const imageOneItemNamePromise = db
-        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageOne.item_id***REMOVED***`);
+  //     const imageOne = itemImages[utils.randomInt(1, 10)];
+  //     const imageTwo = itemImages[utils.randomInt(1, 10)];
+  //     const imageThree = itemImages[utils.randomInt(1, 10)];
 
-      const imageTwoItemNamePromise = db
-        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageTwo.item_id***REMOVED***`);
+  //     console.log(imageOne, imageTwo, imageThree);
 
-      const imageThreeItemNamePromise = db
-        .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageThree.item_id***REMOVED***`);
+  //     const imageOneItemNamePromise = db
+  //       .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageOne.item_id***REMOVED***`);
 
-      Promise.all([imageOneItemNamePromise, imageTwoItemNamePromise, imageThreeItemNamePromise])
-        .then((names) => {
-          const nameOne = { item_name: names[0].rows[0].item_name ***REMOVED***;
-          const priceOne = { price: names[0].rows[0].price ***REMOVED***;
-          const nameTwo = { item_name: names[1].rows[0].item_name ***REMOVED***;
-          const priceTwo = { price: names[1].rows[0].price ***REMOVED***;
-          const nameThree = { item_name: names[2].rows[0].item_name ***REMOVED***;
-          const priceThree = { price: names[2].rows[0].price ***REMOVED***;
+  //     const imageTwoItemNamePromise = db
+  //       .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageTwo.item_id***REMOVED***`);
 
-          const recommendedItemImages = { recommendedItemImages: [{ ...imageOne, ...nameOne, ...priceOne ***REMOVED***, { ...imageTwo, ...nameTwo, ...priceTwo ***REMOVED***, { ...imageThree, ...nameThree, ...priceThree ***REMOVED***] ***REMOVED***;
+  //     const imageThreeItemNamePromise = db
+  //       .query(`SELECT DISTINCT item_name, price FROM items WHERE item_id = ${imageThree.item_id***REMOVED***`);
 
-          const serviceData = { ...itemData, ...sellerData, ...recommendedItemImages ***REMOVED***;
+  //     Promise.all([imageOneItemNamePromise, imageTwoItemNamePromise, imageThreeItemNamePromise])
+  //       .then((names) => {
+  //         const nameOne = { item_name: names[0].rows[0].item_name ***REMOVED***;
+  //         const priceOne = { price: names[0].rows[0].price ***REMOVED***;
+  //         const nameTwo = { item_name: names[1].rows[0].item_name ***REMOVED***;
+  //         const priceTwo = { price: names[1].rows[0].price ***REMOVED***;
+  //         const nameThree = { item_name: names[2].rows[0].item_name ***REMOVED***;
+  //         const priceThree = { price: names[2].rows[0].price ***REMOVED***;
 
-          res.send(serviceData);
-      ***REMOVED***)
-        .catch((error) => {
-          console.error(error);
-      ***REMOVED***);
-  ***REMOVED***)
+  //         const recommendedItemImages = { recommendedItemImages: [{ ...imageOne, ...nameOne, ...priceOne ***REMOVED***, { ...imageTwo, ...nameTwo, ...priceTwo ***REMOVED***, { ...imageThree, ...nameThree, ...priceThree ***REMOVED***] ***REMOVED***;
+
+  //         const serviceData = { ...itemData, ...sellerData, ...recommendedItemImages ***REMOVED***;
+
+  //         res.send(serviceData);
+  //     ***REMOVED***)
+        // .catch((error) => {
+        //   console.error(error);
+        // ***REMOVED***);
+    // ***REMOVED***)
     .catch((error) => {
       console.error(error);
   ***REMOVED***);
