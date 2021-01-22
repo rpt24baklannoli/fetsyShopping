@@ -2,17 +2,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const express = require('express');
+const app = express();
 const axios = require('axios');
 const utils = require('../database/utils.js');
 const db = require('../database/index.js');
-
-const app = express();
 const port = 3004;
 
 app.use('/items/:itemId', express.static('client/dist'));
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: false}));
 
+//== This GET request is not being used ==//
 // Get all item data from db
 app.get('/shopping/items', (req, res) => {
   console.log('GET request for all items successful');
