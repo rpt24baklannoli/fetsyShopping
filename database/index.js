@@ -29,8 +29,14 @@ const model = {
   ***REMOVED***)
 ***REMOVED***
 
-  getOne: (cb) => {
-
+  getOne: (itemId, cb) => {
+    pool.query('SELECT***REMOVED*** FROM items WHERE item_id = $1', [itemId], (err, result) => {
+      if (err) {
+        cb(err, null)
+    ***REMOVED*** else {
+        cb(null, result)
+    ***REMOVED***
+  ***REMOVED***)
 ***REMOVED***
 
   post: (data, cb) => {
