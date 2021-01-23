@@ -2,67 +2,69 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const express = require('express');
+
 const app = express();
 const axios = require('axios');
 const utils = require('../database/utils.js');
 const db = require('../database/index.js');
+
 const port = 3004;
 
 app.use('/items/:itemId', express.static('client/dist'));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 // Get all items from db
 app.get('/shopping/items', (req, res) => {
-    db.model.getAll((err, data) => {
-      if (err) {
-        console.log('failed to get all data:', err);
-        res.status(400).send(err);
-      } else {
-        console.log('successfully retrieved all data');
-        res.status(200).send(data.rows);
-      }
-    })
+  db.model.getAll((err, data) => {
+    if (err) {
+      console.log('failed to get all data:', err);
+      res.status(400).send(err);
+    } else {
+      console.log('successfully retrieved all data');
+      res.status(200).send(data.rows);
+    }
   });
+});
 
 // Create new item
 app.post('/shopping/items', (req, res) => {
   db.model.post(req.body, (err, data) => {
     if (err) {
-      console.log(`failed to insert post request: ${err}`)
+      console.log(`failed to insert post request: ${err}`);
       res.status(400).send(err);
     } else {
-      console.log('successfully added new item')
+      console.log('successfully added new item');
       res.status(200).send(data);
     }
-  })
-})
+  });
+});
 
 // Update existing item
 app.put('/shopping/items/:itemId', (req, res) => {
   db.model.update(req.params.itemId, req.body, (err, data) => {
     if (err) {
-      console.log(`failed to update item ID ${req.params.itemId}: ${err}`)
-      res.status(400).send(err)
+      console.log(`failed to update item ID ${req.params.itemId}: ${err}`);
+      res.status(400).send(err);
     } else {
-      console.log(`successfully updated item ID ${req.params.itemId}`)
+      console.log(`successfully updated item ID ${req.params.itemId}`);
       res.status(200).send(data);
     }
-  })
-})
+  });
+});
 
 // Delete existing item
 app.delete('/shopping/items/:itemId', (req, res) => {
   db.model.delete(req.params.itemId, (err, data) => {
     if (err) {
-      console.log(`failed to delete item ID ${req.params.itemId}: ${err}`)
+      console.log(`failed to delete item ID ${req.params.itemId}: ${err}`);
       res.status(400).send(err);
     } else {
-      console.log(`successfully deleted item ID ${req.params.itemId}`)
+      console.log(`successfully deleted item ID ${req.params.itemId}`);
       res.status(200).send(data);
     }
-  })
-})
+  });
+});
 
 // Get data based on one item Id
 app.get('/shopping/items/:itemId', (req, res) => {
@@ -70,13 +72,13 @@ app.get('/shopping/items/:itemId', (req, res) => {
 
   db.model.getOne(itemId, (err, data) => {
     if (err) {
-      console.log(`failed to get data for item ID ${itemId}: ${err}`)
+      console.log(`failed to get data for item ID ${itemId}: ${err}`);
       res.status(400).send(err);
     } else {
-      console.log(`successfully retrieved data for item ID ${itemId}`)
+      console.log(`successfully retrieved data for item ID ${itemId}`);
       res.status(200).send(data.rows[0]);
     }
-  })
+  });
 
   /*
 *********** Commented out the below code to get CRUD operational ***********
@@ -90,7 +92,6 @@ console.log('item data promise:', itemDataPromise)
   // .then((res) => {
   //   console.log('GET REQUEST:', res.rows)
   // })
-
 
   // Seller Service Amazon EC2 Instance
   // http://3.21.248.149:3005/items/2/
