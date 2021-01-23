@@ -42,10 +42,17 @@ const model = {
     })
   },
 
-  delete: (id, cb) => {
-    console.log('delete database id:', id)
+  delete: (itemId, cb) => {
+    // console.log('delete database id:', id)
+    pool.query('DELETE FROM items WHERE item_id = $1', [itemId], (err, result) => {
+      if (err) {
+        cb(err, null)
+      } else {
+        cb(null, result)
+      }
+    })
   }
-}
+};
 
 // let post = (data, cb) => {
 //   // console.log('database data:', data);
