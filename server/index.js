@@ -29,7 +29,7 @@ app.get('/shopping/items', (req, res) => {
 
 // Create new item
 app.post('/shopping/items', (req, res) => {
-  db.post(req.body, (err, data) => {
+  db.model.post(req.body, (err, data) => {
     if (err) {
       console.log(`failed to insert post request: ${err***REMOVED***`)
       res.status(400).send(err);
@@ -39,12 +39,20 @@ app.post('/shopping/items', (req, res) => {
 ***REMOVED***)
 ***REMOVED***)
 
-// Update (put)
+// Update existing item
 app.put('/shopping/items/:itemId', (req, res) => {
-  db.put
+  // console.log('item id:', req.body)
+  db.model.update(req.params.itemId, req.body, (err, data) => {
+    if (err) {
+      console.log(`failed to update item ID ${req.params.itemId***REMOVED***: ${err***REMOVED***`)
+      res.status(400).send(err)
+  ***REMOVED*** else {
+      res.status(200).send(data);
+  ***REMOVED***
+***REMOVED***)
 ***REMOVED***)
 
-// Delete (delete)
+// Delete existing item
 
 
 // Get data based on one item Id
