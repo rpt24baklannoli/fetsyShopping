@@ -2,43 +2,101 @@
 /* eslint-disable no-unused-vars***REMOVED***/
 /* eslint-disable no-console***REMOVED***/
 const express = require('express');
+
+const app = express();
 const axios = require('axios');
 const utils = require('../database/utils.js');
 const db = require('../database/index.js');
 
-const app = express();
 const port = 3004;
 
 app.use('/items/:itemId', express.static('client/dist'));
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: false ***REMOVED***));
 
-// Get all item data from db
+// Get all items from db
 app.get('/shopping/items', (req, res) => {
-  console.log('GET request for all items successful');
-  db
-    .query('SELECT***REMOVED*** FROM items')
-    .then((result) => {
-      console.log(result.rows);
-      res.send(result.rows);
-  ***REMOVED***)
-    .catch((error) => {
-      console.error(error);
-      res.send('Error getting data from db');
-  ***REMOVED***);
+  db.model.getAll((err, data) => {
+    if (err) {
+      console.log('failed to get all data:', err);
+      res.status(400).send(err);
+  ***REMOVED*** else {
+      console.log('successfully retrieved all data');
+      res.status(200).send(data.rows);
+  ***REMOVED***
+***REMOVED***);
+***REMOVED***);
+
+// Create new item
+app.post('/shopping/items', (req, res) => {
+  db.model.post(req.body, (err, data) => {
+    if (err) {
+      console.log(`failed to insert post request: ${err***REMOVED***`);
+      res.status(400).send(err);
+  ***REMOVED*** else {
+      console.log('successfully added new item');
+      res.status(200).send(data);
+  ***REMOVED***
+***REMOVED***);
+***REMOVED***);
+
+// Update existing item
+app.put('/shopping/items/:itemId', (req, res) => {
+  db.model.update(req.params.itemId, req.body, (err, data) => {
+    if (err) {
+      console.log(`failed to update item ID ${req.params.itemId***REMOVED***: ${err***REMOVED***`);
+      res.status(400).send(err);
+  ***REMOVED*** else {
+      console.log(`successfully updated item ID ${req.params.itemId***REMOVED***`);
+      res.status(200).send(data);
+  ***REMOVED***
+***REMOVED***);
+***REMOVED***);
+
+// Delete existing item
+app.delete('/shopping/items/:itemId', (req, res) => {
+  db.model.delete(req.params.itemId, (err, data) => {
+    if (err) {
+      console.log(`failed to delete item ID ${req.params.itemId***REMOVED***: ${err***REMOVED***`);
+      res.status(400).send(err);
+  ***REMOVED*** else {
+      console.log(`successfully deleted item ID ${req.params.itemId***REMOVED***`);
+      res.status(200).send(data);
+  ***REMOVED***
+***REMOVED***);
 ***REMOVED***);
 
 // Get data based on one item Id
 app.get('/shopping/items/:itemId', (req, res) => {
   const { itemId ***REMOVED*** = req.params;
 
+  db.model.getOne(itemId, (err, data) => {
+    if (err) {
+      console.log(`failed to get data for item ID ${itemId***REMOVED***: ${err***REMOVED***`);
+      res.status(400).send(err);
+  ***REMOVED*** else {
+      console.log(`successfully retrieved data for item ID ${itemId***REMOVED***`);
+      res.status(200).send(data.rows[0]);
+  ***REMOVED***
+***REMOVED***);
+
+  /*
+*********** Commented out the below code to get CRUD operational***REMOVED*************
+*********** Refactoring below to unbreak the front end is the next step***REMOVED*************
+
   const itemDataPromise = db
     .query(`SELECT***REMOVED*** FROM items WHERE item_id = ${itemId***REMOVED***`);
+console.log('item data promise:', itemDataPromise)
+
+  // db.query(`SELECT***REMOVED*** FROM items WHERE item_id = ${itemId***REMOVED***`)
+  // .then((res) => {
+  //   console.log('GET REQUEST:', res.rows)
+  // ***REMOVED***)
 
   // Seller Service Amazon EC2 Instance
   // http://3.21.248.149:3005/items/2/
   const sellerDataPromise = axios
-    .get(`http://3.21.248.149:3005/items/${itemId***REMOVED***/seller`);
+    .get(`http://localhost:3005/items/${itemId***REMOVED***/seller`);
 
   // Item Images Service Amazon EC2 Instance
   // http://13.52.213.118:3006/items/1/
@@ -88,6 +146,7 @@ app.get('/shopping/items/:itemId', (req, res) => {
     .catch((error) => {
       console.error(error);
   ***REMOVED***);
+   ***REMOVED***/
 ***REMOVED***);
 
 app.listen(port, () => {
