@@ -34,6 +34,7 @@ app.post('/shopping/items', (req, res) => {
       console.log(`failed to insert post request: ${err***REMOVED***`)
       res.status(400).send(err);
   ***REMOVED*** else {
+      console.log('successfully added new item')
       res.status(200).send(data);
   ***REMOVED***
 ***REMOVED***)
@@ -47,12 +48,24 @@ app.put('/shopping/items/:itemId', (req, res) => {
       console.log(`failed to update item ID ${req.params.itemId***REMOVED***: ${err***REMOVED***`)
       res.status(400).send(err)
   ***REMOVED*** else {
+      console.log(`successfully updated item ID ${req.params.itemId***REMOVED***`)
       res.status(200).send(data);
   ***REMOVED***
 ***REMOVED***)
 ***REMOVED***)
 
 // Delete existing item
+app.delete('/shopping/items/:itemId', (req, res) => {
+  db.model.delete(req.params.itemId, (err, data) => {
+    if (err) {
+      console.log(`failed to delete item ID ${req.params.itemId***REMOVED***: ${err***REMOVED***`)
+      res.status(400).send(err);
+  ***REMOVED*** else {
+      console.log(`successfully deleted item ID ${req.params.itemId***REMOVED***`)
+      res.status(200).send(data);
+  ***REMOVED***
+***REMOVED***)
+***REMOVED***)
 
 
 // Get data based on one item Id

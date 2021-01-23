@@ -42,10 +42,17 @@ const model = {
   ***REMOVED***)
 ***REMOVED***
 
-  delete: (id, cb) => {
-    console.log('delete database id:', id)
+  delete: (itemId, cb) => {
+    // console.log('delete database id:', id)
+    pool.query('DELETE FROM items WHERE item_id = $1', [itemId], (err, result) => {
+      if (err) {
+        cb(err, null)
+    ***REMOVED*** else {
+        cb(null, result)
+    ***REMOVED***
+  ***REMOVED***)
 ***REMOVED***
-***REMOVED***
+***REMOVED***;
 
 // let post = (data, cb) => {
 //   // console.log('database data:', data);
