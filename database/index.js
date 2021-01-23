@@ -19,6 +19,20 @@ const pool = new Pool({
 ***REMOVED***);
 
 const model = {
+  getAll: (cb) => {
+    pool.query('SELECT***REMOVED*** FROM items ORDER BY item_id ASC', (err, result) => {
+      if (err) {
+        cb(err, null)
+    ***REMOVED*** else {
+        cb(null, result)
+    ***REMOVED***
+  ***REMOVED***)
+***REMOVED***
+
+  getOne: (cb) => {
+
+***REMOVED***
+
   post: (data, cb) => {
     pool.query('INSERT INTO items(item_name, best_seller, price, price_reduction, in_stock, us_free_shipping, carts_item_is_in) VALUES($1, $2, $3, $4, $5, $6, $7)', [data.item_name, data.best_seller, data.price, data.price_reduction, data.in_stock, data.us_free_shipping, data.carts_item_is_in], (err, result) => {
       if (err) {
@@ -54,17 +68,5 @@ const model = {
 ***REMOVED***
 ***REMOVED***;
 
-// let post = (data, cb) => {
-//   // console.log('database data:', data);
-//   pool.query('INSERT INTO items(item_name, best_seller, price, price_reduction, in_stock, us_free_shipping, carts_item_is_in) VALUES($1, $2, $3, $4, $5, $6, $7)', [data.item_name, data.best_seller, data.price, data.price_reduction, data.in_stock, data.us_free_shipping, data.carts_item_is_in], (err, data) => {
-//     if (err) {
-//       cb(err, null)
-//   ***REMOVED*** else {
-//       cb(null, data)
-//   ***REMOVED***
-// ***REMOVED***)
-// ***REMOVED***;
-
 module.exports = pool;
 module.exports.model = model;
-// module.exports.post = post;

@@ -13,18 +13,31 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false***REMOVED***));
 
 // Read (Get) all item data from db
+// app.get('/shopping/items', (req, res) => {
+//   console.log('GET request for all items successful');
+//   db
+//     .query('SELECT***REMOVED*** FROM items')
+//     .then((result) => {
+//       // console.log('get server req:', result.rows);
+//       res.send(result.rows);
+//   ***REMOVED***)
+//     .catch((error) => {
+//       console.error(error);
+//       res.send('Error getting data from db');
+//   ***REMOVED***);
+// ***REMOVED***);
+
+// Get all items from db
 app.get('/shopping/items', (req, res) => {
-  console.log('GET request for all items successful');
-  db
-    .query('SELECT***REMOVED*** FROM items')
-    .then((result) => {
-      // console.log('get server req:', result.rows);
-      res.send(result.rows);
+    db.model.getAll((err, data) => {
+      if (err) {
+        console.log('failed to get all data:', err);
+        res.status(400).send(err);
+    ***REMOVED*** else {
+        console.log('successfully retrieved all data');
+        res.status(200).send(data.rows);
+    ***REMOVED***
   ***REMOVED***)
-    .catch((error) => {
-      console.error(error);
-      res.send('Error getting data from db');
-  ***REMOVED***);
 ***REMOVED***);
 
 // Create new item
