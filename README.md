@@ -13,6 +13,7 @@ This shopping service module specifically focuses on item details and selection 
 ## Table of Contents
 
 1. [Deploy to EC2 Instance](#deploy)
+2. [CRUD Documentation](#crud)
 
 <a name="deploy"></a>
 # Deploy to EC2 Instance
@@ -62,3 +63,14 @@ sudo psql -U root postgres < database/schema.sql && node database/dataSeed.js
 (first switch to superuser) sudo su -
 (then go back a directory and go to home/ec2-user/fetsyShopping)
 npm run react-dev
+
+<a name="crud"></a>
+# CRUD Documentation
+
+| Methods  | URL Endpoints | Actions |
+| :------- | :------------ | :------ |
+| GET | /shopping/items  | Retrieve all items available for sale |
+| GET | /shopping/items/:itemId  | Retrieve a single item |
+| POST | /shopping/items | Add a new item for sale |
+| PUT | /shopping/items/:itemId | Update a single item's details |
+| DELETE | /shopping/items/:itemId | Delete a single item |
