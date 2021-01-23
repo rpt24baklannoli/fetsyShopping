@@ -29,8 +29,14 @@ const model = {
     })
   },
 
-  getOne: (cb) => {
-
+  getOne: (itemId, cb) => {
+    pool.query('SELECT * FROM items WHERE item_id = $1', [itemId], (err, result) => {
+      if (err) {
+        cb(err, null)
+      } else {
+        cb(null, result)
+      }
+    })
   },
 
   post: (data, cb) => {

@@ -12,21 +12,6 @@ app.use('/items/:itemId', express.static('client/dist'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-// Read (Get) all item data from db
-// app.get('/shopping/items', (req, res) => {
-//   console.log('GET request for all items successful');
-//   db
-//     .query('SELECT * FROM items')
-//     .then((result) => {
-//       // console.log('get server req:', result.rows);
-//       res.send(result.rows);
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//       res.send('Error getting data from db');
-//     });
-// });
-
 // Get all items from db
 app.get('/shopping/items', (req, res) => {
     db.model.getAll((err, data) => {
@@ -55,7 +40,6 @@ app.post('/shopping/items', (req, res) => {
 
 // Update existing item
 app.put('/shopping/items/:itemId', (req, res) => {
-  // console.log('item id:', req.body)
   db.model.update(req.params.itemId, req.body, (err, data) => {
     if (err) {
       console.log(`failed to update item ID ${req.params.itemId}: ${err}`)
@@ -80,14 +64,27 @@ app.delete('/shopping/items/:itemId', (req, res) => {
   })
 })
 
-
 // Get data based on one item Id
 app.get('/shopping/items/:itemId', (req, res) => {
   const { itemId } = req.params;
 
+  db.model.getOne(itemId, (err, data) => {
+    if (err) {
+      console.log(`failed to get data for item ID ${itemId}: ${err}`)
+      res.status(400).send(err);
+    } else {
+      console.log(`successfully retrieved data for item ID ${itemId}`)
+      res.status(200).send(data.rows[0]);
+    }
+  })
+
+  /*
+*********** Commented out the below code to get CRUD operational ***********
+*********** Refactoring below to unbreak the front end is the next step ***********
+
   const itemDataPromise = db
     .query(`SELECT * FROM items WHERE item_id = ${itemId}`);
-// console.log('item data promise:', itemDataPromise)
+console.log('item data promise:', itemDataPromise)
 
   // db.query(`SELECT * FROM items WHERE item_id = ${itemId}`)
   // .then((res) => {
@@ -148,6 +145,7 @@ app.get('/shopping/items/:itemId', (req, res) => {
     .catch((error) => {
       console.error(error);
     });
+    */
 });
 
 app.listen(port, () => {
