@@ -2,67 +2,69 @@
 /* eslint-disable no-unused-vars***REMOVED***/
 /* eslint-disable no-console***REMOVED***/
 const express = require('express');
+
 const app = express();
 const axios = require('axios');
 const utils = require('../database/utils.js');
 const db = require('../database/index.js');
+
 const port = 3004;
 
 app.use('/items/:itemId', express.static('client/dist'));
 app.use(express.json());
-app.use(express.urlencoded({extended: false***REMOVED***));
+app.use(express.urlencoded({ extended: false ***REMOVED***));
 
 // Get all items from db
 app.get('/shopping/items', (req, res) => {
-    db.model.getAll((err, data) => {
-      if (err) {
-        console.log('failed to get all data:', err);
-        res.status(400).send(err);
-    ***REMOVED*** else {
-        console.log('successfully retrieved all data');
-        res.status(200).send(data.rows);
-    ***REMOVED***
-  ***REMOVED***)
+  db.model.getAll((err, data) => {
+    if (err) {
+      console.log('failed to get all data:', err);
+      res.status(400).send(err);
+  ***REMOVED*** else {
+      console.log('successfully retrieved all data');
+      res.status(200).send(data.rows);
+  ***REMOVED***
+***REMOVED***);
 ***REMOVED***);
 
 // Create new item
 app.post('/shopping/items', (req, res) => {
   db.model.post(req.body, (err, data) => {
     if (err) {
-      console.log(`failed to insert post request: ${err***REMOVED***`)
+      console.log(`failed to insert post request: ${err***REMOVED***`);
       res.status(400).send(err);
   ***REMOVED*** else {
-      console.log('successfully added new item')
+      console.log('successfully added new item');
       res.status(200).send(data);
   ***REMOVED***
-***REMOVED***)
-***REMOVED***)
+***REMOVED***);
+***REMOVED***);
 
 // Update existing item
 app.put('/shopping/items/:itemId', (req, res) => {
   db.model.update(req.params.itemId, req.body, (err, data) => {
     if (err) {
-      console.log(`failed to update item ID ${req.params.itemId***REMOVED***: ${err***REMOVED***`)
-      res.status(400).send(err)
+      console.log(`failed to update item ID ${req.params.itemId***REMOVED***: ${err***REMOVED***`);
+      res.status(400).send(err);
   ***REMOVED*** else {
-      console.log(`successfully updated item ID ${req.params.itemId***REMOVED***`)
+      console.log(`successfully updated item ID ${req.params.itemId***REMOVED***`);
       res.status(200).send(data);
   ***REMOVED***
-***REMOVED***)
-***REMOVED***)
+***REMOVED***);
+***REMOVED***);
 
 // Delete existing item
 app.delete('/shopping/items/:itemId', (req, res) => {
   db.model.delete(req.params.itemId, (err, data) => {
     if (err) {
-      console.log(`failed to delete item ID ${req.params.itemId***REMOVED***: ${err***REMOVED***`)
+      console.log(`failed to delete item ID ${req.params.itemId***REMOVED***: ${err***REMOVED***`);
       res.status(400).send(err);
   ***REMOVED*** else {
-      console.log(`successfully deleted item ID ${req.params.itemId***REMOVED***`)
+      console.log(`successfully deleted item ID ${req.params.itemId***REMOVED***`);
       res.status(200).send(data);
   ***REMOVED***
-***REMOVED***)
-***REMOVED***)
+***REMOVED***);
+***REMOVED***);
 
 // Get data based on one item Id
 app.get('/shopping/items/:itemId', (req, res) => {
@@ -70,13 +72,13 @@ app.get('/shopping/items/:itemId', (req, res) => {
 
   db.model.getOne(itemId, (err, data) => {
     if (err) {
-      console.log(`failed to get data for item ID ${itemId***REMOVED***: ${err***REMOVED***`)
+      console.log(`failed to get data for item ID ${itemId***REMOVED***: ${err***REMOVED***`);
       res.status(400).send(err);
   ***REMOVED*** else {
-      console.log(`successfully retrieved data for item ID ${itemId***REMOVED***`)
+      console.log(`successfully retrieved data for item ID ${itemId***REMOVED***`);
       res.status(200).send(data.rows[0]);
   ***REMOVED***
-***REMOVED***)
+***REMOVED***);
 
   /*
 *********** Commented out the below code to get CRUD operational***REMOVED*************
@@ -90,7 +92,6 @@ console.log('item data promise:', itemDataPromise)
   // .then((res) => {
   //   console.log('GET REQUEST:', res.rows)
   // ***REMOVED***)
-
 
   // Seller Service Amazon EC2 Instance
   // http://3.21.248.149:3005/items/2/
