@@ -67,6 +67,9 @@ npm run react-dev
 <a name="crud"></a>
 # CRUD Documentation
 
+This service supports full CRUD functionality, available for testing with Postman. Not all functionality is built into the front end.
+
+## Summary
 | Methods  | URL Endpoints | Actions |
 | :------- | :------------ | :------ |
 | GET | /shopping/items  | Retrieve all items available for sale |
@@ -74,3 +77,119 @@ npm run react-dev
 | POST | /shopping/items | Add a new item for sale |
 | PUT | /shopping/items/:itemId | Update a single item's details |
 | DELETE | /shopping/items/:itemId | Delete a single item |
+
+## Read (GET) All Items
+> Example use case: retrieve all items available for sale by a seller
+
+#### Input
+```sh
+Endpoint: '/shopping/items'
+```
+#### Output
+```sh
+Sample Response:
+[
+  {
+    "item_id": 1,
+    "item_name": "food edison wiping fan luxrious green tea ",
+    "best_seller": false,
+    "price": "96.77",
+    "price_reduction": "69.47",
+    "in_stock": false,
+    "us_free_shipping": true,
+    "carts_item_is_in": 9
+***REMOVED***
+  {
+    "item_id": 2,
+    "item_name": "green edison lamp pearl cloth ",
+    "best_seller": false,
+    "price": "94.52",
+    "price_reduction": "83.61",
+    "in_stock": true,
+    "us_free_shipping": true,
+    "carts_item_is_in": 19
+***REMOVED***
+  {...***REMOVED***,
+]
+```
+
+## Read (GET) One Item
+> Example use case: retrieve data about a single item
+
+#### Input
+```sh
+Endpoint: '/shopping/items/:itemId'
+```
+#### Output
+```sh
+Sample Response:
+{
+  "item_id": 1,
+  "item_name": "food edison wiping fan luxrious green tea",
+  "best_seller": false,
+  "price": 96.77,
+  "price_reduction": 69.47,
+  "in_stock": false,
+  "us_free_shipping": true,
+  "carts_item_is_in": 9
+***REMOVED***
+```
+
+## Create (POST) A New Item
+> Example use case: add a new item for sale to the database
+
+#### Input
+> Note: item_id auto increments and is not required in the request body.
+
+```sh
+Endpoint: '/shopping/items/'
+
+Request Body Example:
+{
+    "item_name": "New item",
+    "best_seller": true,
+    "price": 15.50,
+    "price_reduction": 10,
+    "in_stock": true,
+    "us_free_shipping": true,
+    "carts_item_is_in": 20
+***REMOVED***
+```
+#### Output
+> Success: 200 status code, and a server message "successfully added new item"
+> Error: 404 status code, and a server message "failed to add new item: {error_here***REMOVED***"
+
+## Update (PUT) An Item
+> Example use case: change details on a single item
+
+#### Input
+```sh
+Endpoint: '/shopping/items/:itemId'
+
+Request Body Example:
+{
+    "item_name": "Modified item",
+    "best_seller": true,
+    "price": 15.50,
+    "price_reduction": 10,
+    "in_stock": false,
+    "us_free_shipping": true,
+    "carts_item_is_in": 15
+***REMOVED***
+```
+#### Output
+> Assumption for this example: Item ID is #28
+> Success: 200 status code, and a server message "successfully updated item ID 28"
+> Error: 404 status code, and a server message "failed to update item ID 28: {error_here***REMOVED***"
+
+## Remove (DELETE) An Item
+> Example use case: remove a single item from the database
+
+#### Input
+```sh
+Endpoint: '/shopping/items/:itemId'
+```
+#### Output
+> Assumption for this example: Item ID is #28
+> Success: 200 status code, and a server message "successfully deleted item ID 28"
+> Error: 404 status code, and a server message "failed to delete item ID 28: {error_here***REMOVED***"

@@ -19,7 +19,7 @@ app.get('/shopping/items', (req, res) => {
   db.model.getAll((err, data) => {
     if (err) {
       console.log('failed to get all data:', err);
-      res.status(400).send(err);
+      res.status(404).send(err);
   ***REMOVED*** else {
       console.log('successfully retrieved all data');
       res.status(200).send(data.rows);
@@ -31,8 +31,8 @@ app.get('/shopping/items', (req, res) => {
 app.post('/shopping/items', (req, res) => {
   db.model.post(req.body, (err, data) => {
     if (err) {
-      console.log(`failed to insert post request: ${err***REMOVED***`);
-      res.status(400).send(err);
+      console.log(`failed to add new item: ${err***REMOVED***`);
+      res.status(404).send(err);
   ***REMOVED*** else {
       console.log('successfully added new item');
       res.status(200).send(data);
@@ -45,7 +45,7 @@ app.put('/shopping/items/:itemId', (req, res) => {
   db.model.update(req.params.itemId, req.body, (err, data) => {
     if (err) {
       console.log(`failed to update item ID ${req.params.itemId***REMOVED***: ${err***REMOVED***`);
-      res.status(400).send(err);
+      res.status(404).send(err);
   ***REMOVED*** else {
       console.log(`successfully updated item ID ${req.params.itemId***REMOVED***`);
       res.status(200).send(data);
@@ -58,7 +58,7 @@ app.delete('/shopping/items/:itemId', (req, res) => {
   db.model.delete(req.params.itemId, (err, data) => {
     if (err) {
       console.log(`failed to delete item ID ${req.params.itemId***REMOVED***: ${err***REMOVED***`);
-      res.status(400).send(err);
+      res.status(404).send(err);
   ***REMOVED*** else {
       console.log(`successfully deleted item ID ${req.params.itemId***REMOVED***`);
       res.status(200).send(data);
@@ -73,7 +73,7 @@ app.get('/shopping/items/:itemId', (req, res) => {
   db.model.getOne(itemId, (err, data) => {
     if (err) {
       console.log(`failed to get data for item ID ${itemId***REMOVED***: ${err***REMOVED***`);
-      res.status(400).send(err);
+      res.status(404).send(err);
   ***REMOVED*** else {
       console.log(`successfully retrieved data for item ID ${itemId***REMOVED***`);
       res.status(200).send(data.rows[0]);
