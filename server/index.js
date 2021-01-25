@@ -6,7 +6,8 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 const utils = require('../database/utils.js');
-const db = require('../database/index.js');
+const db = require('../database/index.js'); // remove once MVC is set up
+const controller = require('../controller/index.js');
 
 const port = 3004;
 
@@ -14,71 +15,82 @@ app.use('/items/:itemId', express.static('client/dist'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Get all items from db
+// Get all items from db (not used on front end. built for CRUD demonstration)
 app.get('/shopping/items', (req, res) => {
-  db.model.getAll((err, data) => {
-    if (err) {
-      console.log('failed to get all data:', err);
-      res.status(404).send(err);
-    } else {
-      console.log('successfully retrieved all data');
-      res.status(200).send(data.rows);
-    }
+  controller.shopping.getAll()
+  .then((shoppingData) => {
+    console.log('Successfully retrieved all data')
+    res.status(200).send(shoppingData.rows);
+  })
+  .catch((err) => {
+    res.status(404).send(err);
   });
 });
 
 // Create new item
 app.post('/shopping/items', (req, res) => {
-  db.model.post(req.body, (err, data) => {
-    if (err) {
-      console.log(`failed to add new item: ${err}`);
-      res.status(404).send(err);
-    } else {
-      console.log('successfully added new item');
-      res.status(200).send(data);
-    }
-  });
-});
+  controller.shopping.create(req.body)
+  .then((response) => {
+    console.log('Successfully added new item');
+    res.status(200).send(response);
+  })
+  .catch((err) => {
+    res.status(400).send(err);
+  })
+})
 
 // Update existing item
 app.put('/shopping/items/:itemId', (req, res) => {
-  db.model.update(req.params.itemId, req.body, (err, data) => {
-    if (err) {
-      console.log(`failed to update item ID ${req.params.itemId}: ${err}`);
-      res.status(404).send(err);
-    } else {
-      console.log(`successfully updated item ID ${req.params.itemId}`);
-      res.status(200).send(data);
-    }
-  });
+  controller.shopping.update(req.params.itemId, req.body)
+  .then((response) => {
+    console.log(`Successfully updated item ID ${req.params.itemId}`);
+    res.status(200).send(response);
+  })
+  .catch((err) => {
+    res.status(400).send(err);
+  })
 });
 
 // Delete existing item
 app.delete('/shopping/items/:itemId', (req, res) => {
-  db.model.delete(req.params.itemId, (err, data) => {
-    if (err) {
-      console.log(`failed to delete item ID ${req.params.itemId}: ${err}`);
-      res.status(404).send(err);
-    } else {
-      console.log(`successfully deleted item ID ${req.params.itemId}`);
-      res.status(200).send(data);
-    }
-  });
+  controller.shopping.delete(req.params.itemId)
+  .then((response) => {
+    console.log(`Successfully deleted item ID ${req.params.itemId}`);
+    res.status(200).send(response);
+  })
+  .catch((err) => {
+    res.status(400).send(err);
+  })
 });
+
+// app.delete('/shopping/items/:itemId', (req, res) => {
+//   db.model.delete(req.params.itemId, (err, data) => {
+//     if (err) {
+//       console.log(`failed to delete item ID ${req.params.itemId}: ${err}`);
+//       res.status(404).send(err);
+//     } else {
+//       console.log(`successfully deleted item ID ${req.params.itemId}`);
+//       res.status(200).send(data);
+//     }
+//   });
+// });
 
 // Get data based on one item Id
 app.get('/shopping/items/:itemId', (req, res) => {
   const { itemId } = req.params;
-
-  db.model.getOne(itemId, (err, data) => {
-    if (err) {
-      console.log(`failed to get data for item ID ${itemId}: ${err}`);
+  controller.shopping.getOne(itemId)
+    .then(shoppingData => {
+      console.log('Get One request at server:', shoppingData.rows[0]);
+      res.status(200).send(shoppingData.rows[0]);
+    })
+    .catch(err => {
       res.status(404).send(err);
-    } else {
-      console.log(`successfully retrieved data for item ID ${itemId}`);
-      res.status(200).send(data.rows[0]);
-    }
-  });
+    });
+  })
+
+
+
+
 
   /*
 *********** Commented out the below code to get CRUD operational ***********
@@ -147,7 +159,7 @@ console.log('item data promise:', itemDataPromise)
       console.error(error);
     });
     */
-});
+// });
 
 app.listen(port, () => {
   console.log(`Fetsy shopping listening at port ${port}`);

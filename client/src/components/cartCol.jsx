@@ -34,6 +34,7 @@ class CartCol extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       serviceData: {
         best_seller: true,
         carts_item_is_in: 20,
@@ -75,8 +76,10 @@ class CartCol extends React.Component {
   getURL() {
     const currentURL = window.location;
     const itemId = currentURL.pathname.split('/')[2];
-    this.setState({ itemId },
-      () => this.getData(itemId));
+    this.setState({ itemId, isLoading: false },
+      () => this.getData(itemId),
+      );
+
   }
 
   getData(itemId) {
@@ -92,8 +95,18 @@ class CartCol extends React.Component {
 
   render() {
     const { serviceData } = this.state;
+
+    if (this.state.isLoading === true) {
+      return (
+        <div> Loading...
+          <div>{console.log('loading...')}</div>
+        </div>
+      )
+    }
+
     return (
       <CartColDiv>
+        {console.log(this.state.isLoading)}
         <BuyBox data={serviceData} />
         <FreeShippingBundle data={serviceData} />
       </CartColDiv>
