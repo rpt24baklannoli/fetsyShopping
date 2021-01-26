@@ -67,32 +67,36 @@ class CartCol extends React.Component {
   }
 
   componentDidMount() {
-    console.log('CDM react:', this.state)
+    // console.log('CDM react:', this.state)
     const { itemData, itemId } = this.state;
     this.getURL();
     //  this.getData(itemId);
   }
 
   getURL() {
-    const currentURL = window.location;
-    const itemId = currentURL.pathname.split('/')[2];
-    console.log(this.state);
-    this.setState({ itemId },
-      () => this.getData(itemId),
-      );
+    let queryUrl = window.location.search;
+    let urlParams = new URLSearchParams(queryUrl);
+    let itemId = urlParams.get('itemId');
 
+    //// Original Code, but couldn't render front end ////
+    // const currentURL = window.location;
+    // const itemId = currentURL.pathname.split('/')[2];
+
+    this.setState({ itemId },
+      () => this.getData(itemId)
+    );
   }
 
   getData(itemId) {
-    console.log(itemId)
     axios.get(`/shopping/items/${itemId}`)
       .then((response) => {
-        console.log('react response:', response)
-        this.setState({ serviceData: response.data });
-        console.log('state:', this.state);
+        this.setState({
+          serviceData: response.data,
+          isLoading: false,
+        });
       })
       .catch((error) => {
-        console.log(error);
+        console.log('React GET data error:', error);
       });
   }
 
@@ -100,16 +104,11 @@ class CartCol extends React.Component {
     const { serviceData } = this.state;
 
     if (this.state.isLoading === true) {
-      return (
-        <div> Loading...
-          <div>{console.log('loading...')}</div>
-        </div>
-      )
+      return ( <h1 style={{textAlign: 'center'}}> Loading... </h1> )
     }
 
     return (
       <CartColDiv>
-        {console.log(this.state.isLoading)}
         <BuyBox data={serviceData} />
         <FreeShippingBundle data={serviceData} />
       </CartColDiv>
