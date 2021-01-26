@@ -73,13 +73,13 @@ This service supports full CRUD functionality, available for testing with Postma
 | Methods  | URL Endpoints | Actions |
 | :------- | :------------ | :------ |
 | GET | /shopping/items  | Retrieve all items available for sale |
-| GET | /shopping/items/:itemId  | Retrieve a single item |
+| GET | /shopping/items/:itemId  | Retrieve a single item by :itemId |
 | POST | /shopping/items | Add a new item for sale |
-| PUT | /shopping/items/:itemId | Update a single item's details |
-| DELETE | /shopping/items/:itemId | Delete a single item |
+| PUT | /shopping/items/:itemId | Update a single item's details by :itemId |
+| DELETE | /shopping/items/:itemId | Delete a single item by :itemId |
 
 ## Read (GET) All Items
-> Example use case: retrieve all items available for sale by a seller
+- Example use case: retrieve all items available for sale by a seller
 
 #### Input
 ```sh
@@ -114,7 +114,7 @@ Sample Response:
 ```
 
 ## Read (GET) One Item
-> Example use case: retrieve data about a single item
+- Example use case: retrieve data about a single item
 
 #### Input
 ```sh
@@ -136,10 +136,10 @@ Sample Response:
 ```
 
 ## Create (POST) A New Item
-> Example use case: add a new item for sale to the database
+- Example use case: add a new item for sale to the database
 
 #### Input
-> Note: item_id auto increments and is not required in the request body.
+- Note: item_id auto increments and is not required in the request body.
 
 ```sh
 Endpoint: '/shopping/items/'
@@ -156,11 +156,11 @@ Request Body Example:
 ***REMOVED***
 ```
 #### Output
-> Success: 200 status code, and a server message "successfully added new item"
-> Error: 404 status code, and a server message "failed to add new item: {error_here***REMOVED***"
+- Success: 200 status code, and a server message "successfully added new item"
+- Error: 404 status code, and a server message "failed to add new item: {error_here***REMOVED***"
 
 ## Update (PUT) An Item
-> Example use case: change details on a single item
+- Example use case: change details on a single item
 
 #### Input
 ```sh
@@ -178,18 +178,18 @@ Request Body Example:
 ***REMOVED***
 ```
 #### Output
-> Assumption for this example: Item ID is #28
-> Success: 200 status code, and a server message "successfully updated item ID 28"
-> Error: 404 status code, and a server message "failed to update item ID 28: {error_here***REMOVED***"
+- Assumption for this example: Item ID is #28
+- Success: 200 status code, and a server message "successfully updated item ID 28"
+- Error: 404 status code, and a server message "failed to update item ID 28: {error_here***REMOVED***"
 
 ## Remove (DELETE) An Item
-> Example use case: remove a single item from the database
+- Example use case: remove a single item from the database
 
 #### Input
 ```sh
 Endpoint: '/shopping/items/:itemId'
 ```
 #### Output
-> Assumption for this example: Item ID is #28
-> Success: 200 status code, and a server message "successfully deleted item ID 28"
-> Error: 404 status code, and a server message "failed to delete item ID 28: {error_here***REMOVED***"
+- Assumption for this example: Item ID is #28
+- Success: 200 status code, and a server message "successfully deleted item ID 28"
+- Error: 404 status code, and a server message "failed to delete item ID 28: {error_here***REMOVED***"
