@@ -4,4 +4,5 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CartCol from './components/cartCol.jsx';
 
-ReactDOM.render(<CartCol />, document.getElementById('shopping'));
+// ReactDOM.render(<CartCol />, document.getElementById('shopping'));
+ReactDOM.render(<div>hey</div>, document.getElementById('shopping'));

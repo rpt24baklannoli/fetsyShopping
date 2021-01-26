@@ -4,7 +4,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import BuyBox from './buyBox.jsx';
@@ -68,6 +67,7 @@ class CartCol extends React.Component {
   }
 
   componentDidMount() {
+    console.log('CDM react:', this.state)
     const { itemData, itemId } = this.state;
     this.getURL();
     //  this.getData(itemId);
@@ -76,15 +76,18 @@ class CartCol extends React.Component {
   getURL() {
     const currentURL = window.location;
     const itemId = currentURL.pathname.split('/')[2];
-    this.setState({ itemId, isLoading: false },
+    console.log(this.state);
+    this.setState({ itemId },
       () => this.getData(itemId),
       );
 
   }
 
   getData(itemId) {
+    console.log(itemId)
     axios.get(`/shopping/items/${itemId}`)
       .then((response) => {
+        console.log('react response:', response)
         this.setState({ serviceData: response.data });
         console.log('state:', this.state);
       })
