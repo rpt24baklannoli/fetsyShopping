@@ -67,32 +67,36 @@ class CartCol extends React.Component {
 ***REMOVED***
 
   componentDidMount() {
-    console.log('CDM react:', this.state)
+    // console.log('CDM react:', this.state)
     const { itemData, itemId ***REMOVED*** = this.state;
     this.getURL();
     //  this.getData(itemId);
 ***REMOVED***
 
   getURL() {
-    const currentURL = window.location;
-    const itemId = currentURL.pathname.split('/')[2];
-    console.log(this.state);
-    this.setState({ itemId ***REMOVED***,
-      () => this.getData(itemId),
-      );
+    let queryUrl = window.location.search;
+    let urlParams = new URLSearchParams(queryUrl);
+    let itemId = urlParams.get('itemId');
 
+    //// Original Code, but couldn't render front end ////
+    // const currentURL = window.location;
+    // const itemId = currentURL.pathname.split('/')[2];
+
+    this.setState({ itemId ***REMOVED***,
+      () => this.getData(itemId)
+    );
 ***REMOVED***
 
   getData(itemId) {
-    console.log(itemId)
     axios.get(`/shopping/items/${itemId***REMOVED***`)
       .then((response) => {
-        console.log('react response:', response)
-        this.setState({ serviceData: response.data ***REMOVED***);
-        console.log('state:', this.state);
+        this.setState({
+          serviceData: response.data,
+          isLoading: false,
+      ***REMOVED***);
     ***REMOVED***)
       .catch((error) => {
-        console.log(error);
+        console.log('React GET data error:', error);
     ***REMOVED***);
 ***REMOVED***
 
@@ -100,16 +104,11 @@ class CartCol extends React.Component {
     const { serviceData ***REMOVED*** = this.state;
 
     if (this.state.isLoading === true) {
-      return (
-        <div> Loading...
-          <div>{console.log('loading...')***REMOVED***</div>
-        </div>
-      )
+      return ( <h1 style={{textAlign: 'center'***REMOVED******REMOVED***> Loading... </h1> )
   ***REMOVED***
 
     return (
       <CartColDiv>
-        {console.log(this.state.isLoading)***REMOVED***
         <BuyBox data={serviceData***REMOVED*** />
         <FreeShippingBundle data={serviceData***REMOVED*** />
       </CartColDiv>

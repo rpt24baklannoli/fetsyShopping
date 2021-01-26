@@ -25,6 +25,18 @@ const shopping = {
   ***REMOVED***)
 ***REMOVED***
 
+  getDistinct: (imageId) => {
+    return new Promise ((resolve, reject) => {
+      model.model.getDistinct(imageId)
+      .then((data) => {
+        resolve(data);
+    ***REMOVED***)
+      .catch((err) => {
+        reject(err);
+    ***REMOVED***)
+  ***REMOVED***)
+***REMOVED***
+
   create: (newItemData) => {
     return new Promise ((resolve, reject) => {
       model.model.post(newItemData)
