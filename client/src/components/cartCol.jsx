@@ -4,7 +4,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import BuyBox from './buyBox.jsx';
@@ -68,28 +67,36 @@ class CartCol extends React.Component {
   }
 
   componentDidMount() {
+    // console.log('CDM react:', this.state)
     const { itemData, itemId } = this.state;
     this.getURL();
     //  this.getData(itemId);
   }
 
   getURL() {
-    const currentURL = window.location;
-    const itemId = currentURL.pathname.split('/')[2];
-    this.setState({ itemId, isLoading: false },
-      () => this.getData(itemId),
-      );
+    let queryUrl = window.location.search;
+    let urlParams = new URLSearchParams(queryUrl);
+    let itemId = urlParams.get('itemId');
 
+    //// Original Code, but couldn't render front end ////
+    // const currentURL = window.location;
+    // const itemId = currentURL.pathname.split('/')[2];
+
+    this.setState({ itemId },
+      () => this.getData(itemId)
+    );
   }
 
   getData(itemId) {
     axios.get(`/shopping/items/${itemId}`)
       .then((response) => {
-        this.setState({ serviceData: response.data });
-        console.log('state:', this.state);
+        this.setState({
+          serviceData: response.data,
+          isLoading: false,
+        });
       })
       .catch((error) => {
-        console.log(error);
+        console.log('React GET data error:', error);
       });
   }
 
@@ -97,16 +104,11 @@ class CartCol extends React.Component {
     const { serviceData } = this.state;
 
     if (this.state.isLoading === true) {
-      return (
-        <div> Loading...
-          <div>{console.log('loading...')}</div>
-        </div>
-      )
+      return ( <h1 style={{textAlign: 'center'}}> Loading... </h1> )
     }
 
     return (
       <CartColDiv>
-        {console.log(this.state.isLoading)}
         <BuyBox data={serviceData} />
         <FreeShippingBundle data={serviceData} />
       </CartColDiv>

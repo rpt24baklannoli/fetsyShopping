@@ -25,6 +25,18 @@ const shopping = {
     })
   },
 
+  getDistinct: (imageId) => {
+    return new Promise ((resolve, reject) => {
+      model.model.getDistinct(imageId)
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((err) => {
+        reject(err);
+      })
+    })
+  },
+
   create: (newItemData) => {
     return new Promise ((resolve, reject) => {
       model.model.post(newItemData)
