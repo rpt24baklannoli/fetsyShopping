@@ -82,9 +82,7 @@ typings/
 .nuxt
 # dist
 # !dist/index.html
-client/dist/bundle.js
-client/dist/bundle.js.map
-client/dist/bundle.js.LICENSE.txt
+bundle.*
 
 # Gatsby files
 .cache/

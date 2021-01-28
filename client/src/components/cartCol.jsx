@@ -74,13 +74,8 @@ class CartCol extends React.Component {
 ***REMOVED***
 
   getURL() {
-    let queryUrl = window.location.search;
-    let urlParams = new URLSearchParams(queryUrl);
-    let itemId = urlParams.get('itemId');
-
-    //// Original Code, but couldn't render front end ////
-    // const currentURL = window.location;
-    // const itemId = currentURL.pathname.split('/')[2];
+    const currentURL = window.location;
+    const itemId = currentURL.pathname.split('/')[2];
 
     this.setState({ itemId ***REMOVED***,
       () => this.getData(itemId)

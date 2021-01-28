@@ -9,7 +9,7 @@ const mockData = require('../mockData/index.js');
 
 const port = 3004;
 
-// app.use('/items/:itemId', express.static('client/dist'));
+app.use('/items/:itemId', express.static('client/dist'));
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false ***REMOVED***));
@@ -87,9 +87,8 @@ app.get('/shopping/items/:itemId', (req, res) => {
   controller.shopping.getOne(itemId)
     .then(data => {
       shoppingData = data.rows[0];
-      // console.log('Get One request at server:', shoppingData.rows[0]);
 
-      // add the rest of Sunit's code here
+      // remove promise?
       return new Promise ((resolve, reject) => {
         axios.get(`http://localhost:3005/items/${itemId***REMOVED***/seller`)
         .then((response) => {
