@@ -110,3 +110,5 @@ bundle.*
 
 # Shell
 *.sh
+
+*.csv
