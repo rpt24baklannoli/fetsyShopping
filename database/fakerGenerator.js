@@ -11,20 +11,6 @@ let createShopping = () => {
   let in_stock = faker.random.boolean();
   let us_free_shipping = faker.random.boolean();
   let carts_item_is_in = faker.random.number();
-
-/*
-CREATE TABLE IF NOT EXISTS items (
-  item_id SERIAL PRIMARY KEY,
-  item_name VARCHAR(150),
-  best_seller BOOLEAN,
-  price NUMERIC,
-  price_reduction NUMERIC,
-  in_stock BOOLEAN,
-  us_free_shipping BOOLEAN,
-  carts_item_is_in INT
-);
-*/
-
 }
 
 module.exports = createShopping;
