@@ -1,30 +1,29 @@
 const faker = require('faker');
 const fs = require('fs');
-const csvWriter = require('csv-write-stream');
-let writer = csvWriter();
 
 const shoppingDataGeneration = async (num) => {
-  writer.pipe(fs.createWriteStream('./database/seed10M.csv'));
+  let writer = fs.createWriteStream('./database/seed10M.csv');
+  writer.write(`item_name,best_seller,price,price_reduction,in_stock,us_free_shipping,carts_item_is_in\n`);
+
   for (var i = 0; i < num; i++) {
-    writer.write({
-      item_name: faker.commerce.productName(),
-      best_seller: faker.random.boolean(),
-      price: faker.commerce.price(),
-      price_reduction: faker.random.number({
-        'min': 0,
-        'max': 10
-      }),
-      in_stock: faker.random.boolean(),
-      us_free_shipping: faker.random.boolean(),
-      carts_item_is_in: faker.random.number(),
-    })
+    // Define schema column values
+    let item_name = faker.commerce.productName();
+    let best_seller = faker.random.boolean();
+    let price = faker.commerce.price();
+    let price_reduction = faker.random.number({
+      'min': 0,
+      'max': 10
+    });
+    let in_stock = faker.random.boolean();
+    let us_free_shipping = faker.random.boolean();
+    let carts_item_is_in = faker.random.number();
+
+    // create new value in CSV file
+    writer.write(`${item_name},${best_seller},${price},${price_reduction},${in_stock},${us_free_shipping},${carts_item_is_in}\n`)
   }
   writer.end();
 }
-shoppingDataGeneration(10000000);
+
+shoppingDataGeneration(10_000_000);
 
 module.exports = shoppingDataGeneration;
-
-// REFACTOR //
-// use raw node capabilities to write CSV file
-// figure out how to write to a file starting at line 9
