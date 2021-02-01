@@ -110,7 +110,6 @@ app.get('/shopping/items/:itemId', (req, res) => {
 
       // Assign image data to global variable as an array
       recommendedImages = [imageOne, imageTwo, imageThree]
-
       return Promise.all([
         controller.shopping.getDistinct(imageOne.image_id),
         controller.shopping.getDistinct(imageTwo.image_id),
@@ -119,8 +118,10 @@ app.get('/shopping/items/:itemId', (req, res) => {
     })
     .then((promiseResults) => {
       return promiseResults.map((itemDetails, index) => {
+        // itemImages: recommendedImages[index],
         return {
-          itemImages: recommendedImages[index],
+          image_id: recommendedImages[index].image_id,
+          image_url: recommendedImages[index].image_urls[utils.randomInt(1, 10)],
           item_name: itemDetails.rows[0].item_name,
           price: itemDetails.rows[0].price,
         }
