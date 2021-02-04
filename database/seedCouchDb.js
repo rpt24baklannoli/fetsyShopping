@@ -1,4 +1,4 @@
-require('dotenv').config({path: './config/.env'});
+require('dotenv').config({ path: './config/.env' });
 const couchimport = require('couchimport');
 
 // Temporarily keeping as a reference - Going to remove shortly //
@@ -7,17 +7,16 @@ const couchimport = require('couchimport');
 
 // Insert data into DB script below
 const insertCouchData = () => {
-  let csvFile = __dirname + '/seed10M.csv';
-  let dbName = 'fetsy';
+  const csvFile = `${__dirname}/seed10M.csv`;
+  const dbName = 'fetsy';
   // const csvFile = `${__dirname}/testFile.csv`;
   // const dbName = 'testing2';
 
   const opts = {
     delimiter: ',',
     url: `http://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:5984`,
-    database: dbName
+    database: dbName,
   };
-
 
   couchimport.importFile(csvFile, opts, (err, data) => {
     if (err) {
