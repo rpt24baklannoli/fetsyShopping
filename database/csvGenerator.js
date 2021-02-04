@@ -2,7 +2,7 @@ const faker = require('faker');
 const fs = require('fs');
 
 const shoppingDataGeneration = async (num) => {
-  let writer = fs.createWriteStream('./database/seed10M.csv');
+  const writer = fs.createWriteStream('./database/seed10M.csv');
   // const writer = fs.createWriteStream('./database/testFile.csv');
 
   writer.write('item_name,best_seller,price,price_reduction,in_stock,us_free_shipping,carts_item_is_in\n');
