@@ -112,3 +112,4 @@ bundle.*
 *.sh
 
 *.csv
+config

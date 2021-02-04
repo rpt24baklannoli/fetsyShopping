@@ -20,6 +20,5 @@ const seedTable = (numberOfRows) => {
   }
 };
 
-
 // Seed db with a certain number of rows of data
 seedTable(10);

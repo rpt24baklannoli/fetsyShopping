@@ -17,7 +17,7 @@
     "styled-components": "^5"
   },
   "keywords": [],
-  "author": "Sunit_Mody",
+  "author": "Sunit_Mody_and_Reed_Bruskin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rpt24sourcandy/fetsyShopping/issues"
@@ -25,8 +25,11 @@
   "homepage": "https://github.com/rpt24sourcandy/fetsyShopping#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "couchimport": "^1.5.2",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "faker": "^5.2.0",
+    "nano": "^9.0.3",
     "nodemon": "^2.0.6",
     "pg": "^8.5.1",
     "prop-types": "^15.7.2",
