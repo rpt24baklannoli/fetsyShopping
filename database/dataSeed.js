@@ -20,6 +20,5 @@ const seedTable = (numberOfRows) => {
 ***REMOVED***
 ***REMOVED***;
 
-
 // Seed db with a certain number of rows of data
 seedTable(10);
