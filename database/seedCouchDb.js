@@ -7,10 +7,11 @@ const couchimport = require('couchimport');
 
 // Insert data into DB script below
 const insertCouchData = () => {
-  // let csvFile = __dirname + '/seed10M.csv';
-  const csvFile = `${__dirname}/testFile.csv`;
-  // let dbName = 'fetsy';
-  const dbName = 'testing2';
+  let csvFile = __dirname + '/seed10M.csv';
+  let dbName = 'fetsy';
+  // const csvFile = `${__dirname}/testFile.csv`;
+  // const dbName = 'testing2';
+
   const opts = {
     delimiter: ',',
     url: `http://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:5984`,
