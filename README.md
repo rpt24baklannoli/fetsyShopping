@@ -64,6 +64,9 @@ sudo psql -U root postgres < database/schema.sql && node database/dataSeed.js
 (then go back a directory and go to home/ec2-user/fetsyShopping)
 npm run react-dev
 
+## .ENV Notes
+CouchDB credentials (username, password, and URL) are required in an .ENV file in order to seed the CouchDB database.
+
 <a name="crud"></a>
 # CRUD Documentation
 
