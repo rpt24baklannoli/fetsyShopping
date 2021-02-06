@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const shoppingDataGeneration = async (num) => {
   const writer = fs.createWriteStream('./database/seed10M.csv');
-  // const writer = fs.createWriteStream('./database/testFile.csv');
+  // const writer = fs.createWriteStream('./database/testFile.csv'); // used to create a smaller test file
 
   writer.write('item_name,best_seller,price,price_reduction,in_stock,us_free_shipping,carts_item_is_in\n');
 
@@ -26,7 +26,7 @@ const shoppingDataGeneration = async (num) => {
   writer.end();
 ***REMOVED***;
 
-// shoppingDataGeneration(10_000_000);
-shoppingDataGeneration(100);
+shoppingDataGeneration(10_000_000);
+// shoppingDataGeneration(100); // used to create a smaller test file
 
 module.exports = shoppingDataGeneration;
