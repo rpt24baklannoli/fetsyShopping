@@ -22,7 +22,7 @@ app.get('/shopping/items', (req, res) => {
     res.status(200).send(shoppingData.rows);
 ***REMOVED***)
   .catch((err) => {
-    res.status(404).send(err);
+    res.status(400).send(err);
 ***REMOVED***);
 ***REMOVED***);
 
