@@ -4,7 +4,6 @@
 
 const request = require('supertest');
 const app = require('../server/index.js');
-const db = require('../database/index.js');
 
 describe('CRUD Failure Cases', () => {
   let invalidData = {invalid: false};
