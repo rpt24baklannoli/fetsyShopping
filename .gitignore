@@ -113,3 +113,7 @@ bundle.*
 
 *.csv
 config
+newrelic.js
+newrelic_agent.log
+http-get-script.js
+http-post-script.js
