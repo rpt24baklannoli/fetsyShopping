@@ -1,4 +1,5 @@
-const model = require('../model/index.js')
+const model = require('../model/index.js');
+const axios = require('axios');
 
 const shopping = {
   getOne: (itemId) => {
@@ -28,6 +29,18 @@ const shopping = {
   getDistinct: (imageId) => {
     return new Promise ((resolve, reject) => {
       model.model.getDistinct(imageId)
+      .then((data) => {
+        resolve(data);
+    ***REMOVED***)
+      .catch((err) => {
+        reject(err);
+    ***REMOVED***)
+  ***REMOVED***)
+***REMOVED***
+
+  getSeller: (itemId) => {
+    return new Promise((resolve, reject) => {
+      axios.get(`http://localhost:3005/items/${itemId***REMOVED***/seller`)
       .then((data) => {
         resolve(data);
     ***REMOVED***)

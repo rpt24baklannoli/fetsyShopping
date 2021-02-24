@@ -5,6 +5,7 @@ const axios = require('axios');
 const utils = require('../database/utils.js');
 const controller = require('../controller/index.js');
 const mockData = require('../mockData/index.js');
+const { resolvePlugin ***REMOVED*** = require('@babel/core');
 
 // const port = 3004;
 
@@ -88,20 +89,27 @@ app.get('/shopping/items/:itemId', (req, res) => {
     .then(data => {
       shoppingData = data.rows[0];
 
-      // remove promise?
-      return new Promise ((resolve, reject) => {
-        axios.get(`http://localhost:3005/items/${itemId***REMOVED***/seller`)
-        .then((response) => {
-          resolve(response);
-      ***REMOVED***)
-        .catch((err) => {
-          reject(err);
+      return controller.shopping.getSeller(itemId)
+      .then(seller => {
+        return (seller.data.rows[0]);
+    ***REMOVED***)
+      .catch((err) => {
+        console.error(`Error with Seller GET. Response equals: '${err.response***REMOVED***' and instead returned hard coded data.`)
+        return ({
+          seller_id: 2,
+          seller_rating: 4,
+          total_sales: 1397,
+          seller_name: 'Araceli.Bosco',
+          seller_city: 'Lake Ludiestad',
+          seller_state: 'Montana',
+          on_etsy_since: 2011,
+          item_id: 2
       ***REMOVED***)
     ***REMOVED***)
   ***REMOVED***)
     .then((res) => {
       // Assign seller data to global variable
-      sellerData = res.data.rows;
+      sellerData = res;
 
       /*==== To be replaced with actual image service data ====*/
       const imageOne = mockData.mockImages[utils.randomInt(1, 10)];
