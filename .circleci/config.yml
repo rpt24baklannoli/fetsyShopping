@@ -26,7 +26,7 @@ jobs:
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # A list of available CircleCI docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/node
     docker:
-      - image: circleci/node:14.13.0
+      - image: circleci/node:14.8.0
         environment:
             PGHOST: 127.0.0.1
             PGUSER: root
