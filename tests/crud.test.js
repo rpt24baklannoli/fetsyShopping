@@ -78,25 +78,25 @@ describe('CRUD Success Cases', () => {
     us_free_shipping: true,
     carts_item_is_in: 3
   };
-  let itemId = 2;
+  // let itemId = 2;
   let newItemId;
 
-  it('GET ONE: should retrieve an individual item\'s data', async (done) => {
-    let itemInfo = await request(app).get(`/shopping/items/${itemId}`);
-    expect(200);
-    expect(itemInfo.body.item_id).toEqual(itemId);
-    expect(typeof itemInfo.body.best_seller).toBe('boolean');
-    done();
-  });
+  // it('GET ONE: should retrieve an individual item\'s data', async (done) => {
+  //   let itemInfo = await request(app).get(`/shopping/items/${itemId}`);
+  //   expect(200);
+  //   expect(itemInfo.body.item_id).toEqual(itemId);
+  //   expect(typeof itemInfo.body.best_seller).toBe('boolean');
+  //   done();
+  // });
 
-  it('GET DISTINCT: should retrieve distinct fields only', async (done) => {
-    let distinctInfo = await request(app).get(`/shopping/distinctItems/${itemId}`);
-    expect(200);
-    expect(typeof distinctInfo.body[0].item_name).toEqual('string');
-    expect(typeof JSON.parse(distinctInfo.body[0].price)).toEqual('number');
-    expect(typeof distinctInfo.body[0].in_stock).toEqual('undefined');
-    done();
-  })
+  // it('GET DISTINCT: should retrieve distinct fields only', async (done) => {
+  //   let distinctInfo = await request(app).get(`/shopping/distinctItems/${itemId}`);
+  //   expect(200);
+  //   expect(typeof distinctInfo.body[0].item_name).toEqual('string');
+  //   expect(typeof JSON.parse(distinctInfo.body[0].price)).toEqual('number');
+  //   expect(typeof distinctInfo.body[0].in_stock).toEqual('undefined');
+  //   done();
+  // })
 
   /** Incomplete: Receiving timeouts on this test currently **/
   // it('GET ALL: should retrieve all values', async (done) => {
@@ -112,7 +112,6 @@ describe('CRUD Success Cases', () => {
       .post('/shopping/items')
       .send(newItem)
     newItemId = await res.body.rows[0].item_id;
-    // console.log('POST new item id:', newItemId);
     expect(res.statusCode).toEqual(200)
     expect(res.body).toHaveProperty('rows')
     expect(typeof res.body.rows[0].item_id).toEqual('number')
@@ -127,12 +126,9 @@ describe('CRUD Success Cases', () => {
       expect(req.statusCode).toEqual(200)
 
       // confirm changes with a new GET request
-      // console.log('PUT / get new item id:', newItemId);
-
-      let res = await request(app)
-        .get(`/shopping/items/${newItemId}`)
-      expect(res.body.item_id).toEqual(newItemId);
-      expect(res.body.item_name).toEqual(updatedItem.item_name);
+      let putGetRes = await request(app).get(`/shopping/items/${newItemId}`)
+      expect(putGetRes.body.item_id).toEqual(newItemId);
+      expect(putGetRes.body.item_name).toEqual(updatedItem.item_name);
     } catch (err) {
       console.log(`PUT testing error: ${err}`);
       throw err;
