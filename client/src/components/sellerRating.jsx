@@ -20,7 +20,7 @@ const StarImg = styled.img`
 
 function SellerRating(props) {
   const { data ***REMOVED*** = props;
-  const stars = [...Array(data.seller_rating)].map((star) => <StarImg src="https://festy-images.s3.us-west-1.amazonaws.com/star.png" alt="star icon" />);
+  const stars = [...Array(data.seller_rating)].map((star, index) => <StarImg key={index***REMOVED*** src="https://festy-images.s3.us-west-1.amazonaws.com/star.png" alt="star icon" />);
 
   return (
     <SellerRatingSpan>
