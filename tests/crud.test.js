@@ -111,8 +111,8 @@ describe('CRUD Success Cases', () => {
     const res = await request(app)
       .post('/shopping/items')
       .send(newItem)
-    newItemId = res.body.rows[0].item_id;
-    console.log('POST new item id:', newItemId);
+    newItemId = await res.body.rows[0].item_id;
+    // console.log('POST new item id:', newItemId);
     expect(res.statusCode).toEqual(200)
     expect(res.body).toHaveProperty('rows')
     expect(typeof res.body.rows[0].item_id).toEqual('number')
@@ -127,7 +127,7 @@ describe('CRUD Success Cases', () => {
       expect(req.statusCode).toEqual(200)
 
       // confirm changes with a new GET request
-      console.log('PUT / get new item id:', newItemId);
+      // console.log('PUT / get new item id:', newItemId);
 
       let res = await request(app)
         .get(`/shopping/items/${newItemId}`)
@@ -143,6 +143,7 @@ describe('CRUD Success Cases', () => {
   });
 
   it('DELETE: should delete an existing item', async (done) => {
+    console.log('confirm ID received:', newItemId);
     let req = await request(app).delete(`/shopping/items/${newItemId}`);
     expect(req.statusCode).toEqual(200)
 
