@@ -4,9 +4,11 @@ const axios = require('axios');
 const utils = require('../database/utils.js');
 const controller = require('../controller/index.js');
 const mockData = require('../mockData/index.js');
+var cors = require('cors')
+
 
 // const port = 3004;
-
+app.use(cors())
 app.use('/items/:itemId', express.static('client/dist'));
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
