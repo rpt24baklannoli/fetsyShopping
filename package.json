@@ -7,21 +7,21 @@
     "react-dev": "webpack --watch",
     "start": "nodemon ./server/start.js",
     "test": "jest --coverage",
-    "seed": "sudo psql -U root postgres < database/schema.sql && node database/dataSeed.js"
-***REMOVED***
+    "seed": "psql -U root postgres < database/schema.sql && node database/dataSeed.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rpt24sourcandy/fetsyShopping.git"
-***REMOVED***
+  },
   "resolutions": {
     "styled-components": "^5"
-***REMOVED***
+  },
   "keywords": [],
   "author": "Sunit_Mody_and_Reed_Bruskin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rpt24sourcandy/fetsyShopping/issues"
-***REMOVED***
+  },
   "homepage": "https://github.com/rpt24sourcandy/fetsyShopping#readme",
   "dependencies": {
     "axios": "^0.21.1",
@@ -37,7 +37,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "styled-components": "^5.2.1"
-***REMOVED***
+  },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
@@ -61,5 +61,5 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
-***REMOVED***
-***REMOVED***
+  }
+}

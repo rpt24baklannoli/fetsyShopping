@@ -1,6 +1,6 @@
-/* eslint-disable jsx-a11y/label-has-associated-control***REMOVED***/
-/* eslint-disable no-unused-vars***REMOVED***/
-/* eslint-disable import/extensions***REMOVED***/
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -23,7 +23,7 @@ const NiceChoiceP = styled.p`
 `;
 
 function NiceChoice(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
   return (
     <TruckDiv>
       <TruckImg src="https://festy-images.s3.us-west-1.amazonaws.com/truck.png" alt="truck icon" />
@@ -35,7 +35,7 @@ function NiceChoice(props) {
       </NiceChoiceP>
     </TruckDiv>
   );
-***REMOVED***
+}
 
 export default NiceChoice;
 
@@ -44,5 +44,5 @@ NiceChoice.propTypes = {
   data: PropTypes.shape({
     carts_item_is_in: PropTypes.number.isRequired,
     us_free_shipping: PropTypes.bool.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};

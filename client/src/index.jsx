@@ -1,5 +1,5 @@
-/* eslint-disable import/extensions***REMOVED***/
-/* eslint-disable no-undef***REMOVED***/
+/* eslint-disable import/extensions */
+/* eslint-disable no-undef */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CartCol from './components/cartCol.jsx';

@@ -1,6 +1,6 @@
-/* eslint-disable jsx-a11y/label-has-associated-control***REMOVED***/
-/* eslint-disable no-unused-vars***REMOVED***/
-/* eslint-disable import/extensions***REMOVED***/
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -8,22 +8,22 @@ import OtherPeople from './otherPeople.jsx';
 import NiceChoice from './niceChoice.jsx';
 
 function DataNudger(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
 
   let freeShipping;
   if (data.us_free_shipping) {
     freeShipping = (
-      <NiceChoice data={data***REMOVED*** />
+      <NiceChoice data={data} />
     );
-***REMOVED***
+  }
 
   return (
     <div>
-      <OtherPeople data={data***REMOVED*** />
-      {freeShipping***REMOVED***
+      <OtherPeople data={data} />
+      {freeShipping}
     </div>
   );
-***REMOVED***
+}
 
 export default DataNudger;
 
@@ -31,5 +31,5 @@ export default DataNudger;
 DataNudger.propTypes = {
   data: PropTypes.shape({
     us_free_shipping: PropTypes.bool.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};

@@ -1,6 +1,6 @@
-/* eslint-disable jsx-a11y/label-has-associated-control***REMOVED***/
-/* eslint-disable no-unused-vars***REMOVED***/
-/* eslint-disable import/extensions***REMOVED***/
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -8,14 +8,14 @@ import Color from './color.jsx';
 import Quantity from './quantity.jsx';
 
 function ColorQuantity(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
   return (
     <div>
-      <Color data={data***REMOVED*** />
-      <Quantity data={data***REMOVED*** />
+      <Color data={data} />
+      <Quantity data={data} />
     </div>
   );
-***REMOVED***
+}
 
 export default ColorQuantity;
 
@@ -25,5 +25,5 @@ ColorQuantity.propTypes = {
     total_sales: PropTypes.number.isRequired,
     seller_rating: PropTypes.number.isRequired,
     seller_name: PropTypes.string.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};
