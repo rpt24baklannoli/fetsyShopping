@@ -1,4 +1,4 @@
-/* eslint-disable import/extensions***REMOVED***/
+/* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -16,15 +16,15 @@ const TitleH1 = styled.h1`
 `;
 
 function FreeShippingBundle(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
   return (
     <FreeShippingBundleDiv>
       <TitleH1>Buy together, get free shipping</TitleH1>
-      <ItemList data={data***REMOVED*** />
+      <ItemList data={data} />
       <AddSeeItemsButtons />
     </FreeShippingBundleDiv>
   );
-***REMOVED***
+}
 
 export default FreeShippingBundle;
 
@@ -39,5 +39,5 @@ FreeShippingBundle.propTypes = {
     price: PropTypes.string.isRequired,
     price_reduction: PropTypes.string.isRequired,
     us_free_shipping: PropTypes.bool.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};

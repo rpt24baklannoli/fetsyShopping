@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars***REMOVED***/
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -9,17 +9,17 @@ const SellerNameA = styled.a`
   text-decoration: none;
   &: hover {
     text-decoration: underline;
-***REMOVED***
+  }
 `;
 
 function SellerName(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
   return (
     <SellerNameA href="TODO">
-      {data.seller_name***REMOVED***
+      {data.seller_name}
     </SellerNameA>
   );
-***REMOVED***
+}
 
 export default SellerName;
 
@@ -29,5 +29,5 @@ SellerName.propTypes = {
     total_sales: PropTypes.number.isRequired,
     seller_rating: PropTypes.number.isRequired,
     seller_name: PropTypes.string.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};

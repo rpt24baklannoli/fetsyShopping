@@ -1,4 +1,4 @@
-/* eslint-disable import/extensions***REMOVED***/
+/* eslint-disable import/extensions */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -46,7 +46,7 @@ const BestSellerSpan = styled.span`
 `;
 
 function NameBestSeller(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
   console.log('this is the data:', data);
   let bestSeller;
   if (data.best_seller) {
@@ -58,16 +58,16 @@ function NameBestSeller(props) {
       </BestSellerDiv>
 
     );
-***REMOVED***
+  }
   return (
     <NameBestSellerDiv>
       <NameH1>
-        {data.item_name***REMOVED***
+        {data.item_name}
       </NameH1>
-      {bestSeller***REMOVED***
+      {bestSeller}
     </NameBestSellerDiv>
   );
-***REMOVED***
+}
 
 // Props typechecking
 NameBestSeller.propTypes = {
@@ -80,7 +80,7 @@ NameBestSeller.propTypes = {
     price: PropTypes.string.isRequired,
     price_reduction: PropTypes.string.isRequired,
     us_free_shipping: PropTypes.bool.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};
 
 export default NameBestSeller;

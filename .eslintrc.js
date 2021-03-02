@@ -4,6 +4,6 @@ module.exports = {
     // Rules here will override the 'hackreactor' configuration
     // http://eslint.org/docs/rules/
     'react/require-default-props': [0],
-***REMOVED***
+  },
   ignorePatterns: ['jest.config.js', 'test.js', 'setupTests.js', 'babel.config.js', 'server.test.js', 'reactComponents.test.js', 'databaseUtils.test.js', 'webpack.config.js'],
-***REMOVED***;
+};

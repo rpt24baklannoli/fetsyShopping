@@ -1,4 +1,4 @@
-/* eslint-disable import/extensions***REMOVED***/
+/* eslint-disable import/extensions */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -55,7 +55,7 @@ const InStockP = styled.p`
 `;
 
 function PriceInStock(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
 
   let inStock;
   if (data.in_stock) {
@@ -69,20 +69,20 @@ function PriceInStock(props) {
         </InStockP>
       </InStockDiv>
     );
-***REMOVED***
+  }
 
   return (
     <PriceInStockDiv>
 
       <PriceP>
         $
-        {data.price***REMOVED***
+        {data.price}
       </PriceP>
 
-      {inStock***REMOVED***
+      {inStock}
     </PriceInStockDiv>
   );
-***REMOVED***
+}
 
 // Props typechecking
 PriceInStock.propTypes = {
@@ -95,7 +95,7 @@ PriceInStock.propTypes = {
     price: PropTypes.string.isRequired,
     price_reduction: PropTypes.string.isRequired,
     us_free_shipping: PropTypes.bool.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};
 
 export default PriceInStock;

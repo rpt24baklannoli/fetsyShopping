@@ -1,4 +1,4 @@
 module.exports = {
-  presets: [['@babel/preset-react'],['@babel/preset-env', {targets: {node: 'current'***REMOVED******REMOVED***]],
+  presets: [['@babel/preset-react'],['@babel/preset-env', {targets: {node: 'current'}}]],
   plugins: ["babel-plugin-styled-components"],
-***REMOVED***;
+};

@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars***REMOVED***/
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -12,7 +12,7 @@ const BoxShadowDiv = styled.div`
     transition-property: box-shadow;
     transition-timing-function: ease-in-out;
     box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.73);
-***REMOVED***
+  }
 `;
 
 const ListingDiv = styled.div`
@@ -57,24 +57,24 @@ const PriceP = styled.p`
 `;
 
 function Listing(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
   return (
     <BoxShadowDiv>
       <ListingDiv>
         <ImageDiv>
-          <ImageImg src={`${data.image_url***REMOVED***`***REMOVED*** alt={`${data.item_name***REMOVED***`***REMOVED*** />
+          <ImageImg src={`${data.image_url}`} alt={`${data.item_name}`} />
         </ImageDiv>
         <InfoDiv>
-          <NameP>{data.item_name***REMOVED***</NameP>
+          <NameP>{data.item_name}</NameP>
           <PriceP>
             $
-            {data.price***REMOVED***
+            {data.price}
           </PriceP>
         </InfoDiv>
       </ListingDiv>
     </BoxShadowDiv>
   );
-***REMOVED***
+}
 
 export default Listing;
 
@@ -84,5 +84,5 @@ Listing.propTypes = {
     image_url: PropTypes.string.isRequired,
     item_name: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};

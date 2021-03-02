@@ -7,14 +7,14 @@
 // \l - list database
 // \c - connect to database
 // \d - list relations (tables) in database we're connected to
-// SELECT***REMOVED*** FROM items
+// SELECT * FROM items
 
-const { Pool ***REMOVED*** = require('pg');
+const { Pool } = require('pg');
 
 const pool = new Pool({
   user: 'root',
   host: 'localhost',
   database: 'fetsy',
-***REMOVED***);
+});
 
 module.exports = pool;

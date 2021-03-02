@@ -1,18 +1,18 @@
-/* eslint-disable import/extensions***REMOVED***/
+/* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Listing from './listing.jsx';
 
 function ItemList(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
   return (
     <div>
-      <Listing data={data.recommendedItemImages[0]***REMOVED*** />
-      <Listing data={data.recommendedItemImages[1]***REMOVED*** />
-      <Listing data={data.recommendedItemImages[2]***REMOVED*** />
+      <Listing data={data.recommendedItemImages[0]} />
+      <Listing data={data.recommendedItemImages[1]} />
+      <Listing data={data.recommendedItemImages[2]} />
     </div>
   );
-***REMOVED***
+}
 
 export default ItemList;
 
@@ -20,5 +20,5 @@ export default ItemList;
 ItemList.propTypes = {
   data: PropTypes.shape({
     recommendedItemImages: PropTypes.arrayOf.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};
