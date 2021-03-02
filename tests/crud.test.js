@@ -1,10 +1,19 @@
+// MOCKS //
+
+// Option 1:
+// Can create fake database for testing purposes
+// if process.ENV.test, then route flows to test db
+// can add beforeEach between describe blocks to seed/drop db before/after each test
+
+// Option 2:
+// Use mocks or NPM in-memory postgres instance
+
 /**
  * @jest-environment node
  */
 
 const request = require('supertest');
 const app = require('../server/index.js');
-const db = require('../database/index.js');
 
 describe('CRUD Failure Cases', () => {
   let invalidData = {invalid: false};
@@ -102,25 +111,35 @@ describe('CRUD Success Cases', () => {
     const res = await request(app)
       .post('/shopping/items')
       .send(newItem)
+    newItemId = res.body.rows[0].item_id;
+    console.log('POST new item id:', newItemId);
     expect(res.statusCode).toEqual(200)
     expect(res.body).toHaveProperty('rows')
     expect(typeof res.body.rows[0].item_id).toEqual('number')
-    newItemId = res.body.rows[0].item_id;
     done();
   });
 
   it('PUT: should update an existing item', async (done) => {
-    let req = await request(app)
-      .put(`/shopping/items/${newItemId}`)
-      .send(updatedItem)
-    expect(req.statusCode).toEqual(200)
+    try {
+      let req = await request(app)
+        .put(`/shopping/items/${newItemId}`)
+        .send(updatedItem)
+      expect(req.statusCode).toEqual(200)
 
-    // confirm changes with a new GET request
-    let res = await request(app)
-      .get(`/shopping/items/${newItemId}`)
-    expect(res.body.item_id).toEqual(newItemId);
-    expect(res.body.item_name).toEqual(updatedItem.item_name);
-    done();
+      // confirm changes with a new GET request
+      console.log('PUT / get new item id:', newItemId);
+
+      let res = await request(app)
+        .get(`/shopping/items/${newItemId}`)
+      expect(res.body.item_id).toEqual(newItemId);
+      expect(res.body.item_name).toEqual(updatedItem.item_name);
+    } catch (err) {
+      console.log(`PUT testing error: ${err}`);
+      throw err;
+    } finally {
+      done();
+    }
+
   });
 
   it('DELETE: should delete an existing item', async (done) => {
