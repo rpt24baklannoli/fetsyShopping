@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/label-has-associated-control***REMOVED***/
-/* eslint-disable no-unused-vars***REMOVED***/
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -83,14 +83,14 @@ const QuantitySelect = styled.select`
     border-color: rgba(34, 34, 34, 0.7);
     box-shadow: rgba(34, 34, 34, 0.15) 0px 1px 6px 0px;
     transition-timing-function: ease-out, ease-out;
-***REMOVED***
+  }
   white-space: pre;
   word-spacing: 0px;
   writing-mode: horizontal-tb;
 `;
 
 function Quantity(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
   return (
     <QuantityDiv>
       <QuantityLabel htmlFor="quantity-select">Quantity</QuantityLabel>
@@ -108,7 +108,7 @@ function Quantity(props) {
       </QuantitySelect>
     </QuantityDiv>
   );
-***REMOVED***
+}
 
 export default Quantity;
 
@@ -118,5 +118,5 @@ Quantity.propTypes = {
     total_sales: PropTypes.number.isRequired,
     seller_rating: PropTypes.number.isRequired,
     seller_name: PropTypes.string.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};

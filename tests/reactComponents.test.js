@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount, render ***REMOVED*** from 'enzyme';
+import { shallow, mount, render } from 'enzyme';
 
 import CartCol from '../client/src/components/cartCol.jsx';
 import Listing from '../client/src/components/listing.jsx';
@@ -13,17 +13,17 @@ describe('React components render correctly - testing', () => {
 
   test('CartCol renders without crashing', () => {
     shallow(<CartCol />);
-***REMOVED***);
+  });
 
   xtest("ItemList renders component Listing", () => {
     const wrapper = shallow(<ItemList />);
     const span = <Listing />;
     expect(wrapper.contains(span)).toEqual(true);
-***REMOVED***);
+  });
 
 
 
-***REMOVED***)
+})
 
 describe('Props are being passed down correctly - testing', () => {
 
@@ -37,10 +37,10 @@ describe('Props are being passed down correctly - testing', () => {
     price: "94.33",
     price_reduction: "44.79",
     recommendedItemImages: [
-      {item_id: 3, image_url: "https://festy-images.s3-us-west-1.amazonaws.com/3_003.jpg", item_name: "bed blue warming ", price: "23.08"***REMOVED***,
-      {item_id: 5, image_url: "https://festy-images.s3-us-west-1.amazonaws.com/5_001.jpg", item_name: "glass glass cloth alcohol cat drink glass sport ball plant ", price: "80.55"***REMOVED***,
-      {item_id: 5, image_url: "https://festy-images.s3-us-west-1.amazonaws.com/5_001.jpg", item_name: "glass glass cloth alcohol cat drink glass sport ball plant ", price: "80.55"***REMOVED***
-***REMOVED***,
+      {item_id: 3, image_url: "https://festy-images.s3-us-west-1.amazonaws.com/3_003.jpg", item_name: "bed blue warming ", price: "23.08"},
+      {item_id: 5, image_url: "https://festy-images.s3-us-west-1.amazonaws.com/5_001.jpg", item_name: "glass glass cloth alcohol cat drink glass sport ball plant ", price: "80.55"},
+      {item_id: 5, image_url: "https://festy-images.s3-us-west-1.amazonaws.com/5_001.jpg", item_name: "glass glass cloth alcohol cat drink glass sport ball plant ", price: "80.55"}
+    ],
     seller_city: "West Jasmin",
     seller_id: 3,
     seller_name: "Drake.Raynor9",
@@ -48,15 +48,15 @@ describe('Props are being passed down correctly - testing', () => {
     seller_state: "Kansas",
     total_sales: 562,
     us_free_shipping: true
-***REMOVED***
+  }
 
   test("freeShippingBundle accepts serviceData props", () => {
-    const wrapper = mount(<FreeShippingBundle data={data***REMOVED*** />);
+    const wrapper = mount(<FreeShippingBundle data={data} />);
     expect(wrapper.props().data).toEqual(data);
-***REMOVED***);
+  });
 
   test("seller component accepts serviceData props", async () => {
-    const wrapper = mount(<Seller data={data***REMOVED*** />);
+    const wrapper = mount(<Seller data={data} />);
     expect(wrapper.props().data).toEqual(data);
-***REMOVED***);
-***REMOVED***);
+  });
+});

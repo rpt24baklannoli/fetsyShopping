@@ -7,13 +7,13 @@ describe('API testing', () => {
 
   beforeEach(() => {
     jest.resetAllMocks();
-***REMOVED***);
+  });
 
   // Test function that gets item data (mimics what front-end does)
   async function testGetItemData() {
     const response = await axios.get('/shopping/items/2');
     return response.rows[0];
-***REMOVED***
+  }
 
   test('verifies item data returned from API call', async () => {
     axios.get.mockResolvedValue({
@@ -27,9 +27,9 @@ describe('API testing', () => {
           in_stock: false,
           us_free_shipping: false,
           carts_item_is_in: 13
-      ***REMOVED***
-  ***REMOVED***
-  ***REMOVED***);
+        }
+      ]
+    });
 
     const data = await testGetItemData();
 
@@ -40,6 +40,6 @@ describe('API testing', () => {
     expect(data.us_free_shipping).toBeBoolean();
     expect(Number(data.price_reduction)).toBeLessThan(Number(data.price));
 
-***REMOVED***);
+  });
 
-***REMOVED***)
+})

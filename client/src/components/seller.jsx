@@ -1,5 +1,5 @@
-/* eslint-disable import/extensions***REMOVED***/
-/* eslint-disable no-unused-vars***REMOVED***/
+/* eslint-disable import/extensions */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -17,18 +17,18 @@ const SalesStarRatingDiv = styled.div`
 `;
 
 function Seller(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
   return (
     <SellerDiv>
-      <SellerName data={data***REMOVED*** />
+      <SellerName data={data} />
       <SalesStarRatingDiv>
-        <SellerSales data={data***REMOVED*** />
+        <SellerSales data={data} />
         <span>|</span>
-        <SellerRating data={data***REMOVED*** />
+        <SellerRating data={data} />
       </SalesStarRatingDiv>
     </SellerDiv>
   );
-***REMOVED***
+}
 
 export default Seller;
 
@@ -38,5 +38,5 @@ Seller.propTypes = {
     total_sales: PropTypes.number.isRequired,
     seller_rating: PropTypes.number.isRequired,
     seller_name: PropTypes.string.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};

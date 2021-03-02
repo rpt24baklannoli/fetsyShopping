@@ -1,6 +1,6 @@
-/* eslint-disable jsx-a11y/label-has-associated-control***REMOVED***/
-/* eslint-disable no-unused-vars***REMOVED***/
-/* eslint-disable import/extensions***REMOVED***/
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -23,7 +23,7 @@ const OtherPeopleP = styled.p`
 `;
 
 function OtherPeople(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
   return (
     <CartDiv>
       <CartImg src="https://festy-images.s3.us-west-1.amazonaws.com/cart.png" alt="cart icon" />
@@ -32,12 +32,12 @@ function OtherPeople(props) {
           Other people want this.&nbsp;
         </strong>
         Over&nbsp;
-        {data.carts_item_is_in***REMOVED***
+        {data.carts_item_is_in}
         &nbsp;people have this in their carts right now.
       </OtherPeopleP>
     </CartDiv>
   );
-***REMOVED***
+}
 
 export default OtherPeople;
 
@@ -45,5 +45,5 @@ export default OtherPeople;
 OtherPeople.propTypes = {
   data: PropTypes.shape({
     carts_item_is_in: PropTypes.number.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};

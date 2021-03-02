@@ -1,6 +1,6 @@
-/* eslint-disable jsx-a11y/label-has-associated-control***REMOVED***/
-/* eslint-disable no-unused-vars***REMOVED***/
-/* eslint-disable import/extensions***REMOVED***/
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -41,7 +41,7 @@ const AddToCartButton = styled.button`
     transform: scale(1.02);
     background-color: rgb(34, 34, 34);
     transition-duration: 0.2s, 0.15s, 0.2s;
-***REMOVED***
+  }
 `;
 
 function AddToCart() {
@@ -50,6 +50,6 @@ function AddToCart() {
       <AddToCartButton type="submit">Add to cart</AddToCartButton>
     </div>
   );
-***REMOVED***
+}
 
 export default AddToCart;
