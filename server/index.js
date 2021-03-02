@@ -1,3 +1,4 @@
+// const newrelic = require('newrelic');
 const express = require('express');
 const app = express();
 const axios = require('axios');
@@ -5,6 +6,7 @@ const utils = require('../database/utils.js');
 const controller = require('../controller/index.js');
 const mockData = require('../mockData/index.js');
 var cors = require('cors')
+const { resolvePlugin } = require('@babel/core');
 
 
 // const port = 3004;
@@ -96,6 +98,7 @@ app.get('/shopping/items/:itemId', (req, res) => {
       // })
       // .catch((err) => {
       //   console.error(`Error with Seller GET. Response equals: '${err.response}' and instead returned hard coded data.`)
+
         return ({
           seller_id: 2,
           seller_rating: 4,
