@@ -9,9 +9,9 @@ export let options = {
       duration: '1m', // 1 minute total duration
       preAllocatedVUs: 10, // Changed to 1, 10, 100, or 1000 virtual users to match RPS
       maxVUs: 2000,
-  ***REMOVED***
-***REMOVED***
-***REMOVED***;
+    }
+  }
+};
 
 export default function () {
   var url = 'http://localhost:3004/shopping/items';
@@ -23,13 +23,13 @@ export default function () {
     in_stock: false,
     us_free_shipping: true,
     carts_item_is_in: 3
-***REMOVED***);
+  });
   var params = {
     headers: {
       'Content-Type': 'application/json',
-  ***REMOVED***
-***REMOVED***;
+    },
+  };
   http.post(url, payload, params);
-***REMOVED***;
+};
 
 // run script: $ k6 run http-post-script.js

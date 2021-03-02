@@ -1,3 +1,4 @@
+// const newrelic = require('newrelic');
 const express = require('express');
 const app = express();
 const axios = require('axios');
@@ -5,6 +6,7 @@ const utils = require('../database/utils.js');
 const controller = require('../controller/index.js');
 const mockData = require('../mockData/index.js');
 var cors = require('cors')
+const { resolvePlugin } = require('@babel/core');
 
 
 // const port = 3004;
@@ -12,7 +14,7 @@ app.use(cors())
 app.use('/items/:itemId', express.static('client/dist'));
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false ***REMOVED***));
+app.use(express.urlencoded({ extended: false }));
 
 /*======== CRUD Functionality ========*/
 
@@ -22,47 +24,47 @@ app.get('/shopping/items', (req, res) => {
   .then((shoppingData) => {
     console.log('Successfully retrieved all data')
     res.status(200).send(shoppingData.rows);
-***REMOVED***)
+  })
   .catch((err) => {
     res.status(400).send(err);
-***REMOVED***);
-***REMOVED***);
+  });
+});
 
 // Create new item
 app.post('/shopping/items', (req, res) => {
   controller.shopping.create(req.body)
   .then((response) => {
-    console.log(`Successfully added new item id ${response.rows[0].item_id***REMOVED***`);
+    console.log(`Successfully added new item id ${response.rows[0].item_id}`);
     res.status(200).send(response);
-***REMOVED***)
+  })
   .catch((err) => {
     res.status(400).send(err);
-***REMOVED***)
-***REMOVED***)
+  })
+})
 
 // Update existing item
 app.put('/shopping/items/:itemId', (req, res) => {
   controller.shopping.update(req.params.itemId, req.body)
   .then((response) => {
-    console.log(`Successfully updated item ID ${req.params.itemId***REMOVED***`);
+    console.log(`Successfully updated item ID ${req.params.itemId}`);
     res.status(200).send(response);
-***REMOVED***)
+  })
   .catch((err) => {
     res.status(400).send(err);
-***REMOVED***)
-***REMOVED***);
+  })
+});
 
 // Delete existing item
 app.delete('/shopping/items/:itemId', (req, res) => {
   controller.shopping.delete(req.params.itemId)
   .then((response) => {
-    console.log(`Successfully deleted item ID ${req.params.itemId***REMOVED***`);
+    console.log(`Successfully deleted item ID ${req.params.itemId}`);
     res.status(200).send(response);
-***REMOVED***)
+  })
   .catch((err) => {
     res.status(400).send(err);
-***REMOVED***)
-***REMOVED***);
+  })
+});
 
 // Get Distinct
 app.get('/shopping/distinctItems/:itemId', (req, res) => {
@@ -70,17 +72,17 @@ app.get('/shopping/distinctItems/:itemId', (req, res) => {
   .then((response) => {
     console.log('getDistinct successful');
     res.status(200).send(response.rows)
-***REMOVED***)
+  })
   .catch((err) => {
     res.status(400).send(err);
-***REMOVED***)
-***REMOVED***)
+  })
+})
 
 /*======== Primary Data Pull To Render React ========*/
 
 // Get data based on one item Id
 app.get('/shopping/items/:itemId', (req, res) => {
-  const { itemId ***REMOVED*** = req.params;
+  const { itemId } = req.params;
   let shoppingData;
   let sellerData;
   let recommendedImages;
@@ -93,9 +95,10 @@ app.get('/shopping/items/:itemId', (req, res) => {
       // return controller.shopping.getSeller(itemId)
       // .then(seller => {
       //   return (seller.data.rows[0]);
-      // ***REMOVED***)
+      // })
       // .catch((err) => {
-      //   console.error(`Error with Seller GET. Response equals: '${err.response***REMOVED***' and instead returned hard coded data.`)
+      //   console.error(`Error with Seller GET. Response equals: '${err.response}' and instead returned hard coded data.`)
+
         return ({
           seller_id: 2,
           seller_rating: 4,
@@ -105,9 +108,9 @@ app.get('/shopping/items/:itemId', (req, res) => {
           seller_state: 'Montana',
           on_etsy_since: 2011,
           seller_item_id: 2
-      ***REMOVED***)
-      // ***REMOVED***)
-  ***REMOVED***)
+        })
+      // })
+    })
     .then((res) => {
       // Assign seller data to global variable
       sellerData = res;
@@ -123,8 +126,8 @@ app.get('/shopping/items/:itemId', (req, res) => {
         controller.shopping.getDistinct(imageOne.image_id),
         controller.shopping.getDistinct(imageTwo.image_id),
         controller.shopping.getDistinct(imageThree.image_id),
-  ***REMOVED***)
-  ***REMOVED***)
+      ])
+    })
     .then((promiseResults) => {
       return promiseResults.map((itemDetails, index) => {
         return {
@@ -132,24 +135,24 @@ app.get('/shopping/items/:itemId', (req, res) => {
           image_url: recommendedImages[index].image_urls[utils.randomInt(1, 10)],
           item_name: itemDetails.rows[0].item_name,
           price: itemDetails.rows[0].price,
-      ***REMOVED***
-    ***REMOVED***)
-  ***REMOVED***)
+        }
+      })
+    })
     .then((item) => {
       // Following this variable structuring to maintain legacy code formatting
-      const recommendedItemImages = { recommendedItemImages: item ***REMOVED***;
+      const recommendedItemImages = { recommendedItemImages: item };
 
       let serviceData = {
         ...shoppingData,
         ...sellerData,
         ...recommendedItemImages
-    ***REMOVED***
+      }
 
       res.send(serviceData);
-  ***REMOVED***)
+    })
     .catch(err => {
       res.status(404).send(err);
-  ***REMOVED***);
-***REMOVED***)
+    });
+  })
 
 module.exports = app;

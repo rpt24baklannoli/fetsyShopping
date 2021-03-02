@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars***REMOVED***/
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -19,17 +19,17 @@ const StarImg = styled.img`
 `;
 
 function SellerRating(props) {
-  const { data ***REMOVED*** = props;
-  const stars = [...Array(data.seller_rating)].map((star, index) => <StarImg key={index***REMOVED*** src="https://festy-images.s3.us-west-1.amazonaws.com/star.png" alt="star icon" />);
+  const { data } = props;
+  const stars = [...Array(data.seller_rating)].map((star, index) => <StarImg key={index} src="https://festy-images.s3.us-west-1.amazonaws.com/star.png" alt="star icon" />);
 
   return (
     <SellerRatingSpan>
       <a href="TO DO">
-        {stars***REMOVED***
+        {stars}
       </a>
     </SellerRatingSpan>
   );
-***REMOVED***
+}
 
 export default SellerRating;
 
@@ -39,5 +39,5 @@ SellerRating.propTypes = {
     total_sales: PropTypes.number.isRequired,
     seller_rating: PropTypes.number.isRequired,
     seller_name: PropTypes.string.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};

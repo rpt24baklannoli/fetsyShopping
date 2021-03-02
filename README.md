@@ -101,7 +101,7 @@ Sample Response:
     "in_stock": false,
     "us_free_shipping": true,
     "carts_item_is_in": 9
-***REMOVED***
+  },
   {
     "item_id": 2,
     "item_name": "green edison lamp pearl cloth ",
@@ -111,8 +111,8 @@ Sample Response:
     "in_stock": true,
     "us_free_shipping": true,
     "carts_item_is_in": 19
-***REMOVED***
-  {...***REMOVED***,
+  },
+  {...},
 ]
 ```
 
@@ -135,7 +135,7 @@ Sample Response:
   "in_stock": false,
   "us_free_shipping": true,
   "carts_item_is_in": 9
-***REMOVED***
+}
 ```
 
 ## Create (POST) A New Item
@@ -156,11 +156,11 @@ Request Body Example:
     "in_stock": true,
     "us_free_shipping": true,
     "carts_item_is_in": 20
-***REMOVED***
+}
 ```
 #### Output
 - Success: 200 status code, and a server message "successfully added new item"
-- Error: 404 status code, and a server message "failed to add new item: {error_here***REMOVED***"
+- Error: 404 status code, and a server message "failed to add new item: {error_here}"
 
 ## Update (PUT) An Item
 - Example use case: change details on a single item
@@ -178,12 +178,12 @@ Request Body Example:
     "in_stock": false,
     "us_free_shipping": true,
     "carts_item_is_in": 15
-***REMOVED***
+}
 ```
 #### Output
 - Assumption for this example: Item ID is #28
 - Success: 200 status code, and a server message "successfully updated item ID 28"
-- Error: 404 status code, and a server message "failed to update item ID 28: {error_here***REMOVED***"
+- Error: 404 status code, and a server message "failed to update item ID 28: {error_here}"
 
 ## Remove (DELETE) An Item
 - Example use case: remove a single item from the database
@@ -195,4 +195,4 @@ Endpoint: '/shopping/items/:itemId'
 #### Output
 - Assumption for this example: Item ID is #28
 - Success: 200 status code, and a server message "successfully deleted item ID 28"
-- Error: 404 status code, and a server message "failed to delete item ID 28: {error_here***REMOVED***"
+- Error: 404 status code, and a server message "failed to delete item ID 28: {error_here}"

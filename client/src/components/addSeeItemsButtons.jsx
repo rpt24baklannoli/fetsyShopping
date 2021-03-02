@@ -1,4 +1,4 @@
-/* eslint-disable import/extensions***REMOVED***/
+/* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -43,7 +43,7 @@ const AddItemsButton = styled.button`
     transform: scale(1.01);
     box-shadow: 0px 9px 30px -6px rgba(0,0,0,0.46);
     transition-timing-function: cubic-bezier(0.345, 0.115, 0.135, 1.42), ease-out, ease-out;
-***REMOVED***
+  }
 `;
 
 const SeeMoreItemsA = styled.a`
@@ -65,7 +65,7 @@ const SeeMoreItemsA = styled.a`
     transition-property: background-position;
     transition-timing-function: ease-in-out;
     background-position: 71%;
-***REMOVED***
+  }
 `;
 
 function AddSeeItemsButtons() {
@@ -75,7 +75,7 @@ function AddSeeItemsButtons() {
       <SeeMoreItemsA href="filler">See more items</SeeMoreItemsA>
     </ButtonsDiv>
   );
-***REMOVED***
+}
 
 export default AddSeeItemsButtons;
 
@@ -90,5 +90,5 @@ AddSeeItemsButtons.propTypes = {
     price: PropTypes.string.isRequired,
     price_reduction: PropTypes.string.isRequired,
     us_free_shipping: PropTypes.bool.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};

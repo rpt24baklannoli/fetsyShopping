@@ -1,4 +1,4 @@
-/* eslint-disable import/extensions***REMOVED***/
+/* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Seller from './seller.jsx';
@@ -9,18 +9,18 @@ import AddToCart from './addToCart.jsx';
 import DataNudger from './dataNudger.jsx';
 
 function BuyBox(props) {
-  const { data ***REMOVED*** = props;
+  const { data } = props;
   return (
     <div>
-      <Seller data={data***REMOVED*** />
-      <NameBestSeller data={data***REMOVED*** />
-      <PriceInStock data={data***REMOVED*** />
-      <ColorQuantity data={data***REMOVED*** />
+      <Seller data={data} />
+      <NameBestSeller data={data} />
+      <PriceInStock data={data} />
+      <ColorQuantity data={data} />
       <AddToCart />
-      <DataNudger data={data***REMOVED*** />
+      <DataNudger data={data} />
     </div>
   );
-***REMOVED***
+}
 
 // Props typechecking
 BuyBox.propTypes = {
@@ -33,7 +33,7 @@ BuyBox.propTypes = {
     price: PropTypes.string.isRequired,
     price_reduction: PropTypes.string.isRequired,
     us_free_shipping: PropTypes.bool.isRequired,
-***REMOVED***),
-***REMOVED***;
+  }),
+};
 
 export default BuyBox;

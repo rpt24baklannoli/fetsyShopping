@@ -1,8 +1,8 @@
-/* eslint-disable no-undef***REMOVED***/
-/* eslint-disable import/extensions***REMOVED***/
-/* eslint-disable jsx-a11y/label-has-associated-control***REMOVED***/
-/* eslint-disable no-unused-vars***REMOVED***/
-/* eslint-disable no-console***REMOVED***/
+/* eslint-disable no-undef */
+/* eslint-disable import/extensions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -46,14 +46,14 @@ class CartCol extends React.Component {
         recommendedItemImages: [
           {
             item_id: 2, image_url: 'https://festy-images.s3.us-west-1.amazonaws.com/missing.jpg', item_name: 'Example Item Name', price: '99.99',
-   ***REMOVED*****REMOVED***
+          },
           {
             item_id: 3, image_url: 'https://festy-images.s3.us-west-1.amazonaws.com/missing.jpg', item_name: 'Example Item Name', price: '99.99',
-   ***REMOVED*****REMOVED***
+          },
           {
             item_id: 4, image_url: 'https://festy-images.s3.us-west-1.amazonaws.com/missing.jpg', item_name: 'Example Item Name', price: '99.99',
-   ***REMOVED*****REMOVED***
-    ***REMOVED***,
+          },
+        ],
         seller_city: 'Example City',
         seller_id: 1,
         seller_name: 'Example Name',
@@ -61,54 +61,54 @@ class CartCol extends React.Component {
         seller_state: 'Example State',
         total_sales: 1000,
         us_free_shipping: true,
-    ***REMOVED***
+      },
       itemId: 1,
-  ***REMOVED***;
-***REMOVED***
+    };
+  }
 
   componentDidMount() {
     // console.log('CDM react:', this.state)
-    const { itemData, itemId ***REMOVED*** = this.state;
+    const { itemData, itemId } = this.state;
     this.getURL();
     //  this.getData(itemId);
-***REMOVED***
+  }
 
   getURL() {
     const currentURL = window.location;
     const itemId = currentURL.pathname.split('/')[2];
 
-    this.setState({ itemId ***REMOVED***,
+    this.setState({ itemId },
       () => this.getData(itemId)
     );
-***REMOVED***
+  }
 
   getData(itemId) {
-    axios.get(`/shopping/items/${itemId***REMOVED***`)
+    axios.get(`/shopping/items/${itemId}`)
       .then((response) => {
         this.setState({
           serviceData: response.data,
           isLoading: false,
-      ***REMOVED***);
-    ***REMOVED***)
+        });
+      })
       .catch((error) => {
         console.log('React GET data error:', error);
-    ***REMOVED***);
-***REMOVED***
+      });
+  }
 
   render() {
-    const { serviceData ***REMOVED*** = this.state;
+    const { serviceData } = this.state;
 
     if (this.state.isLoading === true) {
-      return ( <h1 style={{textAlign: 'center'***REMOVED******REMOVED***> Loading... </h1> )
-  ***REMOVED***
+      return ( <h1 style={{textAlign: 'center'}}> Loading... </h1> )
+    }
 
     return (
       <CartColDiv>
-        <BuyBox data={serviceData***REMOVED*** />
-        <FreeShippingBundle data={serviceData***REMOVED*** />
+        <BuyBox data={serviceData} />
+        <FreeShippingBundle data={serviceData} />
       </CartColDiv>
     );
-***REMOVED***
-***REMOVED***
+  }
+}
 
 export default CartCol;
