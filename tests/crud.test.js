@@ -127,6 +127,7 @@ describe('CRUD Success Cases', () => {
 
       // confirm changes with a new GET request
       let putGetRes = await request(app).get(`/shopping/items/${newItemId}`)
+      console.log('PUTGETRES:', putGetRes.body.item_id);
       expect(putGetRes.body.item_id).toEqual(newItemId);
       expect(putGetRes.body.item_name).toEqual(updatedItem.item_name);
     } catch (err) {
