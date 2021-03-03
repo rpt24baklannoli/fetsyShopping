@@ -126,6 +126,7 @@ Endpoint: '/shopping/items/:itemId'
 #### Output
 ```sh
 Sample Response:
+- Note: This response aggregates data from this repo\'s DB, plus the Seller service DB, plus the Image service DB.
 {
   "item_id": 1,
   "item_name": "food edison wiping fan luxrious green tea",
@@ -135,6 +136,33 @@ Sample Response:
   "in_stock": false,
   "us_free_shipping": true,
   "carts_item_is_in": 9
+  "seller_id": 2,
+  "seller_rating": 4,
+  "total_sales": 1397,
+  "seller_name": "Araceli.Bosco",
+  "seller_city": "Lake Ludiestad",
+  "seller_state": "Montana",
+  "on_etsy_since": 2011,
+  "seller_item_id": 2,
+  "recommendedItemImages": [
+    {
+      "image_id": 4,
+      "image_url": "https://picsum.photos/id/6/200",
+      "item_name": "window wiping board luxrious cat mask wood plant ",
+      "price": "39.32"
+    },
+    {
+      "image_id": 2,
+      "item_name": "weight desk to plant mask heating blue sport drink ",
+      "price": "3.84"
+    },
+    {
+      "image_id": 10,
+      "image_url": "https://picsum.photos/id/8/200",
+      "item_name": "book fan warming maker blue book cloth cover succulent ",
+      "price": "21.16"
+    }
+  ]
 }
 ```
 
@@ -159,7 +187,7 @@ Request Body Example:
 }
 ```
 #### Output
-- Success: 200 status code, and a server message "successfully added new item"
+- Success: 200 status code, a server message "successfully added new item," and the resultant item ID.
 - Error: 404 status code, and a server message "failed to add new item: {error_here}"
 
 ## Update (PUT) An Item
