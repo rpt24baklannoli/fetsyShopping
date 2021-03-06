@@ -83,7 +83,8 @@ class CartCol extends React.Component {
   }
 
   getData(itemId) {
-    axios.get(`/shopping/items/${itemId}`)
+    // axios.get(`/shopping/items/${itemId}`)
+    axios.get(`http://13.52.16.25:3004/shopping/items/${itemId}`)
       .then((response) => {
         this.setState({
           serviceData: response.data,

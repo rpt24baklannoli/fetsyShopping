@@ -8,8 +8,6 @@ const mockData = require('../mockData/index.js');
 var cors = require('cors')
 const { resolvePlugin } = require('@babel/core');
 
-
-// const port = 3004;
 app.use(cors())
 app.use('/items/:itemId', express.static('client/dist'));
 app.use(express.static(__dirname + '/../client/dist'));
