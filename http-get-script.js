@@ -5,7 +5,7 @@ export let options = {
   scenarios: {
     constant_request_rate: {
       executor: 'constant-arrival-rate',
-      rate: 1000, // Changed to 1, 10, 100, or 1000 requests
+      rate: 1, // Changed to 1, 10, 100, or 1000 requests
       timeUnit: '1s', // 1000 iterations per second, i.e. 1000 RPS
       duration: '1m', // 1 minute total duration
       preAllocatedVUs: 100, // Changed to 1, 10, 100, or 1000 virtual users to match RPS
@@ -18,7 +18,8 @@ export let options = {
 
 // code inside default is "VU Code," run over and over for duration of test
 export default function () {
-  http.get('http://localhost:3004/shopping/items/9888777');
+  let randomNum = Math.floor(Math.random() * (10000000 - 9000000 + 1)) + 9000000;
+  http.get(`http://localhost:3004/shopping/items/${randomNum}`);
   sleep(1);
 };
 

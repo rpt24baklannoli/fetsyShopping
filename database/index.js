@@ -3,16 +3,16 @@ require('dotenv').config({ path: './config/login.env' });
 
 const pool = new Pool({
   // Localhost Credentials
-  user: 'root',
-  host: 'localhost',
-  database: 'fetsy',
+  // user: 'root',
+  // host: 'localhost',
+  // database: 'fetsy',
 
   // // EC2 Credentials
-  // user: 'postgres',
-  // host: '184.169.182.48',
-  // database: 'fetsy',
-  // port: 5432,
-  // password: DB_PASS,
+  user: 'postgres',
+  host: '184.169.182.48',
+  database: 'fetsy',
+  port: 5432,
+  password: DB_PASS,
 });
 
 pool.connect()
