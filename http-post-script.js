@@ -4,7 +4,7 @@ export let options = {
   scenarios: {
     constant_request_rate: {
       executor: 'constant-arrival-rate',
-      rate: 10, // Changed to 1, 10, 100, or 1000 requests
+      rate: 100, // Changed to 1, 10, 100, or 1000 requests
       timeUnit: '1s', // 1000 iterations per second, i.e. 1000 RPS
       duration: '1m', // 1 minute total duration
       preAllocatedVUs: 10, // Changed to 1, 10, 100, or 1000 virtual users to match RPS

@@ -6,7 +6,10 @@ const utils = require('../database/utils.js');
 const controller = require('../controller/index.js');
 const mockData = require('../mockData/index.js');
 var cors = require('cors')
-const { resolvePlugin } = require('@babel/core');
+// const { resolvePlugin } = require('@babel/core');
+const redis = require('redis');
+const redisPort = process.env.PORT || 6379;
+const client = redis.createClient(redisPort);
 
 app.use(cors())
 app.use('/items/:itemId', express.static('client/dist'));
@@ -78,6 +81,11 @@ app.get('/shopping/distinctItems/:itemId', (req, res) => {
 
 /*======== Primary Data Pull To Render React ========*/
 
+// Redis connection
+client.on("connect", (err) => {
+  console.log('Connected to Redis')
+});
+
 // Get data based on one item Id
 app.get('/shopping/items/:itemId', (req, res) => {
   const { itemId } = req.params;
@@ -85,18 +93,25 @@ app.get('/shopping/items/:itemId', (req, res) => {
   let sellerData;
   let recommendedImages;
 
-  controller.shopping.getOne(itemId)
-    .then(data => {
-      shoppingData = data.rows[0];
+  client.get(itemId, (err, result) => {
+    if (err) throw err;
 
-// TEMPORARILY commenting out actual GET request to seller service for Jest/CircleCI testing
-      // return controller.shopping.getSeller(itemId)
-      // .then(seller => {
-      //   return (seller.data.rows[0]);
-      // })
-      // .catch((err) => {
-      //   console.error(`Error with Seller GET. Response equals: '${err.response}' and instead returned hard coded data.`)
+    if (result) {
+      console.log('item was already cached');
+      res.status(200).send(JSON.parse(result));
+    }
 
+    else {
+      controller.shopping.getOne(itemId)
+      .then(data => {
+        shoppingData = data.rows[0];
+        // TEMPORARILY commenting out actual GET request to seller service for Jest/CircleCI testing
+        // return controller.shopping.getSeller(itemId)
+        // .then(seller => {
+        //   return (seller.data.rows[0]);
+        // })
+        // .catch((err) => {
+        //   console.error(`Error with Seller GET. Response equals: '${err.response}' and instead returned hard coded data.`)
         return ({
           seller_id: 2,
           seller_rating: 4,
@@ -108,49 +123,53 @@ app.get('/shopping/items/:itemId', (req, res) => {
           seller_item_id: 2
         })
       // })
-    })
-    .then((res) => {
-      // Assign seller data to global variable
-      sellerData = res;
-
-      /*==== To be replaced with actual image service data ====*/
-      const imageOne = mockData.mockImages[utils.randomInt(1, 10)];
-      const imageTwo = mockData.mockImages[utils.randomInt(1, 10)];
-      const imageThree = mockData.mockImages[utils.randomInt(1, 10)];
-
-      // Assign image data to global variable as an array
-      recommendedImages = [imageOne, imageTwo, imageThree]
-      return Promise.all([
-        controller.shopping.getDistinct(imageOne.image_id),
-        controller.shopping.getDistinct(imageTwo.image_id),
-        controller.shopping.getDistinct(imageThree.image_id),
-      ])
-    })
-    .then((promiseResults) => {
-      return promiseResults.map((itemDetails, index) => {
-        return {
-          image_id: recommendedImages[index].image_id,
-          image_url: recommendedImages[index].image_urls[utils.randomInt(1, 10)],
-          item_name: itemDetails.rows[0].item_name,
-          price: itemDetails.rows[0].price,
-        }
       })
-    })
-    .then((item) => {
-      // Following this variable structuring to maintain legacy code formatting
-      const recommendedItemImages = { recommendedItemImages: item };
+      .then((res) => {
+        // Assign seller data to global variable
+        sellerData = res;
+        const imageOne = mockData.mockImages[utils.randomInt(1, 10)];
+        const imageTwo = mockData.mockImages[utils.randomInt(1, 10)];
+        const imageThree = mockData.mockImages[utils.randomInt(1, 10)];
 
-      let serviceData = {
-        ...shoppingData,
-        ...sellerData,
-        ...recommendedItemImages
-      }
+        // Assign image data to global variable as an array
+        recommendedImages = [imageOne, imageTwo, imageThree]
+        return Promise.all([
+          controller.shopping.getDistinct(imageOne.image_id),
+          controller.shopping.getDistinct(imageTwo.image_id),
+          controller.shopping.getDistinct(imageThree.image_id),
+        ])
+      })
+      .then((promiseResults) => {
+        return promiseResults.map((itemDetails, index) => {
+          return {
+            image_id: recommendedImages[index].image_id,
+            image_url: recommendedImages[index].image_urls[utils.randomInt(1, 10)],
+            item_name: itemDetails.rows[0].item_name,
+            price: itemDetails.rows[0].price,
+          }
+        })
+      })
+      .then((item) => {
+        // Following this data shape to maintain legacy code formatting
+        const recommendedItemImages = { recommendedItemImages: item };
 
-      res.send(serviceData);
-    })
-    .catch(err => {
-      res.status(404).send(err);
-    });
+        let serviceData = {
+          ...shoppingData,
+          ...sellerData,
+          ...recommendedItemImages
+        }
+
+        // Cache the data with Redis
+        client.set(itemId, JSON.stringify(serviceData))
+        console.log('new item cached');
+
+        res.send(serviceData);
+      })
+      .catch(err => {
+        res.status(404).send(err);
+      });
+    }
   })
+})
 
 module.exports = app;

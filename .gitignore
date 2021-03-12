@@ -117,3 +117,4 @@ newrelic*
 http-get-script.js
 http-post-script.js
 ubuntu*
+*.rdb

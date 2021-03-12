@@ -7,7 +7,7 @@ const pool = new Pool({
   // host: 'localhost',
   // database: 'fetsy',
 
-  // EC2 Credentials
+  // // EC2 Credentials
   user: 'postgres',
   host: '184.169.182.48',
   database: 'fetsy',
