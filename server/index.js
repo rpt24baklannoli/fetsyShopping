@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const axios = require('axios');
 const utils = require('../database/utils.js');
 const controller = require('../controller/index.js');
 const mockData = require('../mockData/index.js');
