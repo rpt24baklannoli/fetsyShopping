@@ -1,12 +1,10 @@
-// const newrelic = require('newrelic');
 const express = require('express');
 const app = express();
 const axios = require('axios');
 const utils = require('../database/utils.js');
 const controller = require('../controller/index.js');
 const mockData = require('../mockData/index.js');
-var cors = require('cors')
-// const { resolvePlugin } = require('@babel/core');
+const cors = require('cors')
 const redis = require('redis');
 const redisPort = process.env.PORT || 6379;
 const client = redis.createClient(redisPort);
@@ -150,7 +148,7 @@ app.get('/shopping/items/:itemId', (req, res) => {
         })
       })
       .then((item) => {
-        // Following this data shape to maintain legacy code formatting
+        // Following this data shape to maintain legacy code React formatting requirements
         const recommendedItemImages = { recommendedItemImages: item };
 
         let serviceData = {

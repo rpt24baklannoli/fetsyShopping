@@ -2,17 +2,17 @@ const { Pool } = require('pg');
 require('dotenv').config({ path: './config/login.env' });
 
 const pool = new Pool({
-  // // Localhost Credentials
-  // user: 'root',
-  // host: 'localhost',
-  // database: 'fetsy',
-
-  // EC2 Credentials
-  user: 'postgres',
-  host: '184.169.182.48',
+  // Localhost Credentials
+  user: 'root',
+  host: 'localhost',
   database: 'fetsy',
-  port: 5432,
-  password: DB_PASS,
+
+  // // EC2 Credentials
+  // user: 'postgres',
+  // host: '184.169.182.48',
+  // database: 'fetsy',
+  // port: 5432,
+  // password: DB_PASS,
 });
 
 pool.connect()
@@ -20,7 +20,7 @@ pool.connect()
 module.exports = pool;
 
 
-/**** Legacy code. Instructions for postgres setup. ****/
+/**** Legacy code: Instructions for postgres setup. ****/
 // brew services start postgresql
 // psql postgres
 // CREATE ROLE root;

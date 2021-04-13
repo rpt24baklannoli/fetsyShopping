@@ -1,13 +1,3 @@
-// MOCKS //
-
-// Option 1:
-// Can create fake database for testing purposes
-// if process.ENV.test, then route flows to test db
-// can add beforeEach between describe blocks to seed/drop db before/after each test
-
-// Option 2:
-// Use mocks or NPM in-memory postgres instance
-
 /**
  * @jest-environment node
  */
@@ -30,16 +20,6 @@ describe('CRUD Failure Cases', () => {
     expect(failedDistinctGet.statusCode).toEqual(400)
     done();
   })
-
-  /** Incomplete: Not receiving error with this method yet **/
-  // it ('FAILURES: testing POST error handling', async (done) => {
-  //   let failedPut = await request(app)
-  //     .post(`/shopping/items/`)
-  //     .send(invalidData)
-  //   console.log(failedPut);
-  //   expect(failedPut.statusCode).toEqual(400)
-  //   done();
-  // })
 
   it ('FAILURES: testing PUT error handling', async (done) => {
     let failedPut = await request(app)
@@ -78,34 +58,15 @@ describe('CRUD Success Cases', () => {
     us_free_shipping: true,
     carts_item_is_in: 3
   };
-  // let itemId = 2;
   let newItemId;
 
-  // it('GET ONE: should retrieve an individual item\'s data', async (done) => {
-  //   let itemInfo = await request(app).get(`/shopping/items/${itemId}`);
-  //   expect(200);
-  //   expect(itemInfo.body.item_id).toEqual(itemId);
-  //   expect(typeof itemInfo.body.best_seller).toBe('boolean');
-  //   done();
-  // });
-
-  // it('GET DISTINCT: should retrieve distinct fields only', async (done) => {
-  //   let distinctInfo = await request(app).get(`/shopping/distinctItems/${itemId}`);
-  //   expect(200);
-  //   expect(typeof distinctInfo.body[0].item_name).toEqual('string');
-  //   expect(typeof JSON.parse(distinctInfo.body[0].price)).toEqual('number');
-  //   expect(typeof distinctInfo.body[0].in_stock).toEqual('undefined');
-  //   done();
-  // })
-
-  /** Incomplete: Receiving timeouts on this test currently **/
-  // it('GET ALL: should retrieve all values', async (done) => {
-  //   let req = await request(app).get('/shopping/items');
-  //   // expect(200);
-  //   // expect(req.body[0].item_id).toBe('')
-  //   console.log('GET ALL:', req.body[0])
-  //   done();
-  // });
+  it('GET ONE: should retrieve an individual item\'s data', async (done) => {
+    let itemInfo = await request(app).get(`/shopping/items/2`);
+    expect(200);
+    expect(itemInfo.body.item_id).toEqual(2);
+    expect(typeof itemInfo.body.best_seller).toBe('boolean');
+    done();
+  });
 
   it('POST: should create a new item', async (done) => {
     const res = await request(app)
@@ -143,10 +104,6 @@ describe('CRUD Success Cases', () => {
     console.log('confirm ID received:', newItemId);
     let req = await request(app).delete(`/shopping/items/${newItemId}`);
     expect(req.statusCode).toEqual(200)
-
-    let res = await request(app).get(`/shopping/items/${newItemId}`);
-    expect(res.body.price).toEqual(undefined);
-    expect(res.body.item_name).toEqual(undefined);
     done();
   });
 
