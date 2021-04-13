@@ -2,12 +2,12 @@ const { Pool } = require('pg');
 require('dotenv').config({ path: './config/login.env' });
 
 const pool = new Pool({
-  // Localhost Credentials
+  /* Localhost Credentials */
   user: 'root',
   host: 'localhost',
   database: 'fetsy',
 
-  // // EC2 Credentials
+  /* EC2 Credentials */
   // user: 'postgres',
   // host: '184.169.182.48',
   // database: 'fetsy',
